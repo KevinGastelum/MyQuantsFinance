@@ -3,9 +3,32 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Distribution / packaging
+# environemnt variables
+venv/
+env/
+.venv/
 *.env
+.env.local
+.secret
+.vscode/
 config.ini
+
+# log files
+*.log
+*.cache
+*.bak
+
+# Tmp files
+*.tmp
+*.swp
+*.swo
+
+# Database Files
+*.db
+*.sql
+*.sqlite
+
+# Installer logs
 .Python
 build/
 dist/
@@ -18,44 +41,11 @@ var/
 wheels/
 .installed.cfg
 *.egg
-
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
+.develop
+.installed.cfg
+build/
+dist/
+*.egg-info/
+.eggs/
 pip-log.txt
-pip-delete-this-directory.txt
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/

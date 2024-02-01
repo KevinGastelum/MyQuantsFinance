@@ -8,8 +8,9 @@ Learning about FinTech can be a daunting task, it's littered with complex terms 
 
 Demistifying the terms
 
-1. Derivatives (AKA Options, Futures, Perpetuals) - used to trade with margin.
-2. Margin or Leverage - Using borrowed $ from exchanges to execute a trade. Can lead to increased profits or increased losses. $1,000 with 10x margin = $10,000 (Use with CAUTION this also means your losing money 10x faster)
+1. Derivatives - AKA Options, Futures, Perpetuals - used to trade with margin.
+2. Margin or Leverage - Using borrowed $ from exchanges to execute a trade, can lead to increased losses or increased profits.
+   <br> $1,000 with 10x margin = $10,000 (Use with CAUTION this also means your losing money 10x faster) once your liquidity runs out.
 3. Assets - Equities (Fancy name for Stocks), Commodities, Crypto Assets
 4. Liquidity (Fancy way of saying Funds)
 
