@@ -16,7 +16,7 @@ Key Terms:
 - **Liquidity** (Fancy way of saying Funds)
 - **Assets** - These are Equities (Fancy name for Stocks), Commodities, Crypto
 
-### Becoming a Quant
+## Becoming a Quant
 
 Knowing the basics is essential in everything, but especially when developing a winning strategy. The [Basic Strategies](#basic-quantitative-trading-strategies) list contains strategies that have been used for decades BUT mastering these allows you to identify key market trends and opportunities like:
 
