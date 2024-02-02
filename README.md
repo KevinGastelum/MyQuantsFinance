@@ -1,6 +1,6 @@
 # Quant 📊
 
-_"A Quant, or Quantitative Analyst, embodies the fusion of finance and technology 🤖💼, leveraging advanced mathematical, statistical, and computational techniques to decode the complexities of financial markets."_
+_"A Quant, or Quantitative Analyst, embodies the fusion of finance and technology, leveraging advanced mathematical, statistical, and computational techniques to decode the complexities of financial markets."_
 
 The following is a brief summary of what's needed to know about the Financial Market and the different types of trading involved in FinTech.
 
@@ -16,7 +16,7 @@ Key Terms:
 - **Liquidity** (Fancy way of saying Funds) 💧
 - **Assets** - These are Equities (Fancy name for Stocks), Commodities, Crypto 📉📈
 
-## Becoming a Quant 🧠
+## Becoming a Quant 🤖💼
 
 Knowing the basics is essential in everything, but especially when developing a winning strategy. The [Basic Strategies](#basic-quantitative-trading-strategies) list contains strategies that have been used for decades BUT mastering these allows you to identify key market trends and opportunities like:
 
@@ -32,7 +32,7 @@ As I progress in my Quant journey I will begin by coding through some of these s
 
 we will build a Backtesting script to test our results 🔄
 
-# Quantitative Trading Strategies 💡
+# Quantitative Trading Strategies 🧠
 
 ### Basic trading strategies:
 
