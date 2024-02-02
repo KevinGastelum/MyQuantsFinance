@@ -48,14 +48,37 @@ These are also commonly known as indicators, I will code these from scratch so I
 
 1. **Mean Reversion** - Assumes prices revert back to the mean and trades against trends 🔁.
 2. **Arbitrage** - Exploits statistical mispricings of assets for profit by analyzing multiple exchanges 💹.
-3. **Pair Trading** - Bets on the convergence/divergence of two similar companies' stock prices 📊.
-4. **Momentum Trading** - Buys high-performance assets and sells poor ones, betting on trend continuation 🏃‍♂️💨.
+3. **Volatility Trading** - Integrates 🏃‍♂️💨.
+4. **Pair Trading** - Bets on the convergence/divergence of two similar companies' stock prices 📊.
 5. **Breakout Trading** - Looks for levels or areas that a stock has been unable to move beyond, and waits for it to move beyond those levels 🚪🔓.
 
 ### Advanced Trading Strategies
 
-1. **Machine Learning Models** - Predicts market movements using historical data and algorithms; LSTM 🤖📈.
+1. **Machine Learning Models** - Predicts market movements using historical data and algorithms; LSTM, K-Means Clustering 🤖📈.
 2. **Option Strategies** - Employs methods like delta-neutral trading to hedge market movements 🛡️.
 3. **Sentiment Analysis** - Analyzes market mood through news and social media for trading signals 🗞️💬.
 4. **High-Frequency Trading** (HFT) - Executes numerous trades daily to capture small price movements ⚡.
 5. **Market Making** - Provides market liquidity, profiting by looking at the Order book and seeing bid-ask spread to see where price is likely to gravitate to; Order Book
+
+<!--
+
+-- BASIC:
+Bollinger Bands
+ATR
+Volume Profile
+Open Interest
+~Garman-Klass Volatility
+
+-- MID
+-GARCH -
+
+
+===================
+RISK MANAGEMENT:
+Five Fama-French Factors to asses risk/return
+- Market Risk
+- Size
+- Value
+- Operating Profitability
+
+ -->
