@@ -10,7 +10,7 @@ Learning about FinTech can be frustrating, it's littered with complex terms desi
 
 Deobfuscating key terminology:
 
-- **Derivatives** - AKA | Options | Futures | Perpetuals - used to trade with margin.
+- **Derivatives** - AKA Options | Futures | Perpetuals - used to trade with margin.
 - **Margin or Leverage** - Borrowing $ from exchanges to execute a trade; can lead to increased losses or increased profits.
   <br> $1,000 with 10x margin = $10,000 (Use with CAUTION this also means your losing money 10x faster) liquidation occurs once your liquidity runs out.
 - **Liquidity** (Fancy way of saying Funds)
