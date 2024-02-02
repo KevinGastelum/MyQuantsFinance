@@ -4,7 +4,7 @@ _"A Quant, or Quantitative Analyst, embodies the fusion of finance and technolog
 
 The following is a brief summary of what's needed to know about the Financial Market and the different types of trading involved in FinTech.
 
-### Demistifying the Financial Market [(FinTech)](https://en.wikipedia.org/wiki/Fintech#:~:text=Fintech%2C%20a%20clipped,fintech.%5B6%5D) 🚀
+### Demistifying the Financial Market [(FinTech)](https://en.wikipedia.org/wiki/Fintech#:~:text=Fintech%2C%20a%20clipped,fintech.%5B6%5D) 🔮
 
 Learning about FinTech can be frustrating 😤, it's littered with complex terms designed to confuse you and scare you away. Those who do manage to navigate through the jargon, are faced with the daunting task of competing against the Market Maker i.e., Financial Institutions, Large Banks, and Firms 🏦💸.
 
@@ -16,7 +16,7 @@ Key Terms:
 - **Liquidity** (Fancy way of saying Funds) 💧
 - **Assets** - These are Equities (Fancy name for Stocks), Commodities, Crypto 📉📈
 
-## Becoming a Quant 🤖💼
+## Becoming a Quant 🤖💼🚀
 
 Knowing the basics is essential in everything, but especially when developing a winning strategy. The [Basic Strategies](#basic-quantitative-trading-strategies) list contains strategies that have been used for decades BUT mastering these allows you to identify key market trends and opportunities like:
 
