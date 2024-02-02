@@ -8,10 +8,10 @@ The following is a brief summary of what's needed to know about the Financial Ma
 
 Learning about FinTech can be frustrating, it's littered with complex terms designed to confuse you and scare you away. Those who do manage to navigate through the jargon, are faced with the daunting task of competing against the Market Maker i.e., Financial Institutions, Large Banks and Firms.
 
-Deobfuscating key terminology:
+Key Terms:
 
 - **Derivatives** - AKA Options | Futures | Perpetuals - used to trade with margin.
-- **Margin or Leverage** - Borrowing $ from exchanges to execute a trade; can lead to increased losses or increased profits.
+- **Margin/Leverage** - Borrowing $ from exchanges to execute a trade; can lead to increased losses or increased profits.
   <br> $1,000 with 10x margin = $10,000 (Use with CAUTION this also means your losing money 10x faster) liquidation occurs once your liquidity runs out.
 - **Liquidity** (Fancy way of saying Funds)
 - **Assets** - These are Equities (Fancy name for Stocks), Commodities, Crypto
