@@ -2,7 +2,7 @@
 
 _"A Quant, or Quantitative Analyst, embodies the fusion of finance and technology, leveraging advanced mathematical, statistical, and computational techniques to decode the complexities of financial markets."_
 
-The following is a brief summary of what's needed to know about the Financial Market and the different types of trading involved in FinTech.
+The following is a brief summary of what's needed to know about the Financial Market in order to succeed as a trader. The different types of trading and strategies involved in FinTech.
 
 ### Demistifying the Financial Market [(FinTech)](https://en.wikipedia.org/wiki/Fintech#:~:text=Fintech%2C%20a%20clipped,fintech.%5B6%5D) 🔮
 
@@ -48,7 +48,7 @@ These are also commonly known as indicators, I will code these from scratch so I
 
 1. **Mean Reversion** - Assumes prices revert back to the mean and trades against trends 🔁.
 2. **Arbitrage** - Exploits statistical mispricings of assets for profit by analyzing multiple exchanges 💹.
-3. **Volatility Trading** - Integrates 🏃‍♂️💨.
+3. **GARCH** - Optimal for Volatility forecasting 🏃‍♂️💨.
 4. **Pair Trading** - Bets on the convergence/divergence of two similar companies' stock prices 📊.
 5. **Breakout Trading** - Looks for levels or areas that a stock has been unable to move beyond, and waits for it to move beyond those levels 🚪🔓.
 
@@ -63,14 +63,14 @@ These are also commonly known as indicators, I will code these from scratch so I
 <!--
 
 -- BASIC:
-Bollinger Bands
+^Bollinger Bands
 ATR
 Volume Profile
 Open Interest
-~Garman-Klass Volatility
+^Garman-Klass Volatility
 
 -- MID
--GARCH -
+^GARCH - Volatility Forecasting
 
 
 ===================
@@ -81,4 +81,13 @@ Five Fama-French Factors to asses risk/return
 - Value
 - Operating Profitability
 
+
+
+LIBRARIES
+QuantLib
+https://quantlib-python-docs.readthedocs.io/en/latest/
+
+
+GARCH
+https://arch.readthedocs.io/en/latest/univariate/introduction.html
  -->
