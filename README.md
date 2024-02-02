@@ -42,7 +42,7 @@ These are also commonly known as indicators, I will code these from scratch so I
 2. **RSI** (Relative Strength Index) - Momentum oscillator measuring speed of price movements. Identifies overbought or oversold conditions 🔴🟢.
 3. **VWAP** (Volume Weighted Average Price) - Average price based on volume and price, used as a trading benchmark 🔍.
 4. **MACD** (Moving Average Convergence Divergence) - Utilizes two moving averages to identify momentum and reversal points ↔️.
-5. **Fibonacci Retracement** - Uses horizontal lines to indicate potential support or resistance levels based on Fibonacci ratios 🔢.
+5. **Fibonacci Retracement** - Uses Fibonacci ratios to indicate potential support or resistance levels based 🔢.
 
 ### Mid-Level Trading Strategies
 
@@ -61,6 +61,10 @@ These are also commonly known as indicators, I will code these from scratch so I
 5. **Market Making** - Provides market liquidity, profiting by looking at the Order book and seeing bid-ask spread to see where price is likely to gravitate to; Order Book
 
 <!--
+
+NOTES:
+Identify what indicators we want to
+
 
 -- BASIC:
 ^Bollinger Bands
@@ -81,7 +85,7 @@ Five Fama-French Factors to asses risk/return
 - Value
 - Operating Profitability
 
-
+backtesting.py
 
 LIBRARIES
 QuantLib
@@ -90,4 +94,15 @@ https://quantlib-python-docs.readthedocs.io/en/latest/
 
 GARCH
 https://arch.readthedocs.io/en/latest/univariate/introduction.html
+ -->
+
+<!-- ========================================== -->
+<!-- ========================================== -->
+
+<!--
+
+
+
+
+
  -->
