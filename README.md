@@ -1,18 +1,18 @@
 # Quantitative Trading Strategies
 
-The following is a brief summary of what you need to know about the Market and different types of trading involved in FinTech
+The following is a brief summary of what you need to know about the Financial Market and different types of trading involved in FinTech
 
 ### Demistifying the Financial Market [(FinTech)](https://en.wikipedia.org/wiki/Fintech#:~:text=Fintech%2C%20a%20clipped,fintech.%5B6%5D)
 
 Learning about FinTech can be a daunting task, it's littered with complex terms designed to confuse you and scare you away. Those who do manage to navigate through the jargon, are now faced with the challenging task of competing against the Market Maker i.e., Financial Institutions, Large Banks and Firms.
 
-Demistifying the terms
+Demistifying key terms:
 
-1. Derivatives - AKA Options, Futures, Perpetuals - used to trade with margin.
-2. Margin or Leverage - Using borrowed $ from exchanges to execute a trade, can lead to increased losses or increased profits.
-   <br> $1,000 with 10x margin = $10,000 (Use with CAUTION this also means your losing money 10x faster) once your liquidity runs out.
-3. Assets - Equities (Fancy name for Stocks), Commodities, Crypto Assets
-4. Liquidity (Fancy way of saying Funds)
+- **Derivatives** - AKA Options, Futures, or Perpetuals - used to trade with margin.
+- **Margin or Leverage** - Borrowing $ from exchanges to execute a trade, can lead to increased losses or increased profits.
+  <br> $1,000 with 10x margin = $10,000 (Use with CAUTION this also means your losing money 10x faster) liquidation occurs once your liquidity runs out.
+- **Assets** - Equities (Fancy name for Stocks), Commodities, Crypto
+- **Liquidity** (Fancy way of saying Funds)
 
 ---
 
