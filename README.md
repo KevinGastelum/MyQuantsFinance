@@ -64,6 +64,8 @@ These are also commonly known as indicators, I will code these from scratch so I
 
 NOTES:
 Identify what indicators we want to
+update Mid Tier Strats
+
 
 
 -- BASIC:
@@ -100,9 +102,31 @@ https://arch.readthedocs.io/en/latest/univariate/introduction.html
 <!-- ========================================== -->
 
 <!--
+SCRIPTS
+nice funcs (indicators)
+mean reversion
+backtest.py
+ai assistant
 
 
+CONSTANTS
+symbol
+pos_size
+params = {'timeInForce': 'PostOnly,}
+target
+max_loss
 
 
+FUNCTIONS
+ask_bid()
+sma(timeframe, num_bars, bars, df, bid)
+open_positions(positiions, openpos_bool, openpos_size, long, entry lev)
+kill_switch(openposi, long, kil_size)
+pnl_close(in_pos, size, long) ## Checks if we hit profit target or max loss
+bot()
 
+
+FUTURE IDEAS
+Print Daily Vol in $ (sum of all big exch)
+Print time in trade
  -->
