@@ -1,4 +1,4 @@
-# Quant 📊
+# Quant 🧠
 
 _"A Quant, or Quantitative Analyst, embodies the fusion of finance and technology, leveraging advanced mathematical, statistical, and computational techniques to decode the complexities of financial markets."_
 
@@ -32,7 +32,7 @@ As I progress in my Quant journey I will begin by coding through some of these s
 
 we will build a Backtesting script to test our results 🔄
 
-# Quantitative Trading Strategies 🧠
+# Quantitative Trading Strategies 📊
 
 ### Basic trading strategies:
 
