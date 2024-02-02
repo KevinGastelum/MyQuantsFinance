@@ -2,7 +2,7 @@
 
 _"A Quant, or Quantitative Analyst, embodies the fusion of finance and technology, leveraging advanced mathematical, statistical, and computational techniques to decode the complexities of financial markets."_
 
-The following is a brief summary of what you need to know about the Financial Market and the different types of trading involved in FinTech.
+The following is a brief summary of what's needed to know about the Financial Market and the different types of trading involved in FinTech.
 
 ### Demistifying the Financial Market [(FinTech)](https://en.wikipedia.org/wiki/Fintech#:~:text=Fintech%2C%20a%20clipped,fintech.%5B6%5D)
 
