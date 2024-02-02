@@ -1,8 +1,8 @@
 # Quantitative Trading Strategies
 
-### Demistifying the Financial Market [(FinTech)](https://en.wikipedia.org/wiki/Fintech#:~:text=Fintech%2C%20a%20clipped,fintech.%5B6%5D)
-
 The following is a brief summary of what you need to know about the Market and different types of trading involved in FinTech
+
+### Demistifying the Financial Market [(FinTech)](https://en.wikipedia.org/wiki/Fintech#:~:text=Fintech%2C%20a%20clipped,fintech.%5B6%5D)
 
 Learning about FinTech can be a daunting task, it's littered with complex terms designed to confuse you and scare you away. Those who do manage to navigate through the jargon, are now faced with the challenging task of competing against the Market Maker i.e., Financial Institutions, Large Banks and Firms.
 
