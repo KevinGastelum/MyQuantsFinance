@@ -4,7 +4,7 @@ _"A Quant, or Quantitative Analyst, embodies the fusion of finance and technolog
 
 The following is a brief summary of what's needed to know about the Financial Market in order to succeed as a trader. The different types of trading and strategies involved in FinTech.
 
-### Demistifying the Financial Market [(FinTech)](https://en.wikipedia.org/wiki/Fintech#:~:text=Fintech%2C%20a%20clipped,fintech.%5B6%5D) 🔮
+## Demistifying the Financial Market [(FinTech)](https://en.wikipedia.org/wiki/Fintech#:~:text=Fintech%2C%20a%20clipped,fintech.%5B6%5D) 🔮
 
 Learning about FinTech can be frustrating 😤, it's littered with complex terms designed to confuse you and scare you away. Those who do manage to navigate through the jargon, are faced with the daunting task of competing against the Market Maker i.e., Financial Institutions, Large Banks, and Firms 🏦💸.
 
