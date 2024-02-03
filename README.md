@@ -62,6 +62,8 @@ These are also commonly known as indicators, I will code these from scratch so I
 4. **High-Frequency Trading** (HFT) - Executes numerous trades daily to capture small price movements ⚡.
 5. **Market Making** - Provides market liquidity, profiting by looking at the Order book and seeing bid-ask spread to see where price is likely to gravitate to; Order Book
 
+# Example of a Strategy with Results that implements our created indicators, strategies, risk management, backtest, ML for sentiment analysis and portfolio optimization
+
 <!--
 
 NOTES:

@@ -1,7 +1,7 @@
 '''
 The 3 Projects built here
 1. Unsupervised Learning Trading Strategy
-2. Implement Twitter Sentiment Trading Strategy
+2. Twitter Sentiment Trading Strategy
 3. Intraday Strategy using GARCH model
 
 Breakdown of code:
@@ -13,6 +13,7 @@ Breakdown of code:
 - ML - for each month fit a K-means cluster to group similar asstes based on their features
 - Form a portfolio based on Efficient Frontier max sharpe ratio optimization
 - Visualize (Plot) portfolio returns and compare against simply holding S&P stock
+----------- By Kevin Gastelum -----------
 '''
 
 from statsmodels.regression.rolling import RollingOLS
@@ -82,7 +83,7 @@ df['macd'] = df.groupby(level=1, group_keys=False)['adj close'].apply(compute_ma
 # print(df)
 
 # Dollar Volume
-df['dollar_volume'] = (df['adj_close']*df['volume'])/1e6
+df['dollar_volume'] = (df['adj close']*df['volume'])/1e6
 print(df)
 
 
