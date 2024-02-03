@@ -32,7 +32,7 @@ As I progress in my Quant journey I will begin by coding through some of these s
 
 we will build a Backtesting script to test our results 🔄
 
-# Quantitative Trading Strategies 📊
+# Trading Strategies 📊
 
 ### Basic trading strategies:
 
