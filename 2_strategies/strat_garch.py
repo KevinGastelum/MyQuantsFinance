@@ -14,6 +14,7 @@ Breakdown of code:
 - Form a portfolio based on Efficient Frontier max sharpe ratio optimization
 - Visualize (Plot) portfolio returns and compare against simply holding S&P stock
 '''
+
 from statsmodels.regression.rolling import RollingOLS
 import pandas_datareader.data as web
 import matplotlib.pyplot as plt
@@ -26,7 +27,7 @@ import pandas_ta
 import warnings
 warnings.filterwarnings('ignore')
 
-# STEP 1 - Download/Load S&P 500 stocks prices data
+# STEP 1 - Download/Load S&P 500 stocks price data
 sp500 = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]
 sp500['Symbol'] = sp500['Symbol'].str.replace('.', '-')
 # print(sp500)
@@ -57,13 +58,13 @@ df['rsi'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.rsi(c
 df.xs('AAPL', level=1)['rsi'].plot()
 # plt.show()
 
-# Bollinger Bands
+# Bollinger Bands - identify potential buying or selling opportunities, often used to determine overbought and oversold conditions
 df['bb_low'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.bbands(close=np.log1p(x), length=20).iloc[:, 0])
 df['bb_mid'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.bbands(close=np.log1p(x), length=20).iloc[:, 1])
 df['bb_high'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.bbands(close=np.log1p(x), length=20).iloc[:, 2])
 # print(df)
 
-# ATR
+# ATR- A rule of thumb is to multiply the ATR by two to determine a reasonable stop-loss point. So if you're buying a stock, you might place a stop-loss at a level twice the ATR below the entry price. If you're shorting a stock, you would place a stop-loss at a level twice the ATR
 def compute_atr(stock_data):
   atr = pandas_ta.atr(high=stock_data['high'],
                       low=stock_data['low'],
@@ -81,6 +82,8 @@ df['macd'] = df.groupby(level=1, group_keys=False)['adj close'].apply(compute_ma
 # print(df)
 
 # Dollar Volume
+df['dollar_volume'] = (df['adj_close']*df['volume'])/1e6
+print(df)
 
 
 
