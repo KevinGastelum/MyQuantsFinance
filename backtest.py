@@ -7,6 +7,7 @@ def load_data(filename):
     df = pd.read_csv(filename, parse_dates=True, index_col='Date')
     return df
 
+
 # 2 Define Straetgy (The following is a basic moving average strategy)
 def strategy(df, short_window, long_window):
     signals = pd.DataFrame(index=df.index)
