@@ -25,9 +25,26 @@ import datetime as dt
 import yfinance as yf
 import pandas_ta
 import warnings
-warnings.filterwarning('ignore')
+warnings.filterwarnings('ignore')
 
 
-print("Hello world")
+# Download/Load S&P 500 stocks prices data
+sp500 = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]
+
+sp500['Symbol'] = sp500['Symbol'].str.replace('.', '-')
+
+sp500['Symbol'].unique().tolist()
+
+print(sp500)
+
+
+
+
+
+
+
+
+
+
 
 
