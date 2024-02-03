@@ -30,7 +30,7 @@ As I progress in my Quant journey I will begin by coding through some of these s
 
 <!-- ChatGPT help me write a -->
 
-we will build a Backtesting script to test our results 🔄
+<!-- we will build a Backtesting script to test our results 🔄 -->
 
 # Trading Strategies 📊
 
