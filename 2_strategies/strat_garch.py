@@ -16,10 +16,18 @@ Breakdown of code:
 '''
 
 from statsmodels.regression.rolling import RollingOLS
+import pandas_datareader.data as web
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+import pandas as pd
+import numpy as np
+import datetime as dr
+import yfinance as yf
+import pandas_ta
+import warnings
+warnings.filterwarning('ignore')
 
 
-
-
-
+print("Hello world")
 
 
