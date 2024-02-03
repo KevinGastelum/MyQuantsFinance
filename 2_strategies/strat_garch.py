@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 import statsmodels.api as sm
 import pandas as pd
 import numpy as np
-import datetime as dr
+import datetime as dt
 import yfinance as yf
 import pandas_ta
 import warnings
