@@ -1,14 +1,14 @@
 '''
 The 3 Projects built here
 1. Unsupervised Learning Trading Strategy
-2. Twitter Sentiment Trading Strategy
+2. Implement Twitter Sentiment Trading Strategy
 3. Intraday Strategy using GARCH model
 
 Breakdown of code:
 - Data used is S&P 500- 
 - Indicators built here : Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, VWAP 
 - Aggreagate on the monthky level and filter for top 150 most trated stocks
-- Calc monthly returns for different timeframes
+- Calc monthly returns for different timeframes (1hr, 4hr, 8hr, 12hr)
 - Download Fama-French Factors and caluclate rolling fctor betas for each stock
 - ML - for each month fit a K-means cluster to group similar asstes based on their features
 - Form a portfolio based on Efficient Frontier max sharpe ratio optimization
@@ -26,7 +26,7 @@ import pandas_ta
 import warnings
 warnings.filterwarnings('ignore')
 
-# Step 1 - Download/Load S&P 500 stocks prices data
+# STEP 1 - Download/Load S&P 500 stocks prices data
 sp500 = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]
 sp500['Symbol'] = sp500['Symbol'].str.replace('.', '-')
 # print(sp500)
@@ -46,7 +46,7 @@ df.columns = df.columns.str.lower()
 # print(df)
 
 
-# Step 2 Calculate features and techincal indicators for each stock
+# STEP 2 Calculate features and techincal indicators for each stock
 # Garman-Klass Volatility Indicator
 df['garman_klass_vol'] = ((np.log(df['high'])-np.log(df['low']))**2)/2-(2*np.log(2)-1)*((np.log(df['adj close'])-np.log(df['open']))**2)
 # print(df)

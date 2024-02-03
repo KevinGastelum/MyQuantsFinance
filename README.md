@@ -36,6 +36,8 @@ As I progress in my Quant journey I will begin by coding through some of these s
 
 ### Basic trading strategies:
 
+<!-- Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, VWAP -->
+
 These are also commonly known as indicators, I will code these from scratch so I have
 
 1. **EMA** (Exponential Moving Average) - Weighted moving average favoring recent prices. Used for trend identification 📉.
