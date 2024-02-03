@@ -6,7 +6,7 @@ The 3 Projects built here
 
 Breakdown of code:
 - Data used is S&P 500- 
-- Indicators built here : Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, VWAP 
+- Indicators built here : Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume 
 - Aggreagate on the monthky level and filter for top 150 most trated stocks
 - Calc monthly returns for different timeframes (1hr, 4hr, 8hr, 12hr)
 - Download Fama-French Factors and caluclate rolling fctor betas for each stock
@@ -80,7 +80,7 @@ def compute_macd(close):
 df['macd'] = df.groupby(level=1, group_keys=False)['adj close'].apply(compute_macd)
 # print(df)
 
-# VWAP
+# Dollar Volume
 
 
 

@@ -36,7 +36,7 @@ As I progress in my Quant journey I will begin by coding through some of these s
 
 ### Basic trading strategies:
 
-<!-- Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, VWAP -->
+<!-- Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume-->
 
 These are also commonly known as indicators, I will code these from scratch so I have
 
