@@ -15,4 +15,11 @@ Breakdown of code:
 - Visualize (Plot) portfolio returns and compare against simply holding S&P stock
 '''
 
-import  
+from statsmodels.regression.rolling import RollingOLS
+
+
+
+
+
+
+
