@@ -71,9 +71,9 @@ update Mid Tier Strats
 -- BASIC:
 ^Bollinger Bands
 ATR
-Volume Profile
 Open Interest
 ^Garman-Klass Volatility
+
 
 -- MID
 ^GARCH - Volatility Forecasting
