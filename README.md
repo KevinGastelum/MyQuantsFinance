@@ -18,15 +18,19 @@ Key Terms:
 
 ## Becoming a Quant 🧠💼
 
-Knowing the basics is essential in everything, but especially when developing a winning strategy. So, I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades BUT mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) for e
+Knowing the basics is essential in everything, but especially when developing a winning strategy. So, I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades BUT mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) that leverage these insights to automize spotting entry/exit points, risk/returns, corrections, reversals, and profitability. Before executing any trade I'll run a backtest to assure a [Profitable Strategy](#profitable-quant-strategy-including-results)
+
+<!-- risk management, portfolio optimization, profits, backtest,
+Help assess risk/return profit of portfolio ,
+size, value, profitability
+-->
 
 <!--
-- Knowing whether an asset is in an uptrend or downtrend 📊.
-- Supply and Demand (These are areas where most people bought or sold) 🛒.
-- Volatility
-- Risk Management ⚖️. -->
-<!-- - Volume and its correlation with price 🔊. -->
-<!-- - Support and Resistance -->
+ 📊
+ 🛒
+ ⚖️
+ 🔊
+ -->
 
 <!-- ChatGPT help me write a -->
 
@@ -36,7 +40,7 @@ Knowing the basics is essential in everything, but especially when developing a 
 
 ### Basic Indicators:
 
-<!-- Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume-->
+<!-- Garman-Klass Volatility, ATR, Dollar Volume-->
 
 1. **EMA** (Exponential Moving Average) - Weighted moving average used for trend identification 📉.
 2. **RSI** (Relative Strength Index) - Momentum oscillator identifying overbought or oversold conditions 🔴🟢.
@@ -61,7 +65,7 @@ Knowing the basics is essential in everything, but especially when developing a 
 4. **High-Frequency Trading** (HFT) - Executes numerous trades daily to capture small price movements ⚡.
 5. **Market Making** - Provides market liquidity, profiting by looking at the Order book and seeing bid-ask spread to see where price is likely to gravitate to ↔️.
 
-## Example of my Quant Strategy including results
+## Profitable Quant Strategy including results
 
 Strategy with Results that implements the created indicators, strategies, risk management, backtest, ML for sentiment analysis and portfolio optimization
 

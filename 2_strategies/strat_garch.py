@@ -49,7 +49,7 @@ df.columns = df.columns.str.lower()
 # print(df)
 
 
-# STEP 2  Create techincal indicators and Calculate features for each stock 
+# STEP 2 Create techincal indicators and Calculate features for each stock 
 # Garman-Klass Volatility Indicator - particularly useful for assets with significant overnight price movements or markets that are open 24/7
 df['garman_klass_vol'] = ((np.log(df['high'])-np.log(df['low']))**2)/2-(2*np.log(2)-1)*((np.log(df['adj close'])-np.log(df['open']))**2)
 # print(df)
@@ -76,7 +76,7 @@ def compute_atr(stock_data):
 df['atr'] = df.groupby(level=1, group_keys=False).apply(compute_atr)
 # print(df)
 
-# MACD
+# MACD - Uses two moving avgs to identify momentum and reversal points
 def compute_macd(close):
   macd = pandas_ta.macd(close=close, length=20).iloc[:,0]
   return macd.sub(macd.mean()).div(macd.std())
@@ -92,7 +92,7 @@ df['dollar_volume'] = (df['adj close']*df['volume'])/1e6
 # These are my feature columns [']
 last_cols = [c for c in df.columns if c not in ['dollar_volume', 'volume', 'open', 'high', 'low', 'close']]
 
-# This uses our aggregate cols ie Indicators ['dollar_volume', 'adj close', 'garman_klass_vol', 'rsi', 'bb_low', 'bb_mid', 'bb_high', 'atr', 'macd']
+# These are my aggregate cols i.e Indicators ['dollar_volume', 'adj close', 'garman_klass_vol', 'rsi', 'bb_low', 'bb_mid', 'bb_high', 'atr', 'macd']
 data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('M').mean().stack('ticker').to_frame('dollar_volume'),
                    df.unstack()[last_cols].resample('M').last().stack('ticker')],
                     axis=1)).dropna()
