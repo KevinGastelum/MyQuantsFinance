@@ -1,5 +1,5 @@
 '''
------------ By Kevin Gastelum -----------
+---------------------- By Kevin Gastelum ----------------------
 What I'm Building:
 1. Indicators = [ Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume ]
 2. ML Unsupervised Learning Trading Strategy
@@ -8,14 +8,14 @@ What I'm Building:
 
 Breakdown of code:
 - Data used is S&P 500- 
-- Indicators built here : Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume 
-- Aggreagate on the monthky level and filter for top 150 most trated stocks
-- Calc monthly returns for different timeframes (1hr, 4hr, 8hr, 12hr)
-- Download Fama-French Factors and caluclate rolling fctor betas for each stock
+- Indicators built : Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume 
+- Aggreagate on the monthky level and filter for top 150 most trated stocks by $ volume
+- Calc monthly returns for different timeframes (1mo, 3mo, 6mo, 12mo)
+- Portfolio Optimization - Download Fama-French Factors and caluclate rolling fctor betas for each stock 
 - ML - for each month fit a K-means cluster to group similar asstes based on their features
 - Form a portfolio based on Efficient Frontier max sharpe ratio optimization
 - Visualize (Plot) portfolio returns and compare against simply holding S&P stock
------------ By Kevin Gastelum -----------
+---------------------- By Kevin Gastelum ----------------------
 '''
 
 from statsmodels.regression.rolling import RollingOLS
@@ -131,8 +131,8 @@ data = data.groupby(level=1, group_keys=False).apply(calculate_returns).dropna()
 # print(data)
 
 
-# STEP 5 Download-Fama French Factors and Calculate Rolling Factor Betas (Risk, size, value, profitability)
-# Help assess risk/return profit of portfolio - Uses RollingOLS Linear Regression
+# STEP 5 Download - Fama French Factors and Calculate Rolling Factor Betas (Risk, size, value, profitability)
+# Portfolio Optimization - Uses RollingOLS Linear Regression
 factor_data = web.DataReader('F-F_Research_Data_5_Factors_2x3',
                'famafrench',
                start='2010')[0].drop('RF', axis=1)
@@ -153,7 +153,7 @@ valid_stocks = observations[observations >= 10]
 factor_data = factor_data[factor_data.index.get_level_values('ticker').isin(valid_stocks.index)]
 print(factor_data)
 
-# Calculate Rolling Factor Betas { 'Mkt-RF': risk, 'SMB': size, 'HML': values, 'RMW': profitablity, 'CMA': returns }
+# Calculate Rolling Factor Betas = { 'Mkt-RF': risk, 'SMB': size, 'HML': values, 'RMW': profitablity, 'CMA': returns }
 betas = (factor_data.groupby(level=1,
                             group_keys=False)
         .apply(lambda x: RollingOLS(endog=x['return_1m'],
