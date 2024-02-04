@@ -18,7 +18,7 @@ Key Terms:
 
 ## Becoming a Quant 🧠💼
 
-Knowing the basics is essential in everything, but especially when developing a winning strategy. So, I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades BUT mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) that leverage these insights to automize spotting entry/exit points, risk/returns, corrections, reversals, and profitability. Before executing any trade I'll run a backtest to assure a [Profitable Strategy](#profitable-quant-strategy-including-results)
+Knowing the basics is essential in everything, but especially when developing a winning strategy. So, I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades BUT mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) that leverage these insights to automize spotting entry/exit points, risk/returns, breakouts, reversals, and profits. Before executing any trade I'll run a backtest to assure a [Profitable Strategy](#profitable-quant-strategy-including-results)
 
 <!-- risk management, portfolio optimization, profits, backtest,
 Help assess risk/return profit of portfolio ,
