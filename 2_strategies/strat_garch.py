@@ -32,6 +32,10 @@ import os
 # warnings.filterwarnings('ignore')
 
 # STEP 1 - Download/Load S&P 500 stocks price data
+
+# def load_or_fetch_data(tickers, start_date, end_date)
+
+
 sp500 = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]
 sp500['Symbol'] = sp500['Symbol'].str.replace('.', '-')
 # print(sp500)
@@ -51,7 +55,7 @@ df.columns = df.columns.str.lower()
 # print(df)
 
 
-# STEP 2 Create techincal indicators and Calculate features for each stock 
+# STEP 2 - Building the Indicators
 # Garman-Klass Volatility Indicator - particularly useful for assets with significant overnight price movements or markets that are open 24/7
 df['garman_klass_vol'] = ((np.log(df['high'])-np.log(df['low']))**2)/2-(2*np.log(2)-1)*((np.log(df['adj close'])-np.log(df['open']))**2)
 # print(df)
