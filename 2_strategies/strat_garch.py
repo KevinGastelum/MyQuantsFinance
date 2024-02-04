@@ -1,6 +1,6 @@
 '''
 What I'm Building:
-1. Indicators [ Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume ]
+1. Indicators = [ Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume ]
 2. ML Unsupervised Learning Trading Strategy
 3. Twitter Sentiment Trading Strategy
 4. Intraday Strategy using GARCH model
@@ -116,22 +116,24 @@ def calculate_returns(df):
     lags = [1, 2, 3, 6, 9, 12]
 
     for lag in lags:
-      df[f'return_{lag}m'] = (df['adj close']
+        df[f'return_{lag}m'] = (df['adj close']
                             .pct_change(lag)
                             .pipe(lambda x: x.clip(lower=x.quantile(outlier_cutoff),
-                                                    upper=x.quantile(1-outlier_cutoff)))
-                                                    .add(1)
-                                                    .pow(1/lag)
-                                                    .sub(1))
-      return df
+                                                   upper=x.quantile(1-outlier_cutoff)))
+                            .add(1)
+                            .pow(1/lag)
+                            .sub(1))
+    return df
 
 data = data.groupby(level=1, group_keys=False).apply(calculate_returns).dropna()
 # print(data)
 
 
 # STEP 5 Download-Fama French Factors and Calculate Rolling Factor Betas (Risk, size, value, profitability)
-# Help assess risk/return of portfolio - Uses RollingOLS Linear Regression
-
+# Help assess risk/return profit of portfolio - Uses RollingOLS Linear Regression
+web.DataReader('F-F_Research_Data_5_Factors_2x3',
+               'famafrench',
+               start='2010')
 
 
 

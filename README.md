@@ -62,7 +62,9 @@ As I progress in my Quant journey I will begin by coding these common indicators
 4. **High-Frequency Trading** (HFT) - Executes numerous trades daily to capture small price movements ⚡.
 5. **Market Making** - Provides market liquidity, profiting by looking at the Order book and seeing bid-ask spread to see where price is likely to gravitate to; Order Book
 
-# Example of a Strategy with Results that implements our created indicators, strategies, risk management, backtest, ML for sentiment analysis and portfolio optimization
+##
+
+Example of a Strategy with Results that implements our created indicators, strategies, risk management, backtest, ML for sentiment analysis and portfolio optimization
 
 <!--
 
