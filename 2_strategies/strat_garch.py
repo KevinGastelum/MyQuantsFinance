@@ -7,8 +7,8 @@ What I'm Building:
 4. Intraday Strategy using GARCH model
 
 Breakdown of code:
-- Data used is S&P 500- 
-- Indicators built : Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume 
+- Data used is S&P 500
+- Indicators built - Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume 
 - Aggreagate on the monthky level and filter for top 150 most trated stocks by $ volume
 - Calc monthly returns for different timeframes (1mo, 3mo, 6mo, 12mo)
 - Portfolio Optimization - Download Fama-French Factors and caluclate rolling fctor betas for each stock 
