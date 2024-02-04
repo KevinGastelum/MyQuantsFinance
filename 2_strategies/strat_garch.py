@@ -152,7 +152,7 @@ valid_stocks = observations[observations >= 10]
 factor_data = factor_data[factor_data.index.get_level_values('ticker').isin(valid_stocks.index)]
 print(factor_data)
 
-# Calculate Rolling Factor Betas
+# Calculate Rolling Factor Betas { 'Mkt-RF': risk, 'SMB': size, 'HML': values, 'RMW': profitablity, 'CMA': returns }
 betas = (factor_data.groupby(level=1,
                             group_keys=False)
         .apply(lambda x: RollingOLS(endog=x['return_1m'],
@@ -163,6 +163,7 @@ betas = (factor_data.groupby(level=1,
         .params
         .drop('const', axis=1)))
 print(betas)
+betas.groupby('')
 betas.shift()
 
 # Install or setuup SQL db to improve fetch times
