@@ -1,4 +1,5 @@
 '''
+----------- By Kevin Gastelum -----------
 What I'm Building:
 1. Indicators = [ Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume ]
 2. ML Unsupervised Learning Trading Strategy
