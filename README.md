@@ -63,7 +63,7 @@ Knowing the basics is essential in everything, but especially when developing a 
 
 ## Example of my Quant Strategy including results
 
-Strategy with Results that implements our created indicators, strategies, risk management, backtest, ML for sentiment analysis and portfolio optimization
+Strategy with Results that implements the created indicators, strategies, risk management, backtest, ML for sentiment analysis and portfolio optimization
 
 <!--
 
