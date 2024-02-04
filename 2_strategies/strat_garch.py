@@ -57,7 +57,7 @@ sp500 = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
 sp500['Symbol'] = sp500['Symbol'].str.replace('.', '-')
 # print(sp500)
 
-tickers_list = sp500['Symbol'].unique().tolisjt()
+tickers_list = sp500['Symbol'].unique().tolist()
 # print(tickers_list)
 
 end_date = '2024-02-02'
@@ -120,8 +120,8 @@ df['dollar_volume'] = (df['adj close']*df['volume'])/1e6
 last_cols = [c for c in df.columns if c not in ['dollar_volume', 'volume', 'open', 'high', 'low', 'close']]
 
 # These are my aggregate cols i.e Indicators ['dollar_volume', 'adj close', 'garman_klass_vol', 'rsi', 'bb_low', 'bb_mid', 'bb_high', 'atr', 'macd']
-data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('ME').mean().stack('ticker').to_frame('dollar_volume'),
-                   df.unstack()[last_cols].resample('ME').last().stack('ticker')],
+data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('M').mean().stack('ticker').to_frame('dollar_volume'),
+                   df.unstack()[last_cols].resample('M').last().stack('ticker')],
                     axis=1)).dropna()
 # print(data)
 
@@ -164,7 +164,7 @@ factor_data = web.DataReader('F-F_Research_Data_5_Factors_2x3',
 factor_data.index = factor_data.index.to_timestamp()
 
 # REfactor from percentage to decimal by dividing by 100
-factor_data = factor_data.resample('ME').last().div(100)
+factor_data = factor_data.resample('M').last().div(100)
 factor_data.index.name = 'date'
 factor_data = factor_data.join(data['return_1m']).sort_index()
 # print(factor_data.xs('AAPL', level=1).head())
