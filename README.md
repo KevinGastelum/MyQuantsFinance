@@ -49,7 +49,7 @@ Knowing the basics is essential in everything, but especially when developing a 
 
 1. **Mean Reversion** - Assumes prices revert back to the mean and trades against trends 🔁.
 2. **Arbitrage** - Exploits statistical mispricings of assets for profit by analyzing multiple exchanges 💹.
-3. **GARCH** - Optimal for Volatility forecasting 🏃‍♂️💨.
+3. **GARCH** - Widely used for forecasting future volatility, risk management, portfolio optimization, and derivative pricing 🏃‍♂️💨.
 4. **Pair Trading** - Bets on the convergence/divergence of two similar companies' stock prices 📊.
 5. **Breakout Trading** - Looks for levels or areas that a stock has been unable to move beyond, and waits for it to move beyond those levels 🚪🔓.
 
