@@ -1,4 +1,4 @@
-# Quant 🤖💼
+# Quants 🤖
 
 _"A Quant, or Quantitative Analyst, embodies the fusion of finance and technology, leveraging mathematical, statistical, and computational techniques to decode the complexities of financial markets."_
 
@@ -16,7 +16,7 @@ Key Terms:
 - **Liquidity** (Fancy way of saying Funds) 💧
 - **Assets** - Equities (Fancy name for Stocks), Commodities, Cryptocurrencies 📉📈
 
-## Becoming a Quant 🧠
+## Becoming a Quant 🧠💼
 
 Knowing the basics is essential in everything, but especially when developing a winning strategy. So, I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades BUT mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility.
 
