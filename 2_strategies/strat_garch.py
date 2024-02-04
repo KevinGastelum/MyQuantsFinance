@@ -99,7 +99,7 @@ data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('M').mean().st
 # print(data)
 
 # Calculate the 5 year rolling avg of dollar volume for each stock before filtering
-data['dollar_volume'] = (data.loc[:, 'dollar_volume'].unstack('ticker').rolling(5*12).mean().stack())
+data['dollar_volume'] = (data.loc[:, 'dollar_volume'].unstack('ticker').rolling(5*12, min_periods=12).mean().stack())
 # print(data)
 # Group by month
 data['dollar_vol_rank'] = (data.groupby('date')['dollar_volume'].rank(ascending=False))
@@ -140,20 +140,28 @@ factor_data.index = factor_data.index.to_timestamp()
 factor_data = factor_data.resample('M').last().div(100)
 factor_data.index.name = 'date'
 factor_data = factor_data.join(data['return_1m']).sort_index()
-print(factor_data.xs('AAPL', level=1).head())
-print(factor_data.xs('MSFT', level=1).head())
+# print(factor_data.xs('AAPL', level=1).head())
 # print(factor_data)
 
 # Filter stocks out with less than 10 months
-factor_data.groupby(level=1).size()
+# print(factor_data.xs('MSFT', level=1).head())
+# Groupby Months then filter > 10mos
+observations = factor_data.groupby(level=1).size()
+valid_stocks = observations[observations >= 10]
+factor_data = factor_data[~factor_data.index.get_level_values('ticker').isin(valid_stocks.index)]
 print(factor_data)
 
-
-
-
-
-
-
+# Calculate Rolling Factor Betas
+betas = (factor_data.groupby(level=1,
+                            group_keys=False)
+        .apply(lambda x: RollingOLS(endog=x['return_1m'],
+                                    exog=sm.add_constant(x.drop('return_1m', axis=1)),
+                                    window=min(24, x.shape[0]),
+                                    min_nobs=len(x.columns)+1))
+        .fit(params_only=True)
+        .params
+        .drop('const', axis=1))
+print(betas)
 
 
 
