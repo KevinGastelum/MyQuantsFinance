@@ -73,7 +73,7 @@ df = df.stack()
 # print(df)
 df.index.names = ['date', 'ticker']
 df.columns = df.columns.str.lower()
-print(df)
+# print(df)
 
 
 # STEP 2 - Building the Indicators
@@ -176,7 +176,7 @@ factor_data = factor_data.join(data['return_1m']).sort_index()
 observations = factor_data.groupby(level=1).size()
 valid_stocks = observations[observations >= 10]
 factor_data = factor_data[factor_data.index.get_level_values('ticker').isin(valid_stocks.index)]
-print(factor_data)
+# print(factor_data)
 
 # Calculate Rolling Factor Betas = { 'Mkt-RF': risk, 'SMB': size, 'HML': values, 'RMW': profitablity, 'CMA': returns }
 betas = (factor_data.groupby(level=1,
@@ -188,15 +188,29 @@ betas = (factor_data.groupby(level=1,
         .fit(params_only=True)
         .params
         .drop('const', axis=1)))
-print(betas)
-betas.groupby('')
-betas.shift()
+# print(betas)
 
-# Install or setuup SQL db to improve fetch times
+# Shift down Fama factors 1 row so they can calculate on the correct row
+factors = ['Mkt-RF', 'SMB', 'HML', 'RMW', 'CMA']
+data = (data.join(betas.groupby('ticker').shift()))
+data.loc[:, factors] = data.groupby('ticker', group_keys=False,)[factors].apply(lambda x: x.fillna(x.mean()))
+data = data.drop('adj close', axis=1)
+data = data.dropna()
+# print(data)
+print(data.info())
 
 
+# STEP 6 Using ML model K-Means Clustering for predictions
+# Assign 1-4- clusters to each stock/month (4 cluster seems to be the most optimal) 
 
-
-
+# Creates 4 clusters for each Month and Assigns 1 optmized cluster to each stock
+from sklearn.cluster import KMeans
+def get_clusters(df):
+   df['cluster'] = KMeans(n_clusters=4,
+                          random_state=0,
+                          init='random').fit(df).labels_
+   return df
+data = data.dropna().groupby('date', group_keys=False).apply(get_clusters)
+print(data)
 
 
