@@ -57,7 +57,7 @@ sp500 = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
 sp500['Symbol'] = sp500['Symbol'].str.replace('.', '-')
 # print(sp500)
 
-tickers_list = sp500['Symbol'].unique().tolist()
+tickers_list = sp500['Symbol'].unique().tolisjt()
 # print(tickers_list)
 
 end_date = '2024-02-02'
