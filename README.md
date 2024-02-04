@@ -61,9 +61,9 @@ Knowing the basics is essential in everything, but especially when developing a 
 4. **High-Frequency Trading** (HFT) - Executes numerous trades daily to capture small price movements ⚡.
 5. **Market Making** - Provides market liquidity, profiting by looking at the Order book and seeing bid-ask spread to see where price is likely to gravitate to ↔️.
 
-## Example of my Quant Strategy
+## Example of my Quant Strategy including results
 
-Example of a Strategy with Results that implements our created indicators, strategies, risk management, backtest, ML for sentiment analysis and portfolio optimization
+Strategy with Results that implements our created indicators, strategies, risk management, backtest, ML for sentiment analysis and portfolio optimization
 
 <!--
 
