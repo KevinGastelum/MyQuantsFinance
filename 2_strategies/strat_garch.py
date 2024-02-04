@@ -33,7 +33,24 @@ import os
 
 # STEP 1 - Download/Load S&P 500 stocks price data
 
-# def load_or_fetch_data(tickers, start_date, end_date)
+def load_or_fetch_data(tickers, start_date, end_date, filename='sp500_data.csv'):
+    if os.path.exists(filename):
+        print("Loading fata from local drive...")
+        df = pd.read_csv(filename, header=[0, 1], index_col=0, parse_dates=True)
+        # Check data is the latest
+        latest_date = pd.to_datetime(df.index.mas())
+        if latest_date >= pd.to_datetime(end_date) - pd.DateOffset(days=1):
+          return df
+        else:
+          print("Local data is outdated, fetching new data...")
+    else:
+        print("Local file not found, fetching data...")
+    
+    # Fetch dats if not exist or outdated
+        df = yf.download(tickers=tickers, start=start_date, end=end_date)
+        df.to_csv(filename)
+        print("Data saved to", filename)
+        return df
 
 
 sp500 = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]
