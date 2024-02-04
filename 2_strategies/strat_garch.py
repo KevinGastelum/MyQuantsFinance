@@ -22,8 +22,8 @@ from statsmodels.regression.rolling import RollingOLS
 import pandas_datareader.data as web
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
-import yfinance as yf
 import datetime as dt
+import yfinance as yf
 import pandas as pd
 import numpy as np
 import pandas_ta
@@ -163,7 +163,9 @@ betas = (factor_data.groupby(level=1,
         .params
         .drop('const', axis=1)))
 print(betas)
+betas.shift()
 
+# Install or setuup SQL db to improve fetch times
 
 
 
