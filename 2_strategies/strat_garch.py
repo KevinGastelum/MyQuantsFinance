@@ -21,10 +21,10 @@ from statsmodels.regression.rolling import RollingOLS
 import pandas_datareader.data as web
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
+import yfinance as yf
+import datetime as dt
 import pandas as pd
 import numpy as np
-import datetime as dt
-import yfinance as yf
 import pandas_ta
 # import warnings
 # warnings.filterwarnings('ignore')
@@ -148,7 +148,7 @@ factor_data = factor_data.join(data['return_1m']).sort_index()
 # Groupby Months then filter > 10mos
 observations = factor_data.groupby(level=1).size()
 valid_stocks = observations[observations >= 10]
-factor_data = factor_data[~factor_data.index.get_level_values('ticker').isin(valid_stocks.index)]
+factor_data = factor_data[factor_data.index.get_level_values('ticker').isin(valid_stocks.index)]
 print(factor_data)
 
 # Calculate Rolling Factor Betas
