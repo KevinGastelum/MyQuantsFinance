@@ -18,7 +18,7 @@ Key Terms:
 
 ## Becoming a Quant 🧠💼
 
-Knowing the basics is essential in everything, but especially when developing a winning strategy. So, I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades BUT mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility.
+Knowing the basics is essential in everything, but especially when developing a winning strategy. So, I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades BUT mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on integrating these indicators into my [Trading Strategies](#trading-strategies)
 
 <!--
 - Knowing whether an asset is in an uptrend or downtrend 📊.
@@ -27,8 +27,6 @@ Knowing the basics is essential in everything, but especially when developing a 
 - Risk Management ⚖️. -->
 <!-- - Volume and its correlation with price 🔊. -->
 <!-- - Support and Resistance -->
-
-As I progress in my Quant journey I will begin by coding these common indicators to automize my trading. From there I'll integrate these indicators into my [Trading Strategies](#trading-strategies)
 
 <!-- ChatGPT help me write a -->
 
