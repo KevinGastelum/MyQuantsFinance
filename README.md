@@ -44,7 +44,7 @@ As I progress in my Quant journey I will begin by coding these common indicators
 2. **RSI** (Relative Strength Index) - Momentum oscillator measuring speed of price movements. Identifies overbought or oversold conditions.🔴🟢.
 3. **VWAP** (Volume Weighted Average Price) - Average price based on volume and price, used as a trading benchmark 🔍.
 4. **MACD** (Moving Average Convergence Divergence) - Utilizes two moving averages to identify momentum and reversal points ↔️.
-5. **Bollinger Bands** - Primarily used to spot reversals, corrections, and potential entry/exit points based on momentum
+5. **Bollinger Bands** - Primarily used to spot reversals, corrections, and potential entry/exit points based on momentum.
 6. **Fibonacci Retracement** - Uses Fibonacci ratios to indicate potential support or resistance levels based 🔢.
 
 ### Trading Strategies
