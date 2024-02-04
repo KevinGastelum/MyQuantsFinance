@@ -157,10 +157,10 @@ betas = (factor_data.groupby(level=1,
         .apply(lambda x: RollingOLS(endog=x['return_1m'],
                                     exog=sm.add_constant(x.drop('return_1m', axis=1)),
                                     window=min(24, x.shape[0]),
-                                    min_nobs=len(x.columns)+1))
+                                    min_nobs=len(x.columns)+1)
         .fit(params_only=True)
         .params
-        .drop('const', axis=1))
+        .drop('const', axis=1)))
 print(betas)
 
 
