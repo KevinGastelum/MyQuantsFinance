@@ -36,7 +36,7 @@ size, value, profitability
 
 <!-- we will build a Backtesting script to test our results 🔄 -->
 
-# Trading Strategies 📊
+# Quant Trading 📊
 
 ### Basic Indicators:
 
@@ -65,7 +65,7 @@ size, value, profitability
 4. **High-Frequency Trading** (HFT) - Executes numerous trades daily to capture small price movements ⚡.
 5. **Market Making** - Provides market liquidity, profiting by looking at the Order book and seeing bid-ask spread to see where price is likely to gravitate to ↔️.
 
-## Profitable Quant Strategy including results
+# Profitable Quant Strategy including results
 
 Strategy with Results that implements the created indicators, strategies, risk management, backtest, ML for sentiment analysis and portfolio optimization
 
