@@ -18,12 +18,14 @@ Key Terms:
 
 ## Becoming a Quant 🧠
 
-Knowing the basics is essential in everything, but especially when developing a winning strategy. The [Basic Strategies](#basic-quantitative-trading-strategies) list contains strategies that have been used for decades BUT mastering these allows you to identify key market trends and opportunities like:
+Knowing the basics is essential in everything, but especially when developing a winning strategy. So, I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades BUT mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility.
 
+<!--
 - Knowing whether an asset is in an uptrend or downtrend 📊.
 - Supply and Demand (These are areas where most people bought or sold) 🛒.
-- Risk Management ⚖️.
-- Volume and its impact on price 🔊.
+- Volatility
+- Risk Management ⚖️. -->
+<!-- - Volume and its correlation with price 🔊. -->
 <!-- - Support and Resistance -->
 
 As I progress in my Quant journey I will begin by coding through some of these simple and commonly used indicators to automize my trading. From there I'll begin to
@@ -34,11 +36,9 @@ As I progress in my Quant journey I will begin by coding through some of these s
 
 # Trading Strategies 📊
 
-### Basic trading strategies:
+### Basic Indicators:
 
 <!-- Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume-->
-
-These are also commonly known as indicators, I will code these from scratch so I have
 
 1. **EMA** (Exponential Moving Average) - Weighted moving average favoring recent prices. Used for trend identification 📉.
 2. **RSI** (Relative Strength Index) - Momentum oscillator measuring speed of price movements. Identifies overbought or oversold conditions 🔴🟢.

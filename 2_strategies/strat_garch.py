@@ -49,12 +49,12 @@ df.columns = df.columns.str.lower()
 # print(df)
 
 
-# STEP 2 Calculate features and techincal indicators for each stock
-# Garman-Klass Volatility Indicator
+# STEP 2  Create techincal indicators and Calculate features for each stock 
+# Garman-Klass Volatility Indicator - particularly useful for assets with significant overnight price movements or markets that are open 24/7
 df['garman_klass_vol'] = ((np.log(df['high'])-np.log(df['low']))**2)/2-(2*np.log(2)-1)*((np.log(df['adj close'])-np.log(df['open']))**2)
 # print(df)
 
-# RSI
+# RSI - 
 df['rsi'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.rsi(close=x, length=20))
 # print(df)
 df.xs('AAPL', level=1)['rsi'].plot()
@@ -83,13 +83,13 @@ def compute_macd(close):
 df['macd'] = df.groupby(level=1, group_keys=False)['adj close'].apply(compute_macd)
 # print(df)
 
-# Dollar Volume
+# Dollar Volume - Price of stock * Volume to obtain its Market Cap
 df['dollar_volume'] = (df['adj close']*df['volume'])/1e6
 # print(df.sort_values(by='dollar_volume', descending=True))
 
 
 # STEP 3 - Aggregate to monthly level and filter top 150 highest volume stocks for each month
-# These are essentially our feature columns [']
+# These are my feature columns [']
 last_cols = [c for c in df.columns if c not in ['dollar_volume', 'volume', 'open', 'high', 'low', 'close']]
 
 data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('M').mean().stack('ticker').to_frame('dollar_volume'),
