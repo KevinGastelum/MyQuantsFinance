@@ -99,7 +99,7 @@ data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('M').mean().st
 # print(data)
 
 # Calculate the 5 year rolling avg of dollar volume for each stock before filtering
-data['dollar_volume'] = (data['dollar_volume'].unstack('ticker').rolling(5*12).mean().stack())
+data['dollar_volume'] = (data.loc[:, 'dollar_volume'].unstack('ticker').rolling(5*12).mean().stack())
 # print(data)
 # Group by month
 data['dollar_vol_rank'] = (data.groupby('date')['dollar_volume'].rank(ascending=False))
@@ -131,12 +131,22 @@ data = data.groupby(level=1, group_keys=False).apply(calculate_returns).dropna()
 
 # STEP 5 Download-Fama French Factors and Calculate Rolling Factor Betas (Risk, size, value, profitability)
 # Help assess risk/return profit of portfolio - Uses RollingOLS Linear Regression
-web.DataReader('F-F_Research_Data_5_Factors_2x3',
+factor_data = web.DataReader('F-F_Research_Data_5_Factors_2x3',
                'famafrench',
-               start='2010')
+               start='2010')[0].drop('RF', axis=1)
+factor_data.index = factor_data.index.to_timestamp()
 
+# REfactor from percentage to decimal by dividing by 100
+factor_data = factor_data.resample('M').last().div(100)
+factor_data.index.name = 'date'
+factor_data = factor_data.join(data['return_1m']).sort_index()
+print(factor_data.xs('AAPL', level=1).head())
+print(factor_data.xs('MSFT', level=1).head())
+# print(factor_data)
 
-
+# Filter stocks out with less than 10 months
+factor_data.groupby(level=1).size()
+print(factor_data)
 
 
 

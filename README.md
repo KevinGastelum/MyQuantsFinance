@@ -87,6 +87,8 @@ OBV
 ^GARCH - Volatility Forecasting
 Open Interest
 
+-- ADV
+LSTM + GARCH
 
 ===================
 RISK MANAGEMENT:
