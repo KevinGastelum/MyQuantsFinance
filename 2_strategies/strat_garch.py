@@ -92,13 +92,57 @@ df['dollar_volume'] = (df['adj close']*df['volume'])/1e6
 # These are my feature columns [']
 last_cols = [c for c in df.columns if c not in ['dollar_volume', 'volume', 'open', 'high', 'low', 'close']]
 
+# This uses our aggregate cols ie Indicators ['dollar_volume', 'adj close', 'garman_klass_vol', 'rsi', 'bb_low', 'bb_mid', 'bb_high', 'atr', 'macd']
 data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('M').mean().stack('ticker').to_frame('dollar_volume'),
                    df.unstack()[last_cols].resample('M').last().stack('ticker')],
                     axis=1)).dropna()
-print(data)
+# print(data)
 
-# Calculate the 5 year rolling avg of dollar volume for ach stock before filtering
-data['dollar_volume'] = (data['dollar_volume'].unstack)
+# Calculate the 5 year rolling avg of dollar volume for each stock before filtering
+data['dollar_volume'] = (data['dollar_volume'].unstack('ticker').rolling(5*12).mean().stack())
+# print(data)
+# Group by month
+data['dollar_vol_rank'] = (data.groupby('date')['dollar_volume'].rank(ascending=False))
+# Filter for top 150 stocks 
+data = data[data['dollar_vol_rank']<150].drop(['dollar_volume', 'dollar_vol_rank'], axis=1)
+# print(data)
+
+
+# STEP 4 Calculate monthly returns for different timeframes and add as features (12mos, 6mos, 1 2 3 6 9)
+# g = df.xs('AAPL', level=1)
+def calculate_returns(df):
+    outlier_cutoff = 0.005
+
+    lags = [1, 2, 3, 6, 9, 12]
+
+    for lag in lags:
+      df[f'return_{lag}m'] = (df['adj close']
+                            .pct_change(lag)
+                            .pipe(lambda x: x.clip(lower=x.quantile(outlier_cutoff),
+                                                    upper=x.quantile(1-outlier_cutoff)))
+                                                    .add(1)
+                                                    .pow(1/lag)
+                                                    .sub(1))
+      return df
+
+data = data.groupby(level=1, group_keys=False).apply(calculate_returns).dropna()
+# print(data)
+
+
+# STEP 5 Download-Fama French Factors and Calculate Rolling Factor Betas (Risk, size, value, profitability)
+# Help assess risk/return of portfolio - Uses RollingOLS Linear Regression
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

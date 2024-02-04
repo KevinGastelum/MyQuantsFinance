@@ -28,7 +28,7 @@ Knowing the basics is essential in everything, but especially when developing a 
 <!-- - Volume and its correlation with price 🔊. -->
 <!-- - Support and Resistance -->
 
-As I progress in my Quant journey I will begin by coding through some of these simple and commonly used indicators to automize my trading. From there I'll begin to
+As I progress in my Quant journey I will begin by coding these common indicators to automize my trading. From there I'll integrate these indicators into my [Trading Strategies](#trading-strategies)
 
 <!-- ChatGPT help me write a -->
 
@@ -46,7 +46,7 @@ As I progress in my Quant journey I will begin by coding through some of these s
 4. **MACD** (Moving Average Convergence Divergence) - Utilizes two moving averages to identify momentum and reversal points ↔️.
 5. **Fibonacci Retracement** - Uses Fibonacci ratios to indicate potential support or resistance levels based 🔢.
 
-### Mid-Level Trading Strategies
+### Trading Strategies
 
 1. **Mean Reversion** - Assumes prices revert back to the mean and trades against trends 🔁.
 2. **Arbitrage** - Exploits statistical mispricings of assets for profit by analyzing multiple exchanges 💹.
@@ -131,6 +131,6 @@ bot()
 
 
 FUTURE IDEAS
-Print Daily Vol in $ (sum of all big exch)
+Print Daily Vol in $ (sum of all big exch) = ((close price * volume) / 1e6 )
 Print time in trade
  -->
