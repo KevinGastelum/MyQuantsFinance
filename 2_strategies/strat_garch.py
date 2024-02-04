@@ -205,6 +205,8 @@ data = data.dropna()
 
 # Creates 4 clusters for each Month and Assigns 1 optmized cluster to each stock
 from sklearn.cluster import KMeans
+os.environ['OMP_NUM_THREADS'] = '1'
+
 def get_clusters(df):
    df['cluster'] = KMeans(n_clusters=4,
                           random_state=0,
