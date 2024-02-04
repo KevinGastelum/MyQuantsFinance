@@ -38,7 +38,7 @@ def load_or_fetch_data(tickers, start_date, end_date, filename='sp500_data.csv')
         print("Loading data from local drive...")
         df = pd.read_csv(filename, header=[0, 1], index_col=0, parse_dates=True)
         # Check data is the latest
-        latest_date = pd.to_datetime(df.index.mas())
+        latest_date = pd.to_datetime(df.index.max())
         if latest_date >= pd.to_datetime(end_date) - pd.DateOffset(days=1):
           return df
         else:
@@ -61,7 +61,8 @@ tickers_list = sp500['Symbol'].unique().tolist()
 # print(tickers_list)
 
 end_date = '2024-02-02'
-start_date = pd.to_datetime(end_date)-pd.DateOffset(365*8)
+end_date = pd.to_datetime(end_date)
+start_date = end_date - pd.DateOffset(365*8)
 
 # df = yf.download(tickers=tickers_list,
 #                  start=start_date,
@@ -72,7 +73,7 @@ df = df.stack()
 # print(df)
 df.index.names = ['date', 'ticker']
 df.columns = df.columns.str.lower()
-# print(df)
+print(df)
 
 
 # STEP 2 - Building the Indicators
