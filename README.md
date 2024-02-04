@@ -41,10 +41,10 @@ As I progress in my Quant journey I will begin by coding these common indicators
 <!-- Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume-->
 
 1. **EMA** (Exponential Moving Average) - Weighted moving average used for trend identification 📉.
-2. **RSI** (Relative Strength Index) - Momentum oscillator identifying overbought or oversold conditions.🔴🟢.
-3. **VWAP** (Volume Weighted Average Price) - Average price based on volume and price, used as a trading benchmark 🔍.
+2. **RSI** (Relative Strength Index) - Momentum oscillator identifying overbought or oversold conditions 🔴🟢.
+3. **VWAP** (Volume Weighted Average Price) - Average price based on volume and price 🔍.
 4. **MACD** (Moving Average Convergence Divergence) - Utilizes two moving averages to identify momentum and reversal points ↔️.
-5. **Bollinger Bands** - Primarily used to spot reversals, corrections, and potential entry/exit points based on momentum.
+5. **Bollinger Bands** - Primarily used to spot reversals, corrections, and potential entry/exit points based on EMAs.
 6. **Fibonacci Retracement** - Uses Fibonacci ratios to indicate potential support or resistance levels based 🔢.
 
 ### Trading Strategies
