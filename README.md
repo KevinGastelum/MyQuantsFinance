@@ -14,7 +14,7 @@ Key Terms:
 - **Margin/Leverage** - Some Exchanges allow you to borrow $ to execute a trade 💰.
   <br> $1,000 with 10x margin = $10,000 (Use with CAUTION ⚠️ this also means your losing money 10x faster) liquidation occurs once your liquidity runs out.
 - **Liquidity** (Fancy way of saying Funds) 💧
-- **Assets** - Equities (Fancy name for Stocks), Commodities, Crypto 📉📈
+- **Assets** - Equities (Fancy name for Stocks), Commodities, Cryptocurrencies 📉📈
 
 ## Becoming a Quant 🧠
 
@@ -74,13 +74,13 @@ update Mid Tier Strats
 
 -- BASIC:
 ^Bollinger Bands
-ATR
-Open Interest
-^Garman-Klass Volatility
-
+^ATR
+^Garman-Klass Volatility - particularly useful for assets with significant overnight price movements or markets that are open 24/7
+OBV
 
 -- MID
 ^GARCH - Volatility Forecasting
+Open Interest
 
 
 ===================

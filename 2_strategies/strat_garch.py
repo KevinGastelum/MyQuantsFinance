@@ -1,8 +1,9 @@
 '''
-The 3 Projects built here
-1. Unsupervised Learning Trading Strategy
-2. Twitter Sentiment Trading Strategy
-3. Intraday Strategy using GARCH model
+What I'm Building:
+1. Indicators [ Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume ]
+2. ML Unsupervised Learning Trading Strategy
+3. Twitter Sentiment Trading Strategy
+4. Intraday Strategy using GARCH model
 
 Breakdown of code:
 - Data used is S&P 500- 
@@ -25,8 +26,8 @@ import numpy as np
 import datetime as dt
 import yfinance as yf
 import pandas_ta
-import warnings
-warnings.filterwarnings('ignore')
+# import warnings
+# warnings.filterwarnings('ignore')
 
 # STEP 1 - Download/Load S&P 500 stocks price data
 sp500 = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]
@@ -84,7 +85,24 @@ df['macd'] = df.groupby(level=1, group_keys=False)['adj close'].apply(compute_ma
 
 # Dollar Volume
 df['dollar_volume'] = (df['adj close']*df['volume'])/1e6
-print(df)
+# print(df.sort_values(by='dollar_volume', descending=True))
+
+
+# STEP 3 - Aggregate to monthly level and filter top 150 highest volume stocks for each month
+# These are essentially our feature columns [']
+last_cols = [c for c in df.columns if c not in ['dollar_volume', 'volume', 'open', 'high', 'low', 'close']]
+
+data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('M').mean().stack('ticker').to_frame('dollar_volume'),
+                   df.unstack()[last_cols].resample('M').last().stack('ticker')],
+                    axis=1)).dropna()
+print(data)
+
+# Calculate the 5 year rolling avg of dollar volume for ach stock before filtering
+data['dollar_volume'] = (data['dollar_volume'].unstack)
+
+
+
+
 
 
 
