@@ -18,7 +18,7 @@ Key Terms:
 
 ## Becoming a Quant 🧠💼
 
-Knowing the basics is essential in everything, but especially when developing a winning strategy. So, I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades BUT mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on integrating these indicators into my [Trading Strategies](#trading-strategies)
+Knowing the basics is essential in everything, but especially when developing a winning strategy. So, I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades BUT mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) for e
 
 <!--
 - Knowing whether an asset is in an uptrend or downtrend 📊.
@@ -61,7 +61,7 @@ Knowing the basics is essential in everything, but especially when developing a 
 4. **High-Frequency Trading** (HFT) - Executes numerous trades daily to capture small price movements ⚡.
 5. **Market Making** - Provides market liquidity, profiting by looking at the Order book and seeing bid-ask spread to see where price is likely to gravitate to ↔️.
 
-##
+## Example of my Quant Strategy
 
 Example of a Strategy with Results that implements our created indicators, strategies, risk management, backtest, ML for sentiment analysis and portfolio optimization
 
