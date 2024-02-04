@@ -11,7 +11,7 @@ _"A Quant, or Quantitative Analyst, embodies the fusion of finance and technolog
 Key Terms:
 
 - **Derivatives** - AKA Options | Futures | Perpetuals 📈 - used to trade with margin (see line below).
-- **Margin/Leverage** - Some Exchanges allow you to borrow $ to execute a trade with the risk of being Liquidated. This occurs once your liquidity runs out 💰.
+- **Margin/Leverage** - Some exchanges allow you to borrow funds to execute trades, with the risk of being liquidated. Which occurs once your available liquidity runs out 💰.
   <br> $1,000 with 10x margin = $10,000 (Use with CAUTION ⚠️ this also means your losing money 10x faster)
 - **Liquidity** (Fancy way of saying Funds) 💧
 - **Assets** - Equities (Fancy name for Stocks), Commodities, Cryptocurrencies 📉📈
