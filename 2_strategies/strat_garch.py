@@ -211,9 +211,7 @@ from sklearn.cluster import KMeans
 
 if 'cluster' in data.columns:
     data = data.drop('cluster', axis=1)
-
 def get_clusters(df):
-
     df['cluster'] = KMeans(n_clusters=4,
                            random_state=0,
                            init='k-means++').fit(df).labels_  # Adjusted to use 'k-means++' if initial_centroids isn't predefined
@@ -221,7 +219,6 @@ def get_clusters(df):
 
 # Assuming 'date' is an appropriate column to group by and that dropping NaN values doesn't remove necessary data
 data = data.dropna().groupby('date', group_keys=False).apply(get_clusters)
-
 print(data)
 
 # plot results
@@ -245,7 +242,6 @@ def plot_clusters(data):
 plt.style.use('ggplot')
 
 for i in data.index.get_level_values('date').unique().tolist():
-   
    g = data.xs(i, level=0)
    plt.title(f'Date {i}')
    plot_clusters(g)
