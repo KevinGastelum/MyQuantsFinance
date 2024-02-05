@@ -28,8 +28,8 @@ import pandas as pd
 import numpy as np
 import pandas_ta
 import os
-# import warnings
-# warnings.filterwarnings('ignore')
+import warnings
+warnings.filterwarnings('ignore')
 
 # STEP 1 - Download/Load S&P 500 stocks price data
 
@@ -76,7 +76,7 @@ df.columns = df.columns.str.lower()
 # print(df)
 
 
-# STEP 2 - Building the Indicators
+# STEP 2 ============== Building the Indicators ==============
 # Garman-Klass Volatility Indicator - particularly useful for assets with significant overnight price movements or markets that are open 24/7
 df['garman_klass_vol'] = ((np.log(df['high'])-np.log(df['low']))**2)/2-(2*np.log(2)-1)*((np.log(df['adj close'])-np.log(df['open']))**2)
 # print(df)
@@ -93,7 +93,7 @@ df['bb_mid'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.bb
 df['bb_high'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.bbands(close=np.log1p(x), length=20).iloc[:, 2])
 # print(df)
 
-# ATR- A rule of thumb is to multiply the ATR by two to determine a reasonable stop-loss point. So if you're buying a stock, you might place a stop-loss at a level twice the ATR below the entry price. If you're shorting a stock, you would place a stop-loss at a level twice the ATR
+# ATR- A rule of thumb is to multiply the ATR by two to determine a reasonable stop-loss point. So if you're buying a stock, you might place a stop-loss at a level twice the ATR below the entry price. If you're shorting a stock, you would place a stop-loss at a level twice the ATR *******8
 def compute_atr(stock_data):
   atr = pandas_ta.atr(high=stock_data['high'],
                       low=stock_data['low'],
@@ -101,28 +101,31 @@ def compute_atr(stock_data):
                       length=14)
   return atr.sub(atr.mean()).div(atr.std())
 df['atr'] = df.groupby(level=1, group_keys=False).apply(compute_atr)
-# print(df)
 
 # MACD - Uses two moving avgs to identify momentum and reversal points
 def compute_macd(close):
   macd = pandas_ta.macd(close=close, length=20).iloc[:,0]
   return macd.sub(macd.mean()).div(macd.std())
 df['macd'] = df.groupby(level=1, group_keys=False)['adj close'].apply(compute_macd)
-# print(df)
 
 # Dollar Volume - Price of stock * Volume to obtain its Market Cap
 df['dollar_volume'] = (df['adj close']*df['volume'])/1e6
+# print(df)
 # print(df.sort_values(by='dollar_volume', descending=True))
 
 
-# STEP 3 - Aggregate to monthly level and filter top 150 highest volume stocks for each month
-# These are my feature columns [']
-last_cols = [c for c in df.columns if c not in ['dollar_volume', 'volume', 'open', 'high', 'low', 'close']]
+# STEP 3 ======= Aggregate on a monthly level and filter top 150 highest volume stocks per month ==============
+# feature/last columns ['adj close', 'garman_klass_vol', 'rsi', 'bb_low', 'bb_mid', 'bb_high', 'atr', 'macd']
+last_cols = [c for c in df.columns.unique(0) if c not in ['dollar_volume', 'volume', 'open', 'high', 'low', 'close']]
+# print(last_cols)
 
 # These are my aggregate cols i.e Indicators ['dollar_volume', 'adj close', 'garman_klass_vol', 'rsi', 'bb_low', 'bb_mid', 'bb_high', 'atr', 'macd']
+# data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('M').mean().stack('ticker').to_frame('dollar_volume'),
+#                    df.unstack()[last_cols].resample('M').last().stack('ticker')],
+#                     axis=1)).dropna()
 data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('M').mean().stack('ticker').to_frame('dollar_volume'),
                    df.unstack()[last_cols].resample('M').last().stack('ticker')],
-                    axis=1)).dropna()
+                  axis=1)).dropna()
 # print(data)
 
 # Calculate the 5 year rolling avg of dollar volume for each stock before filtering
@@ -158,9 +161,11 @@ data = data.groupby(level=1, group_keys=False).apply(calculate_returns).dropna()
 
 # STEP 5 Download - Fama French Factors and Calculate Rolling Factor Betas (Risk, size, value, profitability)
 # Portfolio Optimization - Uses RollingOLS Linear Regression
+
 factor_data = web.DataReader('F-F_Research_Data_5_Factors_2x3',
                'famafrench',
                start='2010')[0].drop('RF', axis=1)
+
 factor_data.index = factor_data.index.to_timestamp()
 
 # REfactor from percentage to decimal by dividing by 100
@@ -172,7 +177,7 @@ factor_data = factor_data.join(data['return_1m']).sort_index()
 
 # Filter stocks out with less than 10 months
 # print(factor_data.xs('MSFT', level=1).head())
-# Groupby Months then filter > 10mos
+# Groupby Months then filter stock age > 10mos
 observations = factor_data.groupby(level=1).size()
 valid_stocks = observations[observations >= 10]
 factor_data = factor_data[factor_data.index.get_level_values('ticker').isin(valid_stocks.index)]
@@ -190,29 +195,46 @@ betas = (factor_data.groupby(level=1,
         .drop('const', axis=1)))
 # print(betas)
 
+# Concat Aggregate cols with our new Fama Factors so they can begin calculating  ['garman_klass_vol', 'rsi', 'bb_low', 'bb_mid', 'bb_high', 'atr', 'macd', 'return_1m', 'return_2m', 'return_3m', 'return_6m', 'return_9m', 'return_12m', 'Mkt-RF', 'SMB', 'HML', 'RMW', 'CMA']
 # Shift down Fama factors 1 row so they can calculate on the correct row
 factors = ['Mkt-RF', 'SMB', 'HML', 'RMW', 'CMA']
 data = (data.join(betas.groupby('ticker').shift()))
 data.loc[:, factors] = data.groupby('ticker', group_keys=False,)[factors].apply(lambda x: x.fillna(x.mean()))
 data = data.drop('adj close', axis=1)
 data = data.dropna()
-# print(data)
 # print(data.info())
+# print(data)
 
 
-# STEP 6 Using ML model K-Means Clustering for predictions
+# STEP 6 Using ML model K-Means Clustering for predictions ========================================================START
 # Assign 1-4- clusters to each stock/month (4 cluster seems to be the most optimal) 
 
 # Creates 4 clusters for each Month and Assigns 1 optmized cluster to each stock
 from sklearn.cluster import KMeans
-os.environ['OMP_NUM_THREADS'] = '1'
+# os.environ['OMP_NUM_THREADS'] = '1'
+# target_rsi_values = [30, 45, 55, 70]
+
+# initial_centroids = np.zeros((len(target_rsi_values), 18))
+
+# initial_centroids[:, 6] = target_rsi_values
+
+# initial_centroids
+
+# Ensure 'cluster' column is dropped safely
+if 'cluster' in data.columns:
+    data = data.drop('cluster', axis=1)
 
 def get_clusters(df):
-   df['cluster'] = KMeans(n_clusters=4,
-                          random_state=0,
-                          init='random').fit(df).labels_
-   return df
+    # Here, you're fitting KMeans to the entire DataFrame passed to this function.
+    # Ensure that 'df' contains only the features you want to use for clustering.
+    df['cluster'] = KMeans(n_clusters=4,
+                           random_state=0,
+                           init='k-means++').fit(df).labels_  # Adjusted to use 'k-means++' if initial_centroids isn't predefined
+    return df
+
+# Assuming 'date' is an appropriate column to group by and that dropping NaN values doesn't remove necessary data
 data = data.dropna().groupby('date', group_keys=False).apply(get_clusters)
+
 print(data)
 
 # plot results
@@ -230,4 +252,13 @@ def plot_clusters(data):
 
     plt.legend()
     plt.show()
+    # print(data)
     return
+
+plt.style.use('ggplot')
+
+for i in data.index.get_level_values('date').unique().tolist():
+   
+   g = data.xs(i, level=0)
+   plt.title(f'Date {i}')
+   plot_clusters(g)
