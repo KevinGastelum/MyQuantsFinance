@@ -211,22 +211,12 @@ data = data.dropna()
 
 # Creates 4 clusters for each Month and Assigns 1 optmized cluster to each stock
 from sklearn.cluster import KMeans
-# os.environ['OMP_NUM_THREADS'] = '1'
-# target_rsi_values = [30, 45, 55, 70]
 
-# initial_centroids = np.zeros((len(target_rsi_values), 18))
-
-# initial_centroids[:, 6] = target_rsi_values
-
-# initial_centroids
-
-# Ensure 'cluster' column is dropped safely
 if 'cluster' in data.columns:
     data = data.drop('cluster', axis=1)
 
 def get_clusters(df):
-    # Here, you're fitting KMeans to the entire DataFrame passed to this function.
-    # Ensure that 'df' contains only the features you want to use for clustering.
+
     df['cluster'] = KMeans(n_clusters=4,
                            random_state=0,
                            init='k-means++').fit(df).labels_  # Adjusted to use 'k-means++' if initial_centroids isn't predefined
