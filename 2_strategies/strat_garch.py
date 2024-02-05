@@ -213,4 +213,19 @@ def get_clusters(df):
 data = data.dropna().groupby('date', group_keys=False).apply(get_clusters)
 print(data)
 
+# plot results
+def plot_clusters(data):
+    
+    cluster_0 = data[data['cluster']==0]
+    cluster_1 = data[data['cluster']==1]
+    cluster_2 = data[data['cluster']==2]
+    cluster_3 = data[data['cluster']==3]
 
+    plt.scatter(cluster_0.iloc[:,0], cluster_0.iloc[:,6], color='red', label='cluster 0')
+    plt.scatter(cluster_1.iloc[:,0], cluster_1.iloc[:,6], color='green', label='cluster 1')
+    plt.scatter(cluster_2.iloc[:,0], cluster_2.iloc[:,6], color='blue', label='cluster 2')
+    plt.scatter(cluster_3.iloc[:,0], cluster_3.iloc[:,6], color='black', label='cluster 3')
+
+    plt.legend()
+    plt.show()
+    return

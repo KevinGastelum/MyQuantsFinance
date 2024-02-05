@@ -10,7 +10,7 @@ _"A Quant, or Quantitative Analyst, embodies the fusion of finance and technolog
 
 Key Terms:
 
-- **Derivatives** - AKA Options | Futures | Perpetuals 📈 - used to trade with margin (see line below).
+- **Derivatives** - AKA Options | Futures | Perpetuals 📈 - used to trade with margin.
 - **Margin/Leverage** - Some exchanges allow you to borrow funds to execute trades, with the risk of being liquidated, this occurs once your available liquidity runs out 💰.
   <br> $1,000 with 10x margin = $10,000 (Use with CAUTION ⚠️ this also means you risk losing money 10x faster)
 - **Liquidity** (Fancy way of saying Funds) 💧
@@ -18,7 +18,9 @@ Key Terms:
 
 ## Becoming a Quant ⚖️
 
-Knowing the basics is essential in everything, but especially when developing a winning strategy. So, I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades BUT mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) that leverage these insights to automize spotting entry/exit points, risk/returns, breakouts, reversals, and profits. Before executing any trade a backtest is needed to assure a [Profitable Strategy](#profitable-quant-strategy-including-results)
+<!-- Knowing the basics is essential in everything, but especially when developing a winning strategy.  -->
+
+I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades but mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) that leverage these insights to automize spotting entry/exit points, risk/returns, breakouts, reversals, and profits. Before executing any trade a backtest is needed to assure a [Profitable Strategy](#profitable-quant-strategy-including-results)
 
 <!-- portfolio optimizations -->
 
