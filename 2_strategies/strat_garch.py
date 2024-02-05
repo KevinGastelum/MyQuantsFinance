@@ -120,9 +120,6 @@ last_cols = [c for c in df.columns.unique(0) if c not in ['dollar_volume', 'volu
 # print(last_cols)
 
 # These are my aggregate cols i.e Indicators ['dollar_volume', 'adj close', 'garman_klass_vol', 'rsi', 'bb_low', 'bb_mid', 'bb_high', 'atr', 'macd']
-# data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('M').mean().stack('ticker').to_frame('dollar_volume'),
-#                    df.unstack()[last_cols].resample('M').last().stack('ticker')],
-#                     axis=1)).dropna()
 data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('M').mean().stack('ticker').to_frame('dollar_volume'),
                    df.unstack()[last_cols].resample('M').last().stack('ticker')],
                   axis=1)).dropna()
