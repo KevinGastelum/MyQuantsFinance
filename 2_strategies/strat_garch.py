@@ -332,7 +332,10 @@ for start_date in fixed_dates.keys():
         # Calculate weighted returns
         weighted_returns = period_returns.mul(weights_df.iloc[0], axis=1).sum(axis=1).to_frame('Strategy Return')
         weighted_returns.index = pd.to_datetime(weighted_returns.index)
-        weighted_returns['date'] = weighted_returns.index
+
+        # Append the results to the portfolio DataFrame
+        portfolio_df = pd.concat([portfolio_df, weighted_returns], axis=0)
+
         
         # Append the results to the portfolio DataFrame
         portfolio_df = pd.concat([portfolio_df, weighted_returns], axis=0)
@@ -344,15 +347,39 @@ for start_date in fixed_dates.keys():
 portfolio_df.drop_duplicates(inplace=True)
 
 # Print or return the final portfolio DataFrame
-print(portfolio_df)
 
 
 # portfolio_df = portfolio_df.drop_duplicates()
 
 # portfolio_df
+spy = yf.download(tickers='SPY',
+                  start='2015-01-01',
+                  end=dt.date.today())
+
+spy_ret = np.log(spy[['Adj Close']]).diff().dropna().rename({'Adj Close':'SPY Buy&Hold'}, axis=1)
+
+portfolio_df = portfolio_df.merge(spy_ret,
+                                  left_index=True,
+                                  right_index=True)
+# print(portfolio_df)
 
 
+# STEP 8 ========================== Visualize Portfolio returns vs holding S&P500 ==========================
+import matplotlib.ticker as mtick
 
+plt.style.use('ggplot')
+
+portfolio_cumulative_return = np.exp(np.log1p(portfolio_df).cumsum())-1
+
+portfolio_cumulative_return[:'2023-09-29'].plot(figsize=(16,6))
+
+plt.title('Unsupervised Learning Trading Strategy Returns Over Time')
+
+plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1))
+
+plt.ylabel('Return')
+
+plt.show()
 
 
 
