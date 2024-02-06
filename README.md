@@ -63,7 +63,7 @@ size, value, profitability
 
 ### Advanced Trading Strategies
 
-1. **Machine Learning Models** - Predicts market movements using historical data and algorithms; LSTM, K-Means Clustering 🤖📈.
+1. **Machine Learning Models** - Predicts market movements using historical data and algorithms; LSTM, K-Means Clustering 🤖📈. <!-- Linear Regression-->
 2. **Option Strategies** - Employs methods like delta-neutral trading to hedge market movements 🛡️.
 3. **Sentiment Analysis** - Analyzes market mood through news and social media for trading signals 🗞️💬.
 4. **High-Frequency Trading** (HFT) - Executes numerous trades daily to capture small price movements ⚡.
@@ -80,7 +80,6 @@ Identify what indicators we want to
 update Mid Tier Strats
 
 
-
 -- BASIC:
 ^Bollinger Bands
 ^ATR
@@ -88,11 +87,13 @@ update Mid Tier Strats
 OBV
 
 -- MID
-^GARCH - Volatility Forecasting
 Open Interest
+Order Book
+Liquidation Sniper
 
 -- ADV
 LSTM + GARCH
+Linear Regression
 
 ===================
 RISK MANAGEMENT:
@@ -135,7 +136,7 @@ max_loss
 FUNCTIONS
 ask_bid()
 sma(timeframe, num_bars, bars, df, bid)
-open_positions(positiions, openpos_bool, openpos_size, long, entry lev)
+open_positions(positions, openpos_bool, openpos_size, long, entry lev)
 kill_switch(openposi, long, kil_size)
 pnl_close(in_pos, size, long) ## Checks if we hit profit target or max loss
 bot()
