@@ -293,7 +293,8 @@ stocks = data.index.get_level_values('ticker').unique().tolist()
 new_df = yf.download(tickers=stocks,
                      start=data.index.get_level_values('date').unique()[0]-pd.DateOffset(months=12),
                      end=data.index.get_level_values('date').unique()[-1])
-print(data.index.get_level_values('date').unique()[0]-pd.DateOffset(months=12))
+# print(data.index.get_level_values('date').unique()[0]-pd.DateOffset(months=12))
+# print(stocks)
 # print(new_df)
 
 returns_dataframe = np.log(new_df['Adj Close']).diff()
@@ -338,14 +339,15 @@ for start_date in fixed_dates.keys():
           temp_df['weighted_return'] = temp_df['return']*temp_df['weight']
           temp_df = temp_df.groupby(level=0)['weighted_return'].sum().to_frame('Strategy Return')
           portfolio_df = pd.concat([portfolio_df, temp_df], axis=0)
+          print(portfotlio_df)
 
     except Exception as e:
         print(e)
 
 # print(returns_dataframe)
 # print(weights)
-portfolio_df = portfolio_df.drop_duplicates()
-print(portfolio_df)
+# portfolio_df = portfolio_df.drop_duplicates()
+# print(portfolio_df)
 
 
 
