@@ -287,17 +287,30 @@ def optimize_weights(prices, lower_bound=0):
     weights = ef.max_sharpe()
     return ef.clean_weights()
 
+
 stocks = data.index.get_level_values('ticker').unique().tolist()
 
 new_df = yf.download(tickers=stocks,
-                     start=data.index.get_level_values('date').unique()[0]-pd.DateOffset(months=12))
-print(data.index.get_level_values('date').unique()[0]-pd.DateOffset(months=12))
+                     start=data.index.get_level_values('date').unique()[0]-pd.DateOffset(months=12),
+                     end=data.index.get_level_values('date').unique()[-1])
+# print(data.index.get_level_values('date').unique()[0]-pd.DateOffset(months=12))
+# print(new_df)
 
-
-
-
-
-
+returns_dataframe = np.log(new_df['Adj Close']).diff()
+portfolio_df = pd.DataFrame()
+for start_date in fixed_dates.keys():
+    end_date = (pd.to_datetime(start_date)+pd.offsets.MonthEnd(0)).strftime('%Y-%m-%d')
+    # print(start_date)
+    # print(end_date)
+    cols = fixed_dates[start_date]
+    # print(cols)
+    optimization_start_date = (pd.to_datetime(start_date)-pd.DateOffset(months=12)).strftime('%Y-%m-%d')
+    optimization_end_date = (pd.to_datetime(start_date)-pd.DateOffset(days=1)).strftime('%Y-%m-%d')
+    print(start_date)
+    print(end_date)
+    print(cols)
+    print(optimization_start_date)
+    print(optimization_end_date )
 
 
 
