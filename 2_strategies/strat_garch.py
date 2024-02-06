@@ -306,13 +306,16 @@ for start_date in fixed_dates.keys():
     # print(cols)
     optimization_start_date = (pd.to_datetime(start_date)-pd.DateOffset(months=12)).strftime('%Y-%m-%d')
     optimization_end_date = (pd.to_datetime(start_date)-pd.DateOffset(days=1)).strftime('%Y-%m-%d')
-    print(start_date)
-    print(end_date)
-    print(cols)
-    print(optimization_start_date)
-    print(optimization_end_date )
+    # print(start_date)
+    # print(end_date)
+    # print(cols)
+    # print(optimization_start_date)
+    # print(optimization_end_date )
 
-
+weights = optimize_weights(prices,
+                           lower_bount=0)
+optimization_df = new_df[optimization_start_date:optimization_end_date]['Adj Close'][cols]
+print(optimization_df)
 
 
 
