@@ -298,59 +298,58 @@ new_df = yf.download(tickers=stocks,
 # print(new_df)
 
 returns_dataframe = np.log(new_df['Adj Close']).diff()
+
+# Assuming new_df and returns_dataframe are already defined as per your provided code.
+
+# Initialize an empty DataFrame for the portfolio
 portfolio_df = pd.DataFrame()
+
+# Iterate over each start date in your predetermined dates
 for start_date in fixed_dates.keys():
     try:
-          end_date = (pd.to_datetime(start_date)+pd.offsets.MonthEnd(0)).strftime('%Y-%m-%d')
-          # print(start_date)
-          # print(end_date)
-          cols = fixed_dates[start_date]
-          # print(cols)
-          optimization_start_date = (pd.to_datetime(start_date)-pd.DateOffset(months=12)).strftime('%Y-%m-%d')
-          optimization_end_date = (pd.to_datetime(start_date)-pd.DateOffset(days=1)).strftime('%Y-%m-%d')
-          # print(start_date)
-          # print(end_date)
-          # print(cols)
-          # print(optimization_start_date)
-          # print(optimization_end_date )
-          optimization_df = new_df[optimization_start_date:optimization_end_date]['Adj Close'][cols]
-          success = False
-          try:
-              weights = optimize_weights(prices=optimization_df,
-                                         lower_bound=round(1/(len(optimization_df.columns)*2),3))
-              weights = pd.DataFrame(weights, index=pd.Series(0))
-              success = True
-          except:
-              print(f'Max Sharpe Optimization failed for {start_date}, continuing Equal-Weights')
-
-          if success==False:
-              weights = pd.DataFrame([1/len(optimization_df.columns) for i in range(len(optimization_df.columns))],
-                                     index=optimization_df.columns.tolist(),
-                                     columns=pd.Series(0)).T
-              
-          temp_df = returns_dataframe[start_date:end_date]
-          temp_df = temp_df.stack().to_frame('return').reset_index(level=0)\
-                    .merge(weights.stack().to_frame('weight').reset_index(level=0, drop=True),
-                            left_index=True,
-                            right_index=True)\
-                    .reset_index().set_index(['Date', 'index']).unstack().stack()
-
-          temp_df.index.names = ['date', 'ticker']
-          temp_df['weighted_return'] = temp_df['return']*temp_df['weight']
-          temp_df = temp_df.groupby(level=0)['weighted_return'].sum().to_frame('Strategy Return')
-          portfolio_df = pd.concat([portfolio_df, temp_df], axis=0)
-          print(portfotlio_df)
-
+        end_date = (pd.to_datetime(start_date) + pd.offsets.MonthEnd(0)).strftime('%Y-%m-%d')
+        cols = fixed_dates[start_date]  # Columns based on the filtered tickers for the given date
+        
+        # Define optimization period
+        optimization_start_date = (pd.to_datetime(start_date) - pd.DateOffset(months=12)).strftime('%Y-%m-%d')
+        optimization_end_date = (pd.to_datetime(start_date) - pd.DateOffset(days=1)).strftime('%Y-%m-%d')
+        
+        # Filter the adjusted close prices for the optimization period and selected tickers
+        optimization_df = new_df['Adj Close'][optimization_start_date:optimization_end_date][cols]
+        
+        # Attempt to calculate the optimized weights
+        try:
+            weights = optimize_weights(optimization_df, lower_bound=round(1/(len(optimization_df.columns)*2), 3))
+            weights_df = pd.DataFrame([weights], index=[start_date])  # Convert weights to DataFrame
+        except Exception as e:
+            print(f"Optimization failed for {start_date}: {e}. Continuing with Equal-Weights.")
+            equal_weight = 1.0 / len(cols)
+            weights_df = pd.DataFrame([equal_weight] * len(cols), index=cols, columns=[start_date]).T
+        
+        # Calculate returns for the period starting from the start_date to the end_date
+        period_returns = returns_dataframe.loc[start_date:end_date][cols]
+        
+        # Calculate weighted returns
+        weighted_returns = period_returns.mul(weights_df.iloc[0], axis=1).sum(axis=1).to_frame('Strategy Return')
+        weighted_returns.index = pd.to_datetime(weighted_returns.index)
+        weighted_returns['date'] = weighted_returns.index
+        
+        # Append the results to the portfolio DataFrame
+        portfolio_df = pd.concat([portfolio_df, weighted_returns], axis=0)
+    
     except Exception as e:
-        print(e)
+        print(f"Error processing {start_date}: {e}")
 
-# print(returns_dataframe)
-# print(weights)
+# If necessary, drop duplicates or perform further cleaning on portfolio_df
+portfolio_df.drop_duplicates(inplace=True)
+
+# Print or return the final portfolio DataFrame
+print(portfolio_df)
+
+
 # portfolio_df = portfolio_df.drop_duplicates()
-# print(portfolio_df)
 
-
-
+# portfolio_df
 
 
 
