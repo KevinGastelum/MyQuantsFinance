@@ -216,7 +216,7 @@ target_rsi_values = [30, 45, 55, 70]
 # This ensures centroids between 30-45 are 1 cluster color and centroids between 45-55 are another etc.
 initial_centroids = np.zeros((len(target_rsi_values), 18))
 initial_centroids[:, 6] = target_rsi_values
-print(initial_centroids)
+# print(initial_centroids)
 
 if 'cluster' in data.columns:
     data = data.drop('cluster', axis=1)
@@ -240,10 +240,10 @@ def plot_clusters(data):
     plt.scatter(cluster_0.iloc[:,0], cluster_0.iloc[:,6], color='red', label='cluster 0')
     plt.scatter(cluster_1.iloc[:,0], cluster_1.iloc[:,6], color='green', label='cluster 1')
     plt.scatter(cluster_2.iloc[:,0], cluster_2.iloc[:,6], color='blue', label='cluster 2')
-    plt.scatter(cluster_3.iloc[:,0], cluster_3.iloc[:,6], color='black', label='cluster 3')
+    # plt.scatter(cluster_3.iloc[:,0], cluster_3.iloc[:,6], color='black', label='cluster 3')
 
-    plt.legend()
-    plt.show()
+    # plt.legend()
+    # plt.show()
     # print(data)
     return
 
@@ -255,9 +255,17 @@ for i in data.index.get_level_values('date').unique().tolist():
    plot_clusters(g)
 
 
-# STEP 7 ======================     Portfolio Optimization with Efficient Frontier max sharpe ratio      ======================
-
-
+# STEP 7 ====================== Portfolio Optimization with Efficient Frontier max sharpe ratio ======================
+# For this strategy I will consider stocks at around the 70 RSI continue there upward momentum
+filtered_df = data[data['cluster'] == 3].copy()
+filtered_df = filtered_df.reset_index(level=1)
+filtered_df.index = filtered_df.index+pd.DateOffset(1)
+filtered_df.reset_index().set_index(['date', 'ticker'])
+dates = filtered_df.index.get_level_values('date').unique().tolist()
+fixed_dates = {}
+for d in dates:
+    fixed_dates[d.strftime('%Y-%m-%d')] = filtered_df.xs(d, level=0).index.tolist()
+print(filtered_df)
 
 
 
