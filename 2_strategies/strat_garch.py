@@ -285,7 +285,13 @@ def optimize_weights(prices, lower_bound=0):
                            solver='SCS')
     
     weights = ef.max_sharpe()
-    returns ef.clean_weights()
+    return ef.clean_weights()
+
+stocks = data.index.get_level_values('ticker').unique().tolist()
+
+new_df = yf.download(tickers=stocks,
+                     start=data.index.get_level_values('date').unique()[0]-pd.DateOffset(months=12))
+print(data.index.get_level_values('date').unique()[0]-pd.DateOffset(months=12))
 
 
 
