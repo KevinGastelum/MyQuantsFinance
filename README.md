@@ -69,7 +69,7 @@ size, value, profitability
 4. **High-Frequency Trading** (HFT) - Executes numerous trades daily to capture small price movements ⚡.
 5. **Market Making** - Provides market liquidity, profiting by looking at the Order book and seeing bid-ask spread to see where price is likely to gravitate to ↔️.
 
-# Profitable Quant Strategy including results
+# Profitable Quant Strategy results
 
 Comparing my results vs Simply holding S&P500
 
