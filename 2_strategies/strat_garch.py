@@ -299,22 +299,61 @@ new_df = yf.download(tickers=stocks,
 returns_dataframe = np.log(new_df['Adj Close']).diff()
 portfolio_df = pd.DataFrame()
 for start_date in fixed_dates.keys():
-    end_date = (pd.to_datetime(start_date)+pd.offsets.MonthEnd(0)).strftime('%Y-%m-%d')
-    # print(start_date)
-    # print(end_date)
-    cols = fixed_dates[start_date]
-    # print(cols)
-    optimization_start_date = (pd.to_datetime(start_date)-pd.DateOffset(months=12)).strftime('%Y-%m-%d')
-    optimization_end_date = (pd.to_datetime(start_date)-pd.DateOffset(days=1)).strftime('%Y-%m-%d')
-    # print(start_date)
-    # print(end_date)
-    # print(cols)
-    # print(optimization_start_date)
-    # print(optimization_end_date )
+    try:
+          end_date = (pd.to_datetime(start_date)+pd.offsets.MonthEnd(0)).strftime('%Y-%m-%d')
+          # print(start_date)
+          # print(end_date)
+          cols = fixed_dates[start_date]
+          # print(cols)
+          optimization_start_date = (pd.to_datetime(start_date)-pd.DateOffset(months=12)).strftime('%Y-%m-%d')
+          optimization_end_date = (pd.to_datetime(start_date)-pd.DateOffset(days=1)).strftime('%Y-%m-%d')
+          # print(start_date)
+          # print(end_date)
+          # print(cols)
+          # print(optimization_start_date)
+          # print(optimization_end_date )
+          optimization_df = new_df[optimization_start_date:optimization_end_date]['Adj Close'][cols]
+          success = False
+          try:
+              weights = optimize_weights(prices=optimiziation_df,
+                                         lower_bound=round(1/(len(optimization_df.columns)*2),3))
+              weights = pd.DataFrame(weights, index=pd.Series(0))
+              success = True
+          except:
+              print(f'Max Sharpe Optimization failed for {start_date}, continuing Equal-Weights')
 
-weights = optimize_weights(prices,
+          if success==False:
+              weights = pd.DataFrame([1/len(optimization_df.columns) for i in range(len(optimization_df.columns))],
+                                     index=optimization_df.columns.tolist(),
+                                     columns=pd.Series(0)).T
+              
+          temp_df = returns_dataframe[start_date:end_date]
+
+          temp_df = temp_df.stack().to_frame('return').reset_index(level=0)\
+                    .merge(weights.stack().to_frame('weight').reset_index(level=0, drop=True),
+                            left_index=True,
+                            right_index=True)\
+                    .reset_index().set_index(['Date', 'index']).unstack().stack()
+
+          temp_df.index.names()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+weights = optimize_weights(prices=optimization_df,
                            lower_bound=0)
-optimization_df = new_df['2017-03-01':'2018-02-28']['Adj Close'][cols]
 print(optimization_df)
 
 
