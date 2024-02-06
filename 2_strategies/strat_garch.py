@@ -342,6 +342,8 @@ for start_date in fixed_dates.keys():
     except Exception as e:
         print(e)
 
+# print(returns_dataframe)
+# print(weights)
 portfolio_df = portfolio_df.drop_duplicates()
 print(portfolio_df)
 
@@ -359,10 +361,6 @@ print(portfolio_df)
 
 
 
-
-weights = optimize_weights(prices=optimization_df,
-                           lower_bound=0)
-print(optimization_df)
 
 
 
