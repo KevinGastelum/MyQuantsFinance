@@ -206,7 +206,7 @@ data = data.dropna()
 # STEP 6 Using ML model K-Means Clustering for predictions ========================================================START
 # Assign 1-4- clusters to each stock/month (4 cluster seems to be the most optimal) 
 
-# Creates 4 clusters for each Month and Assigns 1 optmized cluster to each stock
+# Creates 4 clusters for each Month Then Assigns 1 optmized cluster to each stock
 from sklearn.cluster import KMeans
 
 if 'cluster' in data.columns:
@@ -221,7 +221,7 @@ def get_clusters(df):
 data = data.dropna().groupby('date', group_keys=False).apply(get_clusters)
 # print(data)
 
-# plot results
+# plot clusters
 def plot_clusters(data):
     
     cluster_0 = data[data['cluster']==0]
@@ -245,4 +245,26 @@ for i in data.index.get_level_values('date').unique().tolist():
    g = data.xs(i, level=0)
    plt.title(f'Date {i}')
    plot_clusters(g)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
