@@ -71,7 +71,7 @@ size, value, profitability
 
 # Profitable Quant Strategy including results
 
-Strategy with Results that implements the created indicators, strategies, risk management, backtest, ML for sentiment analysis and portfolio optimization
+Comparing my results vs Simply holding S&P500
 
 <!--
 
