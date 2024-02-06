@@ -73,6 +73,9 @@ size, value, profitability
 
 Comparing my results vs Simply holding S&P500
 
+<!--  Share plot images -->
+<!--  List Indicaors Block Code -->
+
 <!--
 
 NOTES:
