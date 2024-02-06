@@ -315,7 +315,7 @@ for start_date in fixed_dates.keys():
           optimization_df = new_df[optimization_start_date:optimization_end_date]['Adj Close'][cols]
           success = False
           try:
-              weights = optimize_weights(prices=optimiziation_df,
+              weights = optimize_weights(prices=optimization_df,
                                          lower_bound=round(1/(len(optimization_df.columns)*2),3))
               weights = pd.DataFrame(weights, index=pd.Series(0))
               success = True
@@ -328,14 +328,22 @@ for start_date in fixed_dates.keys():
                                      columns=pd.Series(0)).T
               
           temp_df = returns_dataframe[start_date:end_date]
-
           temp_df = temp_df.stack().to_frame('return').reset_index(level=0)\
                     .merge(weights.stack().to_frame('weight').reset_index(level=0, drop=True),
                             left_index=True,
                             right_index=True)\
                     .reset_index().set_index(['Date', 'index']).unstack().stack()
 
-          temp_df.index.names()
+          temp_df.index.names = ['date', 'ticker']
+          temp_df['weighted_return'] = temp_df['return']*temp_df['weight']
+          temp_df = temp_df.groupby(level=0)['weighted_return'].sum().to_frame('Strategy Return')
+          portfolio_df = pd.concat([portfolio_df, temp_df], axis=0)
+
+    except Exception as e:
+        print(e)
+
+portfolio_df = portfolio_df.drop_duplicates()
+print(portfolio_df)
 
 
 
