@@ -314,10 +314,28 @@ for start_date in fixed_dates.keys():
 
 weights = optimize_weights(prices,
                            lower_bound=0)
-optimization_df = new_df[optimization_start_date:optimization_end_date]['Adj Close'][cols]
+optimization_df = new_df['2017-03-01':'2018-02-28']['Adj Close'][cols]
 print(optimization_df)
 
 
-2017-02-28
-2018-03-01
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
