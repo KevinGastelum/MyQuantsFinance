@@ -113,7 +113,7 @@ df['dollar_volume'] = (df['adj close']*df['volume'])/1e6
 # print(df.sort_values(by='dollar_volume', descending=True))
 
 
-# STEP 3 ======= Aggregate on a monthly level and filter top 150 highest volume stocks per month ==============
+# STEP 3 ========== Aggregate on a monthly level and filter top 150 highest volume stocks per month ==============
 # feature/last columns ['adj close', 'garman_klass_vol', 'rsi', 'bb_low', 'bb_mid', 'bb_high', 'atr', 'macd']
 last_cols = [c for c in df.columns.unique(0) if c not in ['dollar_volume', 'volume', 'open', 'high', 'low', 'close']]
 # print(last_cols)
@@ -135,7 +135,7 @@ data = data.sort_index(axis=1)
 # print(data)
 
 
-# STEP 4 Calculate monthly returns for different timeframes and add as features (12mos, 6mos, 1 2 3 6 9)
+# STEP 4 ========== Calculate monthly returns for different timeframes and add as features (12mos, 6mos, 1 2 3 6 9) ==========
 # g = df.xs('AAPL', level=1)
 def calculate_returns(df):
     outlier_cutoff = 0.005
@@ -156,7 +156,7 @@ data = data.groupby(level=1, group_keys=False).apply(calculate_returns).dropna()
 # print(data)
 
 
-# STEP 5 Download - Fama French Factors and Calculate Rolling Factor Betas (Risk, size, value, profitability)
+# STEP 5 ========== Download - Fama French Factors and Calculate Rolling Factor Betas (Risk, size, value, profitability) ==========
 # Portfolio Optimization - Uses RollingOLS Linear Regression
 
 factor_data = web.DataReader('F-F_Research_Data_5_Factors_2x3',
@@ -203,25 +203,33 @@ data = data.dropna()
 # print(data)
 
 
-# STEP 6 Using ML model K-Means Clustering for predictions ========================================================START
+# STEP 6 ====================== Using ML model K-Means Clustering for predictions =========================
 # Assign 1-4- clusters to each stock/month (4 cluster seems to be the most optimal) 
 
 # Creates 4 clusters for each Month Then Assigns 1 optmized cluster to each stock
 from sklearn.cluster import KMeans
+
+# Create RSI targets oversold = 30 to overbought = 70
+target_rsi_values = [30, 45, 55, 70]
+
+# Define centroids above to fit in our clusters
+# This ensures centroids between 30-45 are 1 cluster color and centroids between 45-55 are another etc.
+initial_centroids = np.zeros((len(target_rsi_values), 18))
+initial_centroids[:, 6] = target_rsi_values
+print(initial_centroids)
 
 if 'cluster' in data.columns:
     data = data.drop('cluster', axis=1)
 def get_clusters(df):
     df['cluster'] = KMeans(n_clusters=4,
                            random_state=0,
-                           init='k-means++').fit(df).labels_  # Adjusted to use 'k-means++' if initial_centroids isn't predefined
+                           init=initial_centroids).fit(df).labels_ 
     return df
 
-# Assuming 'date' is an appropriate column to group by and that dropping NaN values doesn't remove necessary data
 data = data.dropna().groupby('date', group_keys=False).apply(get_clusters)
 # print(data)
 
-# plot clusters
+# Plot Clusters
 def plot_clusters(data):
     
     cluster_0 = data[data['cluster']==0]
@@ -247,11 +255,7 @@ for i in data.index.get_level_values('date').unique().tolist():
    plot_clusters(g)
 
 
-
-
-
-
-
+# STEP 7 ======================     Portfolio Optimization with Efficient Frontier max sharpe ratio      ======================
 
 
 
