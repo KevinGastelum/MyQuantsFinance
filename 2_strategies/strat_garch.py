@@ -373,7 +373,7 @@ plt.show()
 
 
 
-
+# ========================== PROJECT 2 - Twitter Sentiment Investing Strategy ==========================
 
 
 
