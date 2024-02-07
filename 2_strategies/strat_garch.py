@@ -3,8 +3,6 @@
 What I'm Building:
 1. Indicators = [ Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume ]
 2. ML Unsupervised Learning Trading Strategy
-3. Twitter Sentiment Trading Strategy
-4. Intraday Strategy using GARCH model
 
 Breakdown of code:
 - Data used is S&P 500
@@ -80,13 +78,13 @@ df.columns = df.columns.str.lower()
 df['garman_klass_vol'] = ((np.log(df['high'])-np.log(df['low']))**2)/2-(2*np.log(2)-1)*((np.log(df['adj close'])-np.log(df['open']))**2)
 # print(df)
 
-# RSI - Primarily used to spot reversals, corrections, and potential entry/exit points based on momentum.
+# RSI - identify potential buying or selling opportunities, often used to determine overbought and oversold conditions
 df['rsi'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.rsi(close=x, length=20))
 # print(df)
 # df.xs('AAPL', level=1)['rsi'].plot()
 # plt.show()
 
-# Bollinger Bands - identify potential buying or selling opportunities, often used to determine overbought and oversold conditions
+# Bollinger Bands - Primarily used to spot reversals, corrections, and potential entry/exit points based on momentum.
 df['bb_low'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.bbands(close=np.log1p(x), length=20).iloc[:, 0])
 df['bb_mid'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.bbands(close=np.log1p(x), length=20).iloc[:, 1])
 df['bb_high'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.bbands(close=np.log1p(x), length=20).iloc[:, 2])
@@ -156,7 +154,7 @@ data = data.groupby(level=1, group_keys=False).apply(calculate_returns).dropna()
 # print(data)
 
 
-# STEP 5 ========== Download - Fama French Factors and Calculate Rolling Factor Betas (Risk, size, value, profitability) ==========
+# STEP 5 ========== Download - Fama French Factors and Calculate Rolling Factor Betas (Risk, size, value, profitability, returns) ==========
 # Portfolio Optimization - Uses RollingOLS Linear Regression
 
 factor_data = web.DataReader('F-F_Research_Data_5_Factors_2x3',
