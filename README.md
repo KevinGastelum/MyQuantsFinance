@@ -71,7 +71,7 @@ size, value, profitability
 
 # Profitable Quant Strategy results
 
-Comparing my results vs Simply holding S&P500
+Comparing my [Strategy]('2_strategies\strat_garch.py') vs Simply holding S&P500
 <img src="data\quant_strat_results.png">
 
 <!--  Share plot images -->
