@@ -369,29 +369,3 @@ plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1))
 plt.ylabel('Return')
 
 plt.show()
-
-
-
-
-# ========================== PROJECT 2 - Twitter Sentiment Investing Strategy ==========================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
