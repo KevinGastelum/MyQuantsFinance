@@ -12,7 +12,7 @@ Key Terms:
 
 - **Derivatives** - AKA Options | Futures | Perpetuals 📈 - used to trade with margin.
 - **Margin/Leverage** - Many exchanges allow you to borrow funds to execute trades, with the risk of being liquidated, this occurs once your available liquidity runs out 💰.
-  <br> $1,000 with 10x margin = $10,000 (Use with CAUTION ⚠️ this also means you risk losing money 10x faster)
+  <br> $1,000 with 10x margin = $10,000 (CAUTION ⚠️ this also means you risk losing money 10x faster)
 - **Liquidity** (Fancy way of saying Funds) 💧
 - **Assets** - Equities (Fancy name for Stocks), Commodities, Cryptocurrencies 📉📈
 
