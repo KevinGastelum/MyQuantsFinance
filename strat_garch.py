@@ -154,7 +154,7 @@ data = data.groupby(level=1, group_keys=False).apply(calculate_returns).dropna()
 # print(data)
 
 
-# STEP 5 ========== Download - Fama French Factors and Calculate Rolling Factor Betas (Risk, size, value, profitability) ==========
+# STEP 5 ========== Download - Fama French Factors and Calculate Rolling Factor Betas (Risk, size, value, profitability, returns) ==========
 # Portfolio Optimization - Uses RollingOLS Linear Regression
 
 factor_data = web.DataReader('F-F_Research_Data_5_Factors_2x3',
