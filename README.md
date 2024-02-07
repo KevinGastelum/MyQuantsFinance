@@ -20,7 +20,7 @@ Key Terms:
 
 <!-- Knowing the basics is essential in everything, but especially when developing a winning strategy.  -->
 
-I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades but mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) that leverage these insights to automize spotting entry/exit points, risk/returns, breakouts, reversals, and profits. Before executing any trade a backtest is needed to assure a [Profitable Strategy](#profitable-quant-strategy-including-results)
+I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades but mastering these allows you to identify Market Trends (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) that leverage these insights to automize spotting entry/exit points, risk/returns, breakouts, reversals, and profits. Before executing any trade a backtest is needed to ensure a [Profitable Strategy](#profitable-quant-strategy-including-results)
 
 <!-- portfolio optimizations -->
 
