@@ -359,21 +359,21 @@ portfolio_df = portfolio_df.merge(spy_ret,
 
 
 # STEP 8 ========================== Visualize Portfolio returns vs holding S&P500 ==========================
-# import matplotlib.ticker as mtick
+import matplotlib.ticker as mtick
 
-# plt.style.use('ggplot')
+plt.style.use('ggplot')
 
-# portfolio_cumulative_return = np.exp(np.log1p(portfolio_df).cumsum())-1
+portfolio_cumulative_return = np.exp(np.log1p(portfolio_df).cumsum())-1
 
-# portfolio_cumulative_return[:'2024-02-02'].plot(figsize=(16,6))
+portfolio_cumulative_return[:'2024-02-02'].plot(figsize=(16,6))
 
-# plt.title('My Quant Strategy Returns Over Time')
+plt.title('My Quant Strategy Returns Over Time')
 
-# plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1))
+plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1))
 
-# plt.ylabel('Return')
+plt.ylabel('Return')
 
-# plt.show()
+plt.show()
 
 
 
