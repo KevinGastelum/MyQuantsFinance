@@ -26,7 +26,7 @@ def bollinger_bands(data, length=20):
     return bb_low, bb_mid, bb_high
 # print(data)
 
-# ATR- A rule of thumb is to multiply the ATR by two to determine a reasonable stop-loss point. So if you're buying a stock, you might place a stop-loss at a level twice the ATR below the entry price. If you're shorting a stock, you would place a stop-loss at a level twice the ATR *******8
+# ATR- A rule of thumb is to multiply the ATR by two to determine a reasonable stop-loss point. So if you're buying a stock, you might place a stop-loss at a level twice the ATR below the entry price. If you're shorting a stock, you would place a stop-loss at a level twice the ATR above entry
 def average_true_range(data, length=14):
     atr = data.groupby(level=1, group_keys=False).apply(lambda x: pandas_ta.atr(high=x['high'], low=x['low'], close=x['close'], length=length))
     return atr
