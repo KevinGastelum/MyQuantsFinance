@@ -2,9 +2,7 @@
 ---------------------- By Kevin Gastelum ----------------------
 What I'm Building:
 1. Indicators = [ Garman-Klass Volatility, RSI, Bollinger Bands, ATR, MACD, Dollar Volume ]
-2. ML Unsupervised Learning Trading Strategy
-3. Twitter Sentiment Trading Strategy
-4. Intraday Strategy using GARCH model
+2. ML Unsupervised Learning Strategy
 
 Breakdown of code:
 - Data used is S&P 500
