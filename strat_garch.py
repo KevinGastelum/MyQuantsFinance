@@ -80,13 +80,13 @@ df.columns = df.columns.str.lower()
 df['garman_klass_vol'] = ((np.log(df['high'])-np.log(df['low']))**2)/2-(2*np.log(2)-1)*((np.log(df['adj close'])-np.log(df['open']))**2)
 # print(df)
 
-# RSI - Primarily used to spot reversals, corrections, and potential entry/exit points based on momentum.
+# RSI - identify potential buying or selling opportunities, often used to determine overbought and oversold conditions
 df['rsi'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.rsi(close=x, length=20))
 # print(df)
 # df.xs('AAPL', level=1)['rsi'].plot()
 # plt.show()
 
-# Bollinger Bands - identify potential buying or selling opportunities, often used to determine overbought and oversold conditions
+# Bollinger Banda- Primarily used to spot reversals, corrections, and potential entry/exit points based on momentum.
 df['bb_low'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.bbands(close=np.log1p(x), length=20).iloc[:, 0])
 df['bb_mid'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.bbands(close=np.log1p(x), length=20).iloc[:, 1])
 df['bb_high'] = df.groupby(level=1)['adj close'].transform(lambda x: pandas_ta.bbands(close=np.log1p(x), length=20).iloc[:, 2])
