@@ -125,7 +125,7 @@ data = (pd.concat([df.unstack('ticker')['dollar_volume'].resample('M').mean().st
 # Calculate the 5 year rolling avg of dollar volume for each stock before filtering
 data['dollar_volume'] = (data.loc[:, 'dollar_volume'].unstack('ticker').rolling(5*12, min_periods=12).mean().stack())
 # print(data)
-# Group by month
+# Group by month and Rsnk (highest traded volume)
 data['dollar_vol_rank'] = (data.groupby('date')['dollar_volume'].rank(ascending=False))
 # Filter for top 150 stocks 
 data = data[data['dollar_vol_rank']<150].drop(['dollar_volume', 'dollar_vol_rank'], axis=1)
