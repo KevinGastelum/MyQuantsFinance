@@ -299,12 +299,10 @@ new_df = yf.download(tickers=stocks,
 
 returns_dataframe = np.log(new_df['Adj Close']).diff()
 
-# Assuming new_df and returns_dataframe are already defined as per your provided code.
-
 # Initialize an empty DataFrame for the portfolio
 portfolio_df = pd.DataFrame()
 
-# Iterate over each start date in your predetermined dates
+# Iterate over each start date
 for start_date in fixed_dates.keys():
     try:
         end_date = (pd.to_datetime(start_date) + pd.offsets.MonthEnd(0)).strftime('%Y-%m-%d')
