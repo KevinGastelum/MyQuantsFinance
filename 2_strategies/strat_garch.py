@@ -281,7 +281,7 @@ def optimize_weights(prices, lower_bound=0):
     
     ef = EfficientFrontier(expected_returns=returns,
                            cov_matrix=cov,
-                           weight_bounds=(lower_bound, .1), # Makes sure our portfolio is diversified 10% being the highest bound and lower bound of 2.5%
+                           weight_bounds=(lower_bound, .1), # Ensures portfolio is diversified 10% being the highest bound and lower bound of 2.5%
                            solver='SCS')
     
     weights = ef.max_sharpe()
@@ -335,23 +335,17 @@ for start_date in fixed_dates.keys():
 
         # Append the results to the portfolio DataFrame
         portfolio_df = pd.concat([portfolio_df, weighted_returns], axis=0)
-
-        
-        # Append the results to the portfolio DataFrame
-        portfolio_df = pd.concat([portfolio_df, weighted_returns], axis=0)
     
     except Exception as e:
         print(f"Error processing {start_date}: {e}")
 
-# If necessary, drop duplicates or perform further cleaning on portfolio_df
+#  drop duplicates or perform further cleaning on portfolio_df
 portfolio_df.drop_duplicates(inplace=True)
+print(portfolio_df)
 
-# Print or return the final portfolio DataFrame
 
 
-# portfolio_df = portfolio_df.drop_duplicates()
 
-# portfolio_df
 spy = yf.download(tickers='SPY',
                   start='2015-01-01',
                   end=dt.date.today())
@@ -365,21 +359,22 @@ portfolio_df = portfolio_df.merge(spy_ret,
 
 
 # STEP 8 ========================== Visualize Portfolio returns vs holding S&P500 ==========================
-import matplotlib.ticker as mtick
+# import matplotlib.ticker as mtick
 
-plt.style.use('ggplot')
+# plt.style.use('ggplot')
 
-portfolio_cumulative_return = np.exp(np.log1p(portfolio_df).cumsum())-1
+# portfolio_cumulative_return = np.exp(np.log1p(portfolio_df).cumsum())-1
 
-portfolio_cumulative_return[:'2023-09-29'].plot(figsize=(16,6))
+# portfolio_cumulative_return[:'2024-02-02'].plot(figsize=(16,6))
 
-plt.title('Unsupervised Learning Trading Strategy Returns Over Time')
+# plt.title('My Quant Strategy Returns Over Time')
 
-plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1))
+# plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1))
 
-plt.ylabel('Return')
+# plt.ylabel('Return')
 
-plt.show()
+# plt.show()
+
 
 
 
