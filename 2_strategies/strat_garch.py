@@ -227,7 +227,7 @@ def get_clusters(df):
     return df
 
 data = data.dropna().groupby('date', group_keys=False).apply(get_clusters)
-# print(data)
+print(data)
 
 # Plot Clusters
 def plot_clusters(data):
@@ -265,7 +265,7 @@ dates = filtered_df.index.get_level_values('date').unique().tolist()
 fixed_dates = {}
 for d in dates:
     fixed_dates[d.strftime('%Y-%m-%d')] = filtered_df.xs(d, level=0).index.tolist()
-print(filtered_df)
+# print(filtered_df)
 # print(fixed_dates)
 
 # Define Portfolio Optimization function
