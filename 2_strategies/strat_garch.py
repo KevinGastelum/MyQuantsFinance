@@ -265,7 +265,7 @@ dates = filtered_df.index.get_level_values('date').unique().tolist()
 fixed_dates = {}
 for d in dates:
     fixed_dates[d.strftime('%Y-%m-%d')] = filtered_df.xs(d, level=0).index.tolist()
-# print(filtered_df)
+print(filtered_df)
 # print(fixed_dates)
 
 # Define Portfolio Optimization function
@@ -341,10 +341,7 @@ for start_date in fixed_dates.keys():
 
 #  drop duplicates or perform further cleaning on portfolio_df
 portfolio_df.drop_duplicates(inplace=True)
-print(portfolio_df)
-
-
-
+# print(portfolio_df)
 
 spy = yf.download(tickers='SPY',
                   start='2015-01-01',
@@ -359,21 +356,21 @@ portfolio_df = portfolio_df.merge(spy_ret,
 
 
 # STEP 8 ========================== Visualize Portfolio returns vs holding S&P500 ==========================
-import matplotlib.ticker as mtick
+# import matplotlib.ticker as mtick
 
-plt.style.use('ggplot')
+# plt.style.use('ggplot')
 
-portfolio_cumulative_return = np.exp(np.log1p(portfolio_df).cumsum())-1
+# portfolio_cumulative_return = np.exp(np.log1p(portfolio_df).cumsum())-1
 
-portfolio_cumulative_return[:'2024-02-02'].plot(figsize=(16,6))
+# portfolio_cumulative_return[:'2024-02-02'].plot(figsize=(16,6))
 
-plt.title('Kevins Quant Strategy Returns Over Time')
+# plt.title('Kevins Quant Strategy Returns Over Time')
 
-plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1))
+# plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1))
 
-plt.ylabel('Return')
+# plt.ylabel('Return')
 
-plt.show()
+# plt.show()
 
 
 
