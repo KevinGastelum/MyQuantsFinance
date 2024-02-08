@@ -89,7 +89,7 @@ bybit = ccxt.bybit({
 })
 # print(bybit.fetch_balance())
 
-# Define Constants
+# Define Parameters
 symbol = 'APEUSDT'
 pos_size = 100
 params = {'timeInForce': 'PostOnly',}
@@ -97,7 +97,12 @@ target = 35
 max_loss = -55
 vol_decimal = .4
 
-# Ask or Bid function
+# Dataframe param
+timeframe = '4h'
+num_bars = 1000
+
+
+# ======== Ask or Bid function ========
 def ask_bid(symbol=symbol):
 
     ob = bybit.fetch_order_book(symbol)
@@ -110,13 +115,10 @@ def ask_bid(symbol=symbol):
     return ask, bid # ask_bid()[0] = ask, [1] = bid
 ask_bid('BTCUSDT')
 
-# SMA
-def daily_sma(symbol=symbol):
+# =========== SMA ===========
+def daily_sma(symbol=symbol, timeframe=timeframe, limit=num_bars):
 
     print('Starting Indicator...')
-
-    timeframe = '4h'
-    num_bars = 100
 
     bars = bybit.fetch_ohlcv(symbol, timeframe=timeframe, limit=num_bars)
     #print(bars)
@@ -127,7 +129,7 @@ def daily_sma(symbol=symbol):
     df_d['sma20_d'] = df_d.close.rolling(20).mean()
 
     # If bid < the 20 day SMA then = BEARISH, if bid > 20 day sma = BULLISH
-    bid = ask_bid()[1]
+    bid = ask_bid(symbol)[1]
 
     # If SMA > bid = SELL, if SMA < bid = BUY
     df_d.loc[df_d['sma20_d']>bid, 'sig'] = 'SELL'
@@ -135,7 +137,7 @@ def daily_sma(symbol=symbol):
     print(df_d)
 
     return df_d
-daily_sma('BTCUSDT')
+daily_sma('BTCUSDT', '15m', 10)
 
 
 
