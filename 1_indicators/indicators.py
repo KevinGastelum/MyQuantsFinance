@@ -1,6 +1,12 @@
+import ccxt
+import json
 import pandas as pd
 import numpy as np
 import pandas_ta
+import os
+from datetime import date, datetime, timezone, tzinfo
+import time, schedule
+from dotenv import load_dotenv
 
 # =========================== LIST OF USEFUL INDICATORS =========================== #
 # Garman-Klass Volatility Indicator - particularly useful for assets with significant overnight price movements or markets that are open 24/7
@@ -55,7 +61,6 @@ def dollar_volume(data):
 # df['dollar_volume'] = dollar_volume(df)
 # print(df)
 
-
 '''
 ====================== EXAMPLE OF USE ======================
 df['garman_klass_vol'] = garman_klass_volatility(df)
@@ -65,3 +70,84 @@ df['atr'] = average_true_range(df)
 df['macd'] = moving_average_convergence_divergence(df)
 df['dollar_volume'] = dollar_volume(df)
 '''
+
+
+
+'''
+Second set of indicators and functions for Algo Trading
+'''
+# Load env
+load_dotenv()
+bybt_key = os.getenv('BYBT_KEY')
+bybt_secret = os.getenv('BYBT_SECRET')
+
+# Test connections to exchange
+bybit = ccxt.bybit({
+  'enableRateLimit': True,
+  'apiKey': bybt_key,
+  'secret': bybt_secret
+})
+# print(bybit.fetch_balance())
+
+# Define Constants
+symbol = 'APEUSDT'
+pos_size = 100
+params = {'timeInForce': 'PostOnly',}
+target = 35
+max_loss = -55
+vol_decimal = .4
+
+# Ask or Bid function
+def ask_bid(symbol=symbol):
+
+    ob = bybit.fetch_order_book(symbol)
+    # print(ob)
+
+    bid = ob['bids'][0][0]
+    ask = ob['asks'][0][0]
+    print(f'This is the ask price for {symbol} {ask}')
+
+    return ask, bid # ask_bid()[0] = ask, [1] = bid
+ask_bid('BTCUSDT')
+
+# SMA
+def daily_sma(symbol=symbol):
+
+    print('Starting Indicator...')
+
+    timeframe = '4h'
+    num_bars = 100
+
+    bars = bybit.fetch_ohlcv(symbol, timeframe=timeframe, limit=num_bars)
+    #print(bars)
+    df_d = pd.DataFrame(bars, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+    df_d['timestamp'] = pd.to_datetime(df_d['timestamp'], unit='ms')
+
+    # DAILY SMA
+    df_d['sma20_d'] = df_d.close.rolling(20).mean()
+
+    # If bid < the 20 day SMA then = BEARISH, if bid > 20 day sma = BULLISH
+    bid = ask_bid()[1]
+
+    # If SMA > bid = SELL, if SMA < bid = BUY
+    df_d.loc[df_d['sma20_d']>bid, 'sig'] = 'SELL'
+    df_d.loc[df_d['sma20_d']<bid, 'sig'] = 'BUY'
+    print(df_d)
+
+    return df_d
+daily_sma('BTCUSDT')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

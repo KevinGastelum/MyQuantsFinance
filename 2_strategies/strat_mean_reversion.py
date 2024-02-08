@@ -1,6 +1,8 @@
 from dotenv import load_dotenv
 import os
 import ccxt
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '1_indicators'))
+import indicators as n
 
 # Load env
 load_dotenv()
