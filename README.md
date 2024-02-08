@@ -47,11 +47,12 @@ size, value, profitability
 <!-- Garman-Klass Volatility, ATR, Dollar Volume-->
 
 1. **EMA** (Exponential Moving Average) - Weighted moving average used for trend identification 📉.
-2. **RSI** (Relative Strength Index) - Momentum oscillator identifying overbought or oversold conditions 🔴🟢.
-3. **VWAP** (Volume Weighted Average Price) - Average price based on volume and price 🔍.
-4. **MACD** (Moving Avg Convergence Divergence) - Uses two moving avgs to identfy momentum and revrsal points.
-5. **Bollinger Bands** - Used to spot reversals, corrections, and entry/exit points based on Standard deviation of EMAs.
-6. **Fibonacci Retracement** - Uses Fibonacci ratios to indicate potential support or resistance levels 🔢.
+2. **[RSI](https://github.com/KevinGastelum/MyQuantsFinance/blob/7ff0b32cc68e3cbbc401769fcd3fda117dc62380/1_indicators/indicators.py#L14)** (Relative Strength Index) - Momentum oscillator identifying overbought or oversold conditions 🔴🟢.
+<!-- 3. **VWAP** (Volume Weighted Average Price) - Average price based on volume and price 🔍. -->
+3. **MACD** (Moving Avg Convergence Divergence) - Uses two moving avgs to identfy momentum and revrsal points.
+4. **Bollinger Bands** - Used to spot reversals, corrections, and entry/exit points based on Standard deviation of EMAs.
+5. **ATR** -
+<!-- 6. **Fibonacci Retracement** - Uses Fibonacci ratios to indicate potential support or resistance levels 🔢. -->
 
 ### Trading Strategies
 
