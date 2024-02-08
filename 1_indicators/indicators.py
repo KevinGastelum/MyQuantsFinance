@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import pandas_ta
 
-# =========================== LIST OF USEFUL INDICATORS ===========================
+# =========================== LIST OF USEFUL INDICATORS =========================== #
 # Garman-Klass Volatility Indicator - particularly useful for assets with significant overnight price movements or markets that are open 24/7
 def garman_klass_volatility(data):
     volatility = ((np.log(data['high']) - np.log(data['low'])) ** 2) / 2 - (2 * np.log(2) - 1) * ((np.log(data['adj close']) - np.log(data['open'])) ** 2)
