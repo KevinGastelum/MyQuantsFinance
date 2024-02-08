@@ -12,18 +12,6 @@ I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. The
 
 <!-- portfolio optimizations -->
 
-<!-- risk management, portfolio optimization, profits, backtest,
-Help assess risk/return profit of portfolio ,
-size, value, profitability
--->
-
-<!--
- 📊
- 🛒
- ⚖️
- 🔊
- -->
-
 ## Demistifying the Financial Market [(FinTech)](https://en.wikipedia.org/wiki/Fintech#:~:text=Fintech%2C%20a%20clipped,fintech.%5B6%5D) 🔮
 
 <!-- Learning about FinTech can be frustrating 😤, it's littered with complex terms designed to confuse you and scare you away. Those who do manage to navigate through the jargon, are faced with the daunting task of competing against the Market Maker i.e., Financial Institutions, Large Banks, and Firms 🏦💸. -->
@@ -74,6 +62,18 @@ Comparing [My Strategy](https://github.com/KevinGastelum/MyQuantsFinance/blob/ma
 
 <!--  Share plot images -->
 <!--  List Indicaors Block Code -->
+
+<!-- risk management, portfolio optimization, profits, backtest,
+Help assess risk/return profit of portfolio ,
+size, value, profitability
+-->
+
+<!--
+ 📊
+ 🛒
+ ⚖️
+ 🔊
+ -->
 
 <!--
 
