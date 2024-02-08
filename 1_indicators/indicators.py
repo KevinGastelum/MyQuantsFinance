@@ -99,8 +99,8 @@ vol_decimal = .4
 
 # Dataframe param
 timeframe = '4h'
-num_bars = 1000
-
+limit = 100
+sma = 20
 
 # ======== Ask or Bid function ========
 def ask_bid(symbol=symbol):
@@ -115,29 +115,30 @@ def ask_bid(symbol=symbol):
     return ask, bid # ask_bid()[0] = ask, [1] = bid
 ask_bid('BTCUSDT')
 
-# =========== SMA ===========
-def daily_sma(symbol=symbol, timeframe=timeframe, limit=num_bars):
+
+# =========== SMA - Returns df with sma in  ===========
+def daily_sma(symbol=symbol, timeframe=timeframe, limit=limit, sma=sma):
 
     print('Starting Indicator...')
 
-    bars = bybit.fetch_ohlcv(symbol, timeframe=timeframe, limit=num_bars)
+    bars = bybit.fetch_ohlcv(symbol, timeframe=timeframe, limit=limit)
     #print(bars)
-    df_d = pd.DataFrame(bars, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
-    df_d['timestamp'] = pd.to_datetime(df_d['timestamp'], unit='ms')
+    df_sma = pd.DataFrame(bars, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
+    df_sma['timestamp'] = pd.to_datetime(df_sma['timestamp'], unit='ms')
 
     # DAILY SMA
-    df_d['sma20_d'] = df_d.close.rolling(20).mean()
+    df_sma[f'sma{sma}_{timeframe}'] = df_sma.close.rolling(sma).mean()
 
     # If bid < the 20 day SMA then = BEARISH, if bid > 20 day sma = BULLISH
     bid = ask_bid(symbol)[1]
 
     # If SMA > bid = SELL, if SMA < bid = BUY
-    df_d.loc[df_d['sma20_d']>bid, 'sig'] = 'SELL'
-    df_d.loc[df_d['sma20_d']<bid, 'sig'] = 'BUY'
-    print(df_d)
+    df_sma.loc[df_sma[f'sma{sma}_{timeframe}']>bid, 'signal'] = 'SELL'
+    df_sma.loc[df_sma[f'sma{sma}_{timeframe}']<bid, 'signal'] = 'BUY'
+    print(df_sma)
 
-    return df_d
-daily_sma('BTCUSDT', '15m', 10)
+    return df_sma
+# daily_sma('BTCUSDT', '1h', 500, 200)
 
 
 
