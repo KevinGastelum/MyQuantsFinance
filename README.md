@@ -11,6 +11,7 @@ _"A Quant, or Quantitative Analyst, embodies the fusion of finance and technolog
 I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades but mastering these allows you to identify Market Trend (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) that leverage these insights to automize spotting entry/exit points, risk/returns, breakouts, reversals, and profits. Before executing any trade live a backtest is needed to ensure a [Profitable Strategy](#profitable-quant-strategy-including-results)
 
 <!-- portfolio optimizations -->
+<!-- AI ASSISTANT - Auto GPT - Ollama - Litellm - Mistral-->
 
 ## Demistifying the Financial Market [(FinTech)](https://en.wikipedia.org/wiki/Fintech#:~:text=Fintech%2C%20a%20clipped,fintech.%5B6%5D) 🔮
 
@@ -61,7 +62,6 @@ Comparing [My Strategy](https://github.com/KevinGastelum/MyQuantsFinance/blob/ma
 <img src="data\quant_strat_results.png">
 
 <!--  Share plot images -->
-<!--  List Indicaors Block Code -->
 
 <!-- risk management, portfolio optimization, profits, backtest,
 Help assess risk/return profit of portfolio ,
@@ -69,26 +69,27 @@ size, value, profitability
 -->
 
 <!--
- 📊
- 🛒
- ⚖️
- 🔊
- -->
-
-<!--
 
 NOTES:
-Identify what indicators we want to
+List indicators I want to
 update Mid Tier Strats
 
 
--- BASIC:
+
+-- AI
+AI ASSISTANT - Auto GPT - Ollama - Litellm - Mistral
+https://www.youtube.com/watch?v=4ZqJSfV4818&pp=ygUOYXV0b2dlbiBzdHVkaW8%3D
+
+https://www.youtube.com/watch?v=mUEFwUU0IfE&pp=ygUOYXV0b2dlbiBzdHVkaW8%3D
+
+
+-- INDICATORS:
 ^Bollinger Bands
 ^ATR
 ^Garman-Klass Volatility - particularly useful for assets with significant overnight price movements or markets that are open 24/7
 OBV
 
--- MID
+-- STRATS
 Open Interest
 Order Book
 Liquidation Sniper
@@ -117,7 +118,6 @@ https://arch.readthedocs.io/en/latest/univariate/introduction.html
  -->
 
 <!-- ========================================== -->
-<!-- ========================================== -->
 
 <!--
 SCRIPTS
@@ -144,7 +144,9 @@ pnl_close(in_pos, size, long) ## Checks if we hit profit target or max loss
 bot()
 
 
-FUTURE IDEAS
+FUTURE *
 Print Daily Vol in $ (sum of all big exch) = ((close price * volume) / 1e6 )
 Print time in trade
  -->
+
+<!-- 📊 🛒 ⚖️ 🔊 -->
