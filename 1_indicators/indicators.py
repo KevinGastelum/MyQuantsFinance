@@ -116,7 +116,7 @@ def ask_bid(symbol=symbol):
 ask_bid('BTCUSDT')
 
 
-# =========== SMA - Returns df with sma in  ===========
+# =========== EMA - Returns df with sma in  ===========
 def daily_sma(symbol=symbol, timeframe=timeframe, limit=limit, sma=sma):
 
     print('Starting Indicator...')
