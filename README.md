@@ -33,7 +33,7 @@ Key Terms:
 
 <!-- Garman-Klass Volatility, ATR, Dollar Volume-->
 
-1. **[EMA](https://github.com/KevinGastelum/MyQuantsFinance/blob/35a85f7680a20d043c351e17316f240927c54b63/1_indicators/indicators.py#L119)** (Exponential Moving Average) - Weighted moving average used for trend identification 📉.
+1. **[EMA]()** (Exponential Moving Average) - Weighted moving average used for trend identification 📉.
 2. **[RSI](https://github.com/KevinGastelum/MyQuantsFinance/blob/7ff0b32cc68e3cbbc401769fcd3fda117dc62380/1_indicators/indicators.py#L14)** (Relative Strength Index) - Momentum oscillator identifying overbought or oversold conditions 🔴🟢.
 3. **[VWAP](https://github.com/KevinGastelum/MyQuantsFinance/blob/fa33cae78d44d042aba350a1dfe1def684cc7e87/1_indicators/indicators.py#L57)** (Volume Weighted Average Price) - Average price based on volume and price 🔍.
 4. **[MACD](https://github.com/KevinGastelum/MyQuantsFinance/blob/7ff0b32cc68e3cbbc401769fcd3fda117dc62380/1_indicators/indicators.py#L43)** (Moving Avg Convergence Divergence) - Uses two moving avgs to identfy momentum and revrsal points.
