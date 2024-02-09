@@ -2,7 +2,7 @@
 
 _"A Quant, or Quantitative Analyst, embodies the fusion of finance and technology, leveraging mathematical, statistical, and computational techniques to decode the complexities of financial markets."_
 
-<!-- The following is a brief summary of what's needed to know about the Financial Market in order to succeed as a trader. The different types of trading and strategies involved in FinTech. -->
+<!-- The following is a brief summary of what's needed to know about the Financial Market in order to succeed as a trader in FinTech. -->
 
 ## Becoming a Quant ⚖️
 
@@ -10,22 +10,22 @@ _"A Quant, or Quantitative Analyst, embodies the fusion of finance and technolog
 
 I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades but mastering these allows you to identify Market Trend (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) that leverage these insights to automize spotting entry/exit points, risk/returns, breakouts, reversals, and profits. Before executing any trade live a backtest is needed to ensure a [Profitable Strategy](#profitable-quant-strategy-including-results)
 
-<!-- portfolio optimizations -->
 <!-- AI ASSISTANT - Auto GPT - Ollama - Litellm - Mistral-->
+<!-- portfolio optimizations -->
 
 ## Demistifying the Financial Market [(FinTech)](https://en.wikipedia.org/wiki/Fintech#:~:text=Fintech%2C%20a%20clipped,fintech.%5B6%5D) 🔮
 
-<!-- Learning about FinTech can be frustrating 😤, it's littered with complex terms designed to confuse you and scare you away. Those who do manage to navigate through the jargon, are faced with the daunting task of competing against the Market Maker i.e., Financial Institutions, Large Banks, and Firms 🏦💸. -->
+<!-- Market Maker i.e., Financial Institutions, Large Banks, and Firms 🏦💸. -->
 
 Key Terms:
 
+- **Assets** - Equities (Fancy name for Stocks), Commodities, Cryptocurrencies 📉📈
+- **Liquidity** (Fancy way of saying Funds) 💧
 - **Derivatives** - AKA Options | Futures | Perpetuals 📈 - used to trade with margin.
 - **Margin/Leverage** - Many exchanges allow you to borrow funds to execute trades, with the risk of being liquidated, this occurs once your available liquidity runs out 💰.
   <br> $1,000 with 10x margin = $10,000 (CAUTION ⚠️ this also means you risk losing money 10x faster)
-- **Liquidity** (Fancy way of saying Funds) 💧
-- **Assets** - Equities (Fancy name for Stocks), Commodities, Cryptocurrencies 📉📈
 
-<!-- we will build a Backtesting script to test our results 🔄 -->
+<!-- build a Backtesting script to test our results 🔄 -->
 
 # Quant Trading 🧠💼
 
