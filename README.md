@@ -8,7 +8,7 @@ _"A Quant, or Quantitative Analyst, embodies the fusion of finance and technolog
 
 <!-- Knowing the basics is essential in everything, but especially when developing a winning strategy.  -->
 
-I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades but mastering these allows you to identify Market Trend (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) that leverage these insights to automize spotting entry/exit points, risk/returns, breakouts, reversals, and profits. Before executing any trade live a backtest is needed to ensure a [Profitable Strategy](#profitable-quant-strategy-including-results)
+I'll begin by coding the [Basic Indicators](#basic-indicators) listed below. These indicators have been used for decades but mastering these allows you to identify Market Trend (downtrend or uptrend), Supply and Demand zones (areas where most people bought or sold), Volume, and Volatility. From there I'll focus on creating [Trading Strategies](#trading-strategies) that leverage these insights to automize spotting entry/exit points, risk/returns, breakouts, reversals, and profits. Before executing any trade live, a backtest is needed to ensure a [Profitable Strategy](#profitable-quant-strategy-including-results)
 
 <!-- AI ASSISTANT - Auto GPT - Ollama - Litellm - Mistral-->
 <!-- portfolio optimizations -->
