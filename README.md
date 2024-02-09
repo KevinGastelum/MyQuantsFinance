@@ -61,6 +61,10 @@ Key Terms:
 Comparing [My Strategy](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_garch.py) vs Simply holding S&P500
 <img src="data\quant_strat_results.png">
 
+# Modern AI Assistant
+
+Booting up LLM
+
 <!--  Share plot images -->
 
 <!-- risk management, portfolio optimization, profits, backtest,
