@@ -54,7 +54,7 @@ def moving_average_convergence_divergence(data, length=20):
 # print(df)
 
 
-# Dollar Volume - Price of stock * Volume to obtain its Market Cap
+# VWAP - Dollar Volume - Price of stock * Volume to obtain its Market Cap
 def dollar_volume(data):
     dv = (data['adj close'] * data['volume']) / 1e6
     return dv
