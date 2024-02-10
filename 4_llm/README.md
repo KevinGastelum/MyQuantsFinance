@@ -11,10 +11,10 @@ LLMs - We can choose from Mistral, LLAMA2, GPT, Vicuna, Orca
 <!--
 
 Sample:
-Build llm that specializes in Quantitative analysis and FinTech, automize research, provides
+Build llm that specializes in Quantitative analysis and FinTech, automize research multiple docs, provides auotametaded backtesting
 
 Prompt:
-
+"You are the best Quantitative Analyst in all the world, in fact the best Quant ever known to man, with that in mind please answer the prompts. Take into consideration the research articles you are trained on"
 
 
 INSTRUCTIONS
