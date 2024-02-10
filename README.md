@@ -65,7 +65,7 @@ Comparing [My Strategy](https://github.com/KevinGastelum/MyQuantsFinance/blob/ma
 
 Building LLM locally to specialize in FinTech, automize analyzing research articles, data, and backtesting strategies.
 
-[Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e AI Quant Research assistant
+[Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e., AI Quant Research assistant
 
 ```bash
 pip install autogenstudio
@@ -85,6 +85,8 @@ ollama run mistral # Download & installs Mistral LLM locally ~4gb size file
 pip install litellm
 litellm --model ollama/mistral # Launches Mistral LLM locally
 ```
+
+<!-- Running locally provides a cheap alternative to calling OpenAI API, -->
 
 <!--  Share plot images -->
 
