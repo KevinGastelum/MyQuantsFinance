@@ -2,33 +2,33 @@ import ccxt
 import json
 import pandas as pd
 import numpy as np
-import pandas_ta
+import pandas_ta # DONT NEED
 import os
 from datetime import date, datetime, timezone, tzinfo
 import time, schedule
 from dotenv import load_dotenv
 load_dotenv()
 
-bybit = ccxt.bybit({
+bybit = ccxt.phemex({ # Add exchange function
   'enableRateLimit': True,
-  'apiKey': os.getenv('BYBT_KEY'),
-  'secret': os.getenv('BYBT_SECRET')
-})
-# print(bybit.fetch_balance())
+  'apiKey': os.getenv('PHMX_KEY'), # Add Exchange keys
+  'secret': os.getenv('PHMX_SECRET')
+}) # print(bybit.fetch_balance())
 
-# Define Parameters
-symbol = 'APEUSDT'
+symbol = 'APEUSDT' # Define Parameters below
+index_position = 1 # Change based on the asset
 pos_size = 100
 params = {'timeInForce': 'PostOnly',}
 target = 35
 max_loss = -55
 vol_decimal = .4
 
-# Dataframe param
+# Dataframe parameters
 timeframe = '4h'
 limit = 100
 ema = 20
 
+#
 # ======== Ask or Bid function ========
 def ask_bid(symbol=symbol):
 
@@ -40,11 +40,11 @@ def ask_bid(symbol=symbol):
     print(f'This is the ask price for {symbol} {ask}')
 
     return ask, bid # ask_bid()[0] = ask, [1] = bid
-ask_bid('BTCUSDT')
+# ask_bid('BTCUSDT')
 
 
 # =========== EMA - Exponential Moving Average  ===========
-def daily_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
+def df_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
 
     print('Starting Indicator...')
 
@@ -65,4 +65,38 @@ def daily_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
     print(df_ema)
 
     return df_ema
-daily_ema('BTCUSDT', '1h', 500, 200)
+# df_ema('BTCUSDT', '1h', 500, 200)
+
+# =========== Open Positions (open_positions, openpos_bool, openpos_size, long)  ===========
+def open_positions(index_position=index_position):
+    params = {'type': 'swap', 'code': 'USD'}
+    bybt_bal = bybit.fetch_balance(params=params)
+    open_positions = bybt_bal['info']['data']['positions']
+    # print(open_positions)
+
+    openpos_side = open_positions[index_position]['side'] # btc [3] [0] = doge, [1] ape
+    openpos_size = open_positions[index_position]['size']
+    # print(open_positions)
+
+    if openpos_side == ('Buy'):
+        openpos_bool = True
+        long = True
+    elif openpos_side == ('Sell'):
+      openpos_bool = True
+      long = False
+    else:
+        openpos_bool = False
+        long = None
+
+    print(f'Open_positions... | openpos_bool {openpos_bool} | openpos_size {openpos_size} | long {long}')
+
+    return open_positions, openpos_bool, openpos_size, long
+
+open_positions()
+
+
+
+
+
+
+
