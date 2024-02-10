@@ -69,13 +69,16 @@ Building LLM locally to specialize in FinTech, automize analyzing research artic
 
 ```bash
 pip install autogenstudio
-# Launch locally
-ui --port 8081
+ui --port 8081 # After running this command you should be able to access AutoGenStudio in your localhost
 ```
+
+[Ollama](https://github.com/ollama/ollama) - Allows you to download and run LLMs locally.
 
 ```bash
 pip install ollama
 ```
+
+[LiteLLM](https://litellm.ai/) - Provides embeddings, error handling, chat completion, function calling
 
 ```bash
 pip install litellm
