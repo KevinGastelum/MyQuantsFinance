@@ -16,7 +16,8 @@ bybit = ccxt.phemex({ # Add exchange function
 }) # print(bybit.fetch_balance())
 
 symbol = 'APEUSDT' # Define Parameters below
-index_position = 1 # Change based on the asset
+index_pos = 1 # Change based on the asset
+
 pos_size = 100
 params = {'timeInForce': 'PostOnly',}
 target = 35
@@ -68,14 +69,16 @@ def df_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
 # df_ema('BTCUSDT', '1h', 500, 200)
 
 # =========== Open Positions (open_positions, openpos_bool, openpos_size, long)  ===========
-def open_positions(index_position=index_position):
+# Figure out a way to sort through json and assign an index
+  # Make a function that lopps through Dictionary and brings only specific coin
+def open_positions(index_pos=index_pos):
     params = {'type': 'swap', 'code': 'USD'}
     bybt_bal = bybit.fetch_balance(params=params)
     open_positions = bybt_bal['info']['data']['positions']
-    # print(open_positions)
+    print(open_positions)
 
-    openpos_side = open_positions[index_position]['side'] # btc [3] [0] = doge, [1] ape
-    openpos_size = open_positions[index_position]['size']
+    openpos_side = open_positions[index_pos]['side'] # btc [3] [0] = doge, [1] ape
+    openpos_size = open_positions[index_pos]['size']
     # print(open_positions)
 
     if openpos_side == ('Buy'):
@@ -91,12 +94,48 @@ def open_positions(index_position=index_position):
     print(f'Open_positions... | openpos_bool {openpos_bool} | openpos_size {openpos_size} | long {long}')
 
     return open_positions, openpos_bool, openpos_size, long
+# open_positions()
 
-open_positions()
+#
+# =========== Open Positions (open_positions, openpos_bool, openpos_size, long)  ===========
+def kill_switch():
+    
+    print('Starting the Kill Switch...')
+    openposi = open_positions()[1] # openpos_bool = True or False
+    long = open_positions()[3] # long = True or False
+    kill_size = open_positions()[2] # openpos_size =  Size thats open
 
+    print(f'openposi {openposi}, long {long}, size {kill_size}')
 
+    while openposi == True:
+        
+        print('Starting kill switch loop til limit fill...')
+        temp_df = pd.DataFrame()
+        print('Creating temp df')
 
+        bybit.cancel_all_orders(symbol)
+        openposi = open_positions()[1]
+        long = open_positions()[3]
+        long = open_positions()[3]
+        kill_size = open_positions()[2]
+        kill_size = int(kill_size)
 
+        ask = ask_bid()[0]
+        bid = ask_bid()[1]
 
+        if long == False:
+            bybit.create_limit_buy_orders(symbol, kill_size, bid, params)
+            print(f'Just made a BUY to CLOSE order of {kill_size} {symbol}, at ${bid}')
+            print('Sleeping for 30secs to see if it fills...')
+            time.sleep(30)
+        elif long == True:
+            bybit.create_limit_buy_orders(symbol, kill_size, bid, params)
+            print(f'Just made a SELL to CLOSE order of {kill_size} {symbol}, at ${ask}')
+            print('Sleeping for 30secs to see if it fills...')
+            time.sleep(30)
+        else:
+            print('+++++++ SOMETHING I DIDNT EXPECT IN KILL SWITCH FUNCTINO')
+
+        openposi = open_positions()[1]
 
 
