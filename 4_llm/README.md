@@ -9,6 +9,8 @@
 LLMs - We can choose from Mistral, LLAMA2, GPT, Vicuna, Orca
 
 <!--
+Autogen Tutrial
+https://www.youtube.com/watch?v=mUEFwUU0IfE
 
 Sample:
 Build llm that specializes in Quantitative analysis and FinTech, automize research multiple docs, provides auotametaded backtesting
