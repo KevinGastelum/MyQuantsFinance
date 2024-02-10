@@ -4,9 +4,9 @@
 
 [Ollama](https://github.com/ollama/ollama) - Allows you to download and run LLMs locally.
 
-[LitLLM](https://litellm.ai/) - Provides embeddings, error handling,
+[LitLLM](https://litellm.ai/) - Provides embeddings, error handling, chat completion, function calling
 
-LLM - We can choose from Mistral, LLAMA2, GPT
+LLMs - We can choose from Mistral, LLAMA2, GPT, Vicuna, Orca
 
 <!-- Initialize AutoGen in Docker
 
