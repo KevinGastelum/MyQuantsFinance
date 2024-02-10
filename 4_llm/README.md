@@ -8,7 +8,17 @@
 
 LLMs - We can choose from Mistral, LLAMA2, GPT, Vicuna, Orca
 
-<!-- Initialize AutoGen in Docker
+<!--
+
+Sample:
+Build llm that specializes in Quantitative analysis and FinTech, automize research, provides
+
+Prompt:
+
+
+
+INSTRUCTIONS
+Initialize AutoGen in Docker
 
 -- Download Autogen docker img
 docker build -f .devcontainer/full/Dockerfile -t autogen_full_img https://github.com/microsoft/autogen.git

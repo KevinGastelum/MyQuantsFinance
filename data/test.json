@@ -1,6 +1,6 @@
-// fetch_balance() when called outputs the follwing Phmx
 [
   {
+    "FUNCTION_NAME": "fetch_balance()",
     "userID": "REDACTED",
     "accountID": "REDACTED",
     "symbol": "SOLUSD",
