@@ -98,7 +98,7 @@ def open_positions(index_pos=index_pos):
 
 #
 # =========== Open Positions (open_positions, openpos_bool, openpos_size, long)  ===========
-def kill_switch():
+def kill_switch(symbol=symbol):
     
     print('Starting the Kill Switch...')
     openposi = open_positions()[1] # openpos_bool = True or False
@@ -116,20 +116,19 @@ def kill_switch():
         bybit.cancel_all_orders(symbol)
         openposi = open_positions()[1]
         long = open_positions()[3]
-        long = open_positions()[3]
         kill_size = open_positions()[2]
         kill_size = int(kill_size)
 
-        ask = ask_bid()[0]
-        bid = ask_bid()[1]
+        ask = ask_bid(symbol)[0]
+        bid = ask_bid(symbol)[1]
 
         if long == False:
-            bybit.create_limit_buy_orders(symbol, kill_size, bid, params)
+            # bybit.create_limit_buy_orders(symbol, kill_size, bid, params)
             print(f'Just made a BUY to CLOSE order of {kill_size} {symbol}, at ${bid}')
             print('Sleeping for 30secs to see if it fills...')
             time.sleep(30)
         elif long == True:
-            bybit.create_limit_buy_orders(symbol, kill_size, bid, params)
+            # bybit.create_limit_buy_orders(symbol, kill_size, bid, params)
             print(f'Just made a SELL to CLOSE order of {kill_size} {symbol}, at ${ask}')
             print('Sleeping for 30secs to see if it fills...')
             time.sleep(30)
@@ -137,5 +136,5 @@ def kill_switch():
             print('+++++++ SOMETHING I DIDNT EXPECT IN KILL SWITCH FUNCTINO')
 
         openposi = open_positions()[1]
-
+kill_switch()
 
