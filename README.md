@@ -63,7 +63,7 @@ Comparing [My Strategy](https://github.com/KevinGastelum/MyQuantsFinance/blob/ma
 
 # Modern AI Assistant
 
-Booting up LLM
+Booting up LLM locally to specialize in FinTech, automize analyzing research articles, and automize backtesting strategies.
 
 <!--  Share plot images -->
 
