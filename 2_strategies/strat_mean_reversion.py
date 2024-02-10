@@ -25,7 +25,7 @@ print(bybit.fetch_balance())
 
 
 '''
-MEAN REVERSION ---- 1
+--------------- 1 - MEAN REVERSION -------------
 
 NICE FUNCS -- nice_funcs py 1.5hr May17, 22  1yr
 https://www.youtube.com/watch?v=bD2T-R__Gj0
@@ -67,7 +67,7 @@ https://www.youtube.com/watch?v=A-iYBnGpM7I
 
 
 
-BACKTESTING ---- 2
+--------------- 2 - BACKTESTING -------------------
 
 GPT BCKTST TRAD STRAT -Jan1, 23 - 1-9-bt py - 1yr ago
 https://www.youtube.com/watch?v=73XcFcBic50
@@ -77,6 +77,20 @@ https://www.youtube.com/watch?v=73XcFcBic50
 https://www.youtube.com/watch?v=_gGdh6S6fvc
 
 
+
+-------- 3 - AI TRADING ASSISTANTS BY MOON DEV  ------
+
+OPENAI ASSIST A-Z -- ai_trader.py 2 -2.2hr Nov19,23 2mo
+https://www.youtube.com/watch?v=uhBG9IYNKb0
+
+OPENAI 62 STRAT -- 3hr Dec3, 23 1mo
+https://www.youtube.com/watch?v=49qaGQxhls8
+
+AGI TRADER -- agi.py ai14.py 3hr Dec5, 23 1mo
+https://www.youtube.com/watch?v=KFzeKDOfh9M
+
+100 AI IS DOI JOB- ai15_onefile - Dec12, 23 - 5hrs - 1mo
+https://www.youtube.com/watch?v=_gGdh6S6fvc
 
 
 '''
