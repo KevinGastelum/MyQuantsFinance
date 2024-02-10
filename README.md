@@ -83,6 +83,7 @@ ollama run mistral # Download & installs Mistral LLM locally ~4gb size file
 
 ```bash
 pip install litellm
+litellm --model ollama/mistral # Launches Mistral LLM locally
 ```
 
 <!--  Share plot images -->
