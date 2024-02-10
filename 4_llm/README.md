@@ -1,9 +1,12 @@
 # Autogen AI Assistant
 
-Autogen -
+Autogen - Create personalized agents that specialize in specific task i.e AI coding assistant
 
-LitLLM
-Ollama
+LitLLM - https://litellm.ai/
+
+Ollama - Allows you to quickly download LLMs locally
+
+LLM - We can choose from Mistral, LLAMA2,
 
 <!-- Initialize AutoGen in Docker
 
