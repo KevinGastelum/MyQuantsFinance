@@ -4,7 +4,7 @@
 
 [Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e AI coding assistant
 
-[LitLLM](https://litellm.ai/) - Provides embeddings, error handling, chat completion, function calling
+[LiteLLM](https://litellm.ai/) - Provides embeddings, error handling, chat completion, function calling
 
 LLMs - We can choose from Mistral, LLAMA2, GPT, Vicuna, Orca
 
