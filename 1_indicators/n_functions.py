@@ -44,6 +44,7 @@ def ask_bid(symbol=symbol):
 # ask_bid('BTCUSDT')
 
 
+#
 # =========== EMA - Exponential Moving Average  ===========
 def df_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
 
@@ -68,9 +69,10 @@ def df_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
     return df_ema
 # df_ema('BTCUSDT', '1h', 500, 200)
 
+
+#
 # =========== Open Positions (open_positions, openpos_bool, openpos_size, long)  ===========
-# Figure out a way to sort through json and assign an index
-  # Make a function that lopps through Dictionary and brings only specific coin
+# Figure out a way to sort through json and assign an index && Make a function that lopps through Dictionary and brings only specific coin
 def open_positions(symbol=symbol):
 
     # What is the position index for my symbol/ticker
@@ -80,8 +82,10 @@ def open_positions(symbol=symbol):
         index_pos = 1
     elif symbol == 'ETHUSD':
         index_pos = 2
-    elif symbol == 'DOGEUSD':
+    elif symbol == 'SOLUSD':
         index_pos = 0
+    else:
+        index_pos = None
 
     params = {'type': 'swap', 'code': 'USD'}
     bybt_bal = bybit.fetch_balance(params=params)
@@ -102,19 +106,20 @@ def open_positions(symbol=symbol):
         openpos_bool = False
         long = None
 
-    # print(f'Open_positions... | openpos_bool {openpos_bool} | openpos_size {openpos_size} | long {long}')
+    print(f'Open_positions... | openpos_bool {openpos_bool} | openpos_size {openpos_size} | long {long}')
 
     return open_positions, openpos_bool, openpos_size, long
 # open_positions()
 
 #
 # =========== Open Positions (open_positions, openpos_bool, openpos_size, long)  ===========
+# Kill switch: pass in (symbol) if no symbol just uses default
 def kill_switch(symbol=symbol):
     
-    print('Starting the Kill Switch...')
-    openposi = open_positions()[1] # openpos_bool = True or False
-    long = open_positions()[3] # long = True or False
-    kill_size = open_positions()[2] # openpos_size =  Size thats open
+    print(f'Starting the Kill Switch for {symbol}...')
+    openposi = open_positions(symbol)[1] # openpos_bool = True or False
+    long = open_positions(symbol)[3] # long = True or False
+    kill_size = open_positions(symbol)[2] # openpos_size =  Size thats open
 
     print(f'openposi {openposi}, long {long}, size {kill_size}')
 
@@ -125,9 +130,9 @@ def kill_switch(symbol=symbol):
         print('Creating temp df')
 
         # bybit.cancel_all_orders(symbol)
-        openposi = open_positions()[1]
-        long = open_positions()[3]
-        kill_size = open_positions()[2]
+        openposi = open_positions(symbol)[1]
+        long = open_positions(symbol)[3]
+        kill_size = open_positions(symbol)[2]
         kill_size = int(kill_size)
 
         ask = ask_bid(symbol)[0]
@@ -146,7 +151,6 @@ def kill_switch(symbol=symbol):
         else:
             print('+++++++ SOMETHING I DIDNT EXPECT IN KILL SWITCH FUNCTINO')
 
-        openposi = open_positions()[1]
+        openposi = open_positions(symbol)[1]
 
-kill_switch('uBTCUSD')
 
