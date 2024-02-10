@@ -76,7 +76,7 @@ ui --port 8081 # Access AutoGenStudio in your localhost
 
 ```bash
 pip install ollama
-ollam run mistral # Download & installs Mistral LLM locally ~4gb size file
+ollama run mistral # Download & installs Mistral LLM locally ~4gb size file
 ```
 
 [LiteLLM](https://litellm.ai/) - Provides embeddings, error handling, chat completion, function calling
