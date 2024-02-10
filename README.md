@@ -61,9 +61,9 @@ Key Terms:
 Comparing [My Strategy](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_garch.py) vs Simply holding S&P500
 <img src="data\quant_strat_results.png">
 
-# Modern AI Assistant
+# Quant AI Assistant
 
-Building LLM locally to specialize in FinTech, automize analyzing data, research articles, and backtesting strategies.
+Building LLM locally to specialize in FinTech, automize analyzing research articles, data, and backtesting strategies.
 
 [Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e AI Quant Research assistant
 
