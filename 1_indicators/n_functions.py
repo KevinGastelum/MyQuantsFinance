@@ -1,16 +1,18 @@
-'''
-Second set of indicators and functions for Algo Trading
-'''
-# Load env
+import ccxt
+import json
+import pandas as pd
+import numpy as np
+import pandas_ta
+import os
+from datetime import date, datetime, timezone, tzinfo
+import time, schedule
+from dotenv import load_dotenv
 load_dotenv()
-bybt_key = os.getenv('BYBT_KEY')
-bybt_secret = os.getenv('BYBT_SECRET')
 
-# Test connections to exchange
 bybit = ccxt.bybit({
   'enableRateLimit': True,
-  'apiKey': bybt_key,
-  'secret': bybt_secret
+  'apiKey': os.getenv('BYBT_KEY'),
+  'secret': os.getenv('BYBT_SECRET')
 })
 # print(bybit.fetch_balance())
 
@@ -63,4 +65,4 @@ def daily_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
     print(df_ema)
 
     return df_ema
-# daily_ema('BTCUSDT', '1h', 500, 200)
+daily_ema('BTCUSDT', '1h', 500, 200)
