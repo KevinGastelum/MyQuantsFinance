@@ -67,7 +67,7 @@ https://www.youtube.com/watch?v=A-iYBnGpM7I
 
 
 
---------------- 2 - BACKTESTING -------------------
+--------------- 2 - BACKTESTING -----------------
 
 GPT BCKTST TRAD STRAT -Jan1, 23 - 1-9-bt py - 1yr ago
 https://www.youtube.com/watch?v=73XcFcBic50
