@@ -63,7 +63,23 @@ Comparing [My Strategy](https://github.com/KevinGastelum/MyQuantsFinance/blob/ma
 
 # Modern AI Assistant
 
-Booting up LLM locally to specialize in FinTech, automize analyzing research articles, and automize backtesting strategies.
+Building LLM locally to specialize in FinTech, automize analyzing research articles, and automize backtesting strategies.
+
+[Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e AI coding assistant
+
+```bash
+pip install autogenstudio
+# Launch locally
+ui --port 8081
+```
+
+```bash
+pip install ollama
+```
+
+```bash
+pip install litellm
+```
 
 <!--  Share plot images -->
 
