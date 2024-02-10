@@ -71,11 +71,22 @@ def df_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
 # =========== Open Positions (open_positions, openpos_bool, openpos_size, long)  ===========
 # Figure out a way to sort through json and assign an index
   # Make a function that lopps through Dictionary and brings only specific coin
-def open_positions(index_pos=index_pos):
+def open_positions(symbol=symbol):
+
+    # What is the position index for my symbol/ticker
+    if symbol == 'uBTCUSD':
+        index_pos = 3
+    elif symbol == 'APEUSD':
+        index_pos = 1
+    elif symbol == 'ETHUSD':
+        index_pos = 2
+    elif symbol == 'DOGEUSD':
+        index_pos = 0
+
     params = {'type': 'swap', 'code': 'USD'}
     bybt_bal = bybit.fetch_balance(params=params)
     open_positions = bybt_bal['info']['data']['positions']
-    print(open_positions)
+    # print(open_positions)
 
     openpos_side = open_positions[index_pos]['side'] # btc [3] [0] = doge, [1] ape
     openpos_size = open_positions[index_pos]['size']
@@ -91,7 +102,7 @@ def open_positions(index_pos=index_pos):
         openpos_bool = False
         long = None
 
-    print(f'Open_positions... | openpos_bool {openpos_bool} | openpos_size {openpos_size} | long {long}')
+    # print(f'Open_positions... | openpos_bool {openpos_bool} | openpos_size {openpos_size} | long {long}')
 
     return open_positions, openpos_bool, openpos_size, long
 # open_positions()
@@ -113,7 +124,7 @@ def kill_switch(symbol=symbol):
         temp_df = pd.DataFrame()
         print('Creating temp df')
 
-        bybit.cancel_all_orders(symbol)
+        # bybit.cancel_all_orders(symbol)
         openposi = open_positions()[1]
         long = open_positions()[3]
         kill_size = open_positions()[2]
@@ -136,5 +147,6 @@ def kill_switch(symbol=symbol):
             print('+++++++ SOMETHING I DIDNT EXPECT IN KILL SWITCH FUNCTINO')
 
         openposi = open_positions()[1]
-kill_switch()
+
+kill_switch('uBTCUSD')
 
