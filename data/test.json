@@ -1,4 +1,4 @@
-// fetch_balance() when called gives the follwing
+// fetch_balance() when called outputs the follwing
 [
   {
     "userID": "REDACTED",
