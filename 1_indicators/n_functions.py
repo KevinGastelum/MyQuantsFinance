@@ -15,14 +15,22 @@ bybit = ccxt.phemex({ # Add exchange function
   'secret': os.getenv('PHMX_SECRET')
 }) # print(bybit.fetch_balance())
 
-symbol = 'APEUSDT' # Define Parameters below
+# Define Parameters below
+symbol = 'APEUSDT' 
 index_pos = 1 # Change based on the asset
+
+pause_time = 60 # The pause time between trades
+
+# For volume calculation
+vol_repeat = 11
+vol_time = 5
 
 pos_size = 100
 params = {'timeInForce': 'PostOnly',}
 target = 35
 max_loss = -55
 vol_decimal = .4
+
 
 # Dataframe parameters
 timeframe = '4h'
@@ -111,6 +119,7 @@ def open_positions(symbol=symbol):
     return open_positions, openpos_bool, openpos_size, long
 # open_positions()
 
+
 #
 # =========== Open Positions (open_positions, openpos_bool, openpos_size, long)  ===========
 # Kill switch: pass in (symbol) if no symbol just uses default
@@ -152,5 +161,179 @@ def kill_switch(symbol=symbol):
             print('+++++++ SOMETHING I DIDNT EXPECT IN KILL SWITCH FUNCTINO')
 
         openposi = open_positions(symbol)[1]
+
+
+# Pause in minutes
+# Returns: symbol=symbol, pause_time=pause_time
+def sleep_on_close(symbol=symbol, pause_time=pause_time):
+    
+    '''
+    This function pulls closed orders, then if last close was in last 59min
+    then it sleeps for 1min
+    sincelasttrade = minutes since last trade
+    '''
+
+    closed_orders = bybit.fetch_closed_orders(symbol=symbol)
+    # print(closed_orders)
+
+    for ord in closed_orders[-1::-1]:
+        
+        sincelasttrade = pause_time - 1 # how long we pause
+
+        filled = False
+
+        status = ord['info']['ordStatus']
+        txtime = ord['info']['transactTimeNs']
+        txtime = int(txtime)
+        txtime = round((txtime/1000000000)) # since its in nanoseconds
+        print(f'For {symbol} is the status of the order {status} with epoch {txtime}')
+        print('next iteration...')
+        print('---------')
+
+        if status == 'Filled':
+            print('FOUND the order with the last fill...')
+            print(f'For {symbol} this is the time {txtime} this is the orderstatus {status}')
+            orderbook = bybit.fetch_order_book(symbol)
+            ex_timestamp = orderbook['timestamp'] # in ms
+            ex_timestamp = int(ex_timestamp/1000)
+            print('------- Below is the transaction time then exchange epoch time')
+            print(txtime)
+            print(ex_timestamp)
+
+            time_spread = (ex_timestamp - txtime)/60
+
+            if time_spread < sincelasttrade:
+                # print('Time since last trade is less than time spread')
+                # if in pos is true, put a close order here
+                # if in_pos == True:
+
+                sleepy = round(sincelasttrade-time_spread)*60
+                sleepy_min = sleepy/60
+
+                print(f'The time spread is less than {sincelasttrade} mins its been {time_spread}mins.. so we SLEEP')
+                time.sleep(60)
+
+            else:
+                print(f'Its been {time_spread} mins since last fill so not sleeping, since last trade is {sincelasttrade}')
+            break
+        else:
+            continue
+        
+print(f'Done with the sleep on close function for {symbol}')
+
+def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
+    
+    print('Fetching order book data...')
+
+    df = pd.DataFrame()
+    temp_df = pd.DataFrame()
+
+    ob = bybit.fetch_order_book(symbol)
+    print(ob)
+    bids = ob['bids']
+    asks = ob['asks']
+
+    first_bid = bids[0]
+    first_ask = asks[0]
+
+    bid_vol_list = []
+    ask_vol_list = []
+
+    # if SELL vol > Buy vol AND profit target hit, exit
+
+    # Get last 1 min of volume.. and if sell > buy vol do x
+
+# TODO - Make range a var
+    # repeat == the amont of times it rgoes through the vol process and multiplies by time
+    # repeat_time to calc the time
+    for x in range(repeat):
+        
+        for set in bids:
+        # print(set)
+            price = set[0]
+            vol = set[1]
+            bid_vol_list.append(vol)
+            # print(price)
+            # print(vol)
+
+            # print(bid_vol_list)
+            sum_bidvol = sum(bid_vol_list)
+            # print(sum_bidvol)
+            temp_df['bid_vol'] = [sum_bidvol]
+
+        for set in asks:
+            # print(set)
+            price = set[0] # [40000, 344]
+            vol = set[1]
+            ask_vol_list.append(vol)
+            # print(price)
+            # print(vol)
+
+            sum_askvol = sum(ask_vol_list)
+            temp_df['ask_vol'] = [sum_askvol]
+
+        print(temp_df)
+# TODO - Change sleep to var
+        time.sleep(repeat_time) # Change back to 5 later
+        df = df.append(temp_df)
+        print(df)
+        print(' ')
+        print('---------')
+        print(' ')
+    print(f'Done collecting volume data for bid and asks...')
+    print('Calculating the sums...')
+    total_bidvol = df['bid_vol'].sum()
+    total_askvol = df['ask_vol'].sum()
+    print(f'Last 1m this is total Bid Vol: {total_bidvol} | ask vol: {total_askvol}')
+
+    if total_bidvol > total_askvol:
+        control_dec = (total_askvol/total_bidvol)
+        print(f'Bulls are in control, use regular target')
+        # if bulls are in control use regular target
+        bullish = True
+    else:
+        
+        control_dec = (total_bidvol / total_askvol)
+        print(f'Bears are in control: {control_dec}...')
+        bullish = False
+
+
+    # open_positions() open_positions, openpos_bool, openpos_size, long
+        
+    open_posi = open_positions(symbol)
+    openpos_tf = open_posi[1]
+    long = open_posi[3]
+    print(f'openpos_tf: {openpos_tf} || long: {long}')
+
+    # if target is hit, check book vol
+    # if book vol is < .4.. stay in pos... sleep?
+    # need to check to see if long or short
+
+    if openpos_tf == True:
+        if long == True:
+            print('We are in a long position...')
+            if control_dec < vol_decimal: # vol_decimal set to .4 at top
+                vol_under_dec = True
+                # print('Going to sleep for a min.. since under vol decimal)
+                # time.sleep(6) # Change to 60
+            else:
+                print('Volume is not under dec so setting vol_under_dec to False')
+                vol_under_dec = False
+        else:
+            print('We are in a short position...')
+            if control_dec < vol_decimal: # vol_decimal set to .4 at top
+                vol_under_dec = True
+                # print('Going to sleep for a minute.. since under vol decimal)
+                # sime.sleep(6) # change to 60
+            else:
+                print('Volume is not under dec so setting vol_under_dec to False')
+                vol_under_dec = False
+    else:
+        print('We are not in a position...')
+
+    # when vol_under_dec == FALSE AND target hit, then exit
+    print(vol_under_dec)
+
+    return vol_under_dec
 
 
