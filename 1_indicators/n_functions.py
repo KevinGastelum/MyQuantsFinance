@@ -18,10 +18,8 @@ bybit = ccxt.phemex({ # Add exchange function
 # Define Parameters below
 symbol = 'APEUSDT' 
 index_pos = 1 # Change based on the asset
-
-pause_time = 60 # The pause time between trades
-
-# For volume calculation
+pause_time = 60 # The pause time between trades for Sleep function
+# For Orderbook volume calcs Vol_repeat * vol_time == TIME of volume collection
 vol_repeat = 11
 vol_time = 5
 
@@ -30,7 +28,6 @@ params = {'timeInForce': 'PostOnly',}
 target = 35
 max_loss = -55
 vol_decimal = .4
-
 
 # Dataframe parameters
 timeframe = '4h'
@@ -221,6 +218,7 @@ def sleep_on_close(symbol=symbol, pause_time=pause_time):
         
 print(f'Done with the sleep on close function for {symbol}')
 
+
 def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
     
     print('Fetching order book data...')
@@ -229,7 +227,7 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
     temp_df = pd.DataFrame()
 
     ob = bybit.fetch_order_book(symbol)
-    print(ob)
+    # print(ob)
     bids = ob['bids']
     asks = ob['asks']
 
@@ -246,7 +244,7 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
 # TODO - Make range a var
     # repeat == the amont of times it rgoes through the vol process and multiplies by time
     # repeat_time to calc the time
-    for x in range(repeat):
+    for x in range(vol_repeat):
         
         for set in bids:
         # print(set)
@@ -272,10 +270,10 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
             sum_askvol = sum(ask_vol_list)
             temp_df['ask_vol'] = [sum_askvol]
 
-        print(temp_df)
-# TODO - Change sleep to var
-        time.sleep(repeat_time) # Change back to 5 later
-        df = df.append(temp_df)
+        # print(temp_df)
+# TOD - Change sleep to var
+        time.sleep(vol_time) # Change back to 5 later
+        df = pd.concat([df, temp_df], ignore_index=True) # PREVIOUSLY = df.append(temp_df)
         print(df)
         print(' ')
         print('---------')
@@ -335,5 +333,6 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
     print(vol_under_dec)
 
     return vol_under_dec
-
+# For volume calcs Vol_repeat * vol_time == TIME of volume collection
+ob('uBTC')
 
