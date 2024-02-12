@@ -61,6 +61,11 @@ def dollar_volume(data):
 # df['dollar_volume'] = dollar_volume(df)
 # print(df)
 
+
+
+# Kernel Regression
+
+
 '''
 ====================== EXAMPLE OF USE ======================
 df['garman_klass_vol'] = garman_klass_volatility(df)
