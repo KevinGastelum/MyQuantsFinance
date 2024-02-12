@@ -1,6 +1,6 @@
 # Autogen AI Assistant
 
-[Ollama](https://github.com/ollama/ollama) - Allows you to download and run LLMs locally.
+[Ollama](https://github.com/ollama/ollama) - Allows you to download and run LLMs locally. <!-- curl -fsSL https://ollama.com/install.sh | sh -->
 
 [Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e AI coding assistant
 
