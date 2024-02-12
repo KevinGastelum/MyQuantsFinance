@@ -9,8 +9,10 @@
 LLMs - We can choose from Mistral, LLAMA2, GPT, Vicuna, Orca
 
 <!--
-Autogen Tutrial
+-- Autogen Tutrial
 https://www.youtube.com/watch?v=mUEFwUU0IfE
+-- Initialize AutogenStudio
+autogenstudio ui --port 8081
 
 Sample:
 Build llm that specializes in Quantitative analysis and FinTech, automize research multiple docs, provides auotametaded backtesting
