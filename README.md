@@ -72,7 +72,7 @@ pip install autogenstudio
 autogenstudio ui --port 8081 # Access AutoGenStudio in your localhost
 ```
 
-[Ollama](https://github.com/ollama/ollama) - Allows you to download and run LLMs locally.
+[Ollama](https://github.com/ollama/ollama) - Allows you to download and run LLMs locally. <!-- curl -fsSL https://ollama.com/install.sh | sh -->
 
 ```shell
 pip install ollama
