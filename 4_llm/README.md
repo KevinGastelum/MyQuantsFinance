@@ -31,7 +31,7 @@ docker build -f .devcontainer/full/Dockerfile -t autogen_full_img https://github
 docker run -it -v "$(pwd)":/home/autogen/project autogen_full_img
 
 -- ENTER container
-MSYS_NO_PATHCONV=1 docker exec -it loving_dijkstra /bin/bash
+docker exec -it a282e3193d5e bash
 
 -- START/STOP container
 docker start a282e3193d5e
