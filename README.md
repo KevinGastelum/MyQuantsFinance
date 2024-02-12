@@ -67,7 +67,7 @@ Building LLM locally to specialize in FinTech, automize analyzing research artic
 
 [Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e., AI Quant Research assistant
 
-```bash
+```shell
 pip install autogenstudio
 autogenstudio ui --port 8081 # Access AutoGenStudio in your localhost
 ```
