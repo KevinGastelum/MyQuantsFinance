@@ -74,7 +74,7 @@ autogenstudio ui --port 8081 # Access AutoGenStudio in your localhost
 
 [Ollama](https://github.com/ollama/ollama) - Allows you to download and run LLMs locally.
 
-```bash
+```shell
 pip install ollama
 ollama run mistral # Download & installs Mistral LLM locally ~4gb size file
 ```
