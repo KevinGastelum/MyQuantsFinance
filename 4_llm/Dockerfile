@@ -1,6 +1,5 @@
 FROM python:3.11-slim-bookworm
 
-# Update and install dependencies
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         software-properties-common sudo\
@@ -14,16 +13,22 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER autogen
 WORKDIR /home/autogen
 
-# Set environment variable if needed
-# ENV OPENAI_API_KEY="{OpenAI-API-Key}"
+# Set environment variable
+ENV PATH="/home/autogen/.local/bin:$PATH"
+# Follow the = with your OpenAI API key (no quotes or anything, just OPENAI_API_KEY=sk-lotsOfLettersAndNumbers)
+ENV OPENAI_API_KEY=
 
-# Install Python packages
-RUN pip install --upgrade pip
-RUN pip install pyautogen[teachable,lmm,retrievechat,mathchat,blendsearch] autogenra
-RUN pip install numpy pandas matplotlib seaborn scikit-learn requests urllib3 nltk pillow pytest beautifulsoup4
+# Pre-load popular packages
+RUN pip install pyautogen==0.2.8 autogenstudio==0.0.34a0 numpy pandas matplotlib seaborn scikit-learn requests urllib3 nltk pillow pytest beautifulsoup4 litellm
 
 # Expose port
 EXPOSE 8081
 
-# Start Command
-CMD ["/bin/bash"]
+# Start Command for AutoGen Studio
+CMD ["autogenstudio", "ui", "--host", "0.0.0.0", "--port", "8081"]
+
+# command to build the image:
+    # docker build -t autogenstudio -f Dockerfile.base .
+# command to run the container:
+    # docker run -it --rm -p 8081:8081 --name autogenstudio autogenstudio
+# Access AutoGen Studio at http://localhost:8081 make sure you don't click the 0.0.0.0:8081 link in the terminal, it won't work!

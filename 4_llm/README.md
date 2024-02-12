@@ -11,6 +11,9 @@ LLMs - We can choose from Mistral, LLAMA2, GPT, Vicuna, Orca
 <!--
 -- Autogen Tutrial
 https://www.youtube.com/watch?v=mUEFwUU0IfE
+
+https://blog.finxter.com/how-to-set-up-autogen-studio-with-docker/
+
 -- Initialize AutogenStudio
 autogenstudio ui --port 8081
 
@@ -21,8 +24,7 @@ Prompt:
 "You are the best Quantitative Analyst in all the world, in fact the best Quant ever known to man, with that in mind please answer the prompts. Take into consideration the research articles you are trained on"
 
 
-INSTRUCTIONS
-Initialize AutoGen in Docker
+INSTRUCTIONS: Initializing AutoGen in Docker
 
 -- Download Autogen docker img
 docker build -f .devcontainer/full/Dockerfile -t autogen_full_img https://github.com/microsoft/autogen.git
@@ -37,6 +39,4 @@ docker exec -it a282e3193d5e bash
 docker start a282e3193d5e
 docker stop a282e3193d5e
 docker rm a282e3193d5e
-
-
  -->
