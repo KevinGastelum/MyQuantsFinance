@@ -103,34 +103,27 @@ TODO:
 5. Build Breakout Strat:
 https://www.youtube.com/watch?v=5q6s6n1f8d8&list=PLvzuUVysUFOuoRna8KhschkVVUo2E2g6G&index=19
 
+Lorentzian Classifier
+
 Add AI chat images
 
 
 
-
-
-
-
-
-
-
+===================
 
 -- INDICATORS:
-^Bollinger Bands
-^ATR
-^Garman-Klass Volatility - particularly useful for assets with significant overnight price movements or markets that are open 24/7
+Kernel Regression
+ATR
+Garman-Klass Volatility - particularly useful for assets with significant overnight price movements or markets that are open 24/7
 OBV
-
--- STRATS
-Open Interest
-Order Book
-Liquidation Sniper
 
 -- ADV
 LSTM + GARCH
 Linear Regression
+Open Interest
+Order Book
+Liquidation Sniper
 
-===================
 RISK MANAGEMENT:
 Five Fama-French Factors to asses risk/return
 - Market Risk
