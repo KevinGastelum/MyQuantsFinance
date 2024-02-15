@@ -99,13 +99,14 @@ size, value, profitability
 <!--
 
 TODO:
-
-
+=====================================
+5. Build Breakout Strat:
+https://www.youtube.com/watch?v=5q6s6n1f8d8&list=PLvzuUVysUFOuoRna8KhschkVVUo2E2g6G&index=19
 
 Add AI chat images
 
 
--- AI
+-- AI MoondDec
 AI ASSISTANT - Auto GPT - Ollama - Litellm - Mistral
 https://www.youtube.com/watch?v=4ZqJSfV4818&pp=ygUOYXV0b2dlbiBzdHVkaW8%3D
 
