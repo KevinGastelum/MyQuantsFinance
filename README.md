@@ -99,9 +99,10 @@ size, value, profitability
 <!--
 
 TODO:
-List indicators I want to
-update Mid Tier Strats
 
+
+
+Add AI chat images
 
 
 -- AI
