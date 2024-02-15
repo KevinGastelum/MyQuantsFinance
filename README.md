@@ -98,7 +98,7 @@ size, value, profitability
 
 <!--
 
-NOTES:
+TODO:
 List indicators I want to
 update Mid Tier Strats
 
