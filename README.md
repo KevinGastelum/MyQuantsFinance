@@ -180,11 +180,12 @@ FUTURE *
 Print Daily Vol in $ (sum of all big exch) = ((close price * volume) / 1e6 )
 Print time in trade
 
+📊 🛒 ⚖️ 🔊
+
 ============= MOONDEV ====================
 -- AI MoondDev
 AI ASSISTANT - Auto GPT - Ollama - Litellm - Mistral
 https://www.youtube.com/watch?v=4ZqJSfV4818&pp=ygUOYXV0b2dlbiBzdHVkaW8%3D
 
 https://www.youtube.com/watch?v=mUEFwUU0IfE&pp=ygUOYXV0b2dlbiBzdHVkaW8%3D
-📊 🛒 ⚖️ 🔊
  -->
