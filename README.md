@@ -63,7 +63,7 @@ Comparing [My Strategy](https://github.com/KevinGastelum/MyQuantsFinance/blob/ma
 
 # Quant AI Assistant
 
-Building LLM locally to specialize in FinTech, automize analyzing research articles, data, and backtesting strategies.
+Building LLM locally to specialize in FinTech, automize analyzing research articles, data, and backtest strategies.
 
 [Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e., AI Quant Research assistant
 
