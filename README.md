@@ -113,7 +113,7 @@ Add AI chat images
 
 
 ============= MOONDEV ====================
--- AI MoondDec
+-- AI MoondDev
 AI ASSISTANT - Auto GPT - Ollama - Litellm - Mistral
 https://www.youtube.com/watch?v=4ZqJSfV4818&pp=ygUOYXV0b2dlbiBzdHVkaW8%3D
 
