@@ -98,8 +98,8 @@ class MLTrader(Strategy):
 
     if cash > last_price:
         if self.last_trade == None:
-          news = self.get_sentiment()
-          print(news)
+          probability, snetiment = self.get_sentiment()
+          print(probability, snetiment)
           order = self.create_order(
               self.symbol,
               quantity,
