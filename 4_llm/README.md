@@ -11,8 +11,8 @@ autogenstudio ui --port 8081 # Access AutoGenStudio in your localhost
 
 ```shell
 pip install ollama
-ollama serve # Should run on Localhost:11434
-olla
+ollama serve
+ollama run mistral # Download & installs Mistral LLM locally ~4gb size file
 ```
 
 [LiteLLM](https://litellm.ai/) - Provides embeddings, error handling, chat completion, function calling
@@ -27,8 +27,6 @@ LLMs - We can choose from Mistral, LLAMA2, GPT, Vicuna, Orca
 [Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e., AI Quant Research assistant
 
 [Ollama](https://github.com/ollama/ollama) - Allows you to download and run LLMs locally. <!-- curl -fsSL https://ollama.com/install.sh | sh -->
-
-ma run mistral # Download & installs Mistral LLM locally ~4gb size file
 
 <!--
 -- Autogen Tutrial
