@@ -55,7 +55,7 @@ def estimate_sentiment(news):
 
 
 if __name__ == "__main__":
-    tensor, sentiment = estimate_sentiment(['markets responded negatively to the news!','traders were displeased!'])
+    tensor, sentiment = estimate_sentiment(['markets responded negatively to the news!','traders were pleasently surprised!'])
     print(tensor, sentiment)
     print(torch.cuda.is_available())
 
