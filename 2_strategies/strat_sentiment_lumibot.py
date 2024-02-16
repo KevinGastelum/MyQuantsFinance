@@ -63,7 +63,7 @@ def estimate_sentiment(news):
 
 # Strategy
 class MLTrader(Strategy):
-  def initialize(self, symbol:str="SPY", cash_at_risk:float=.5):
+  def initialize(self, symbol:str="BTCUSD", cash_at_risk:float=.2):
     self.symbol = symbol
     self.sleeptime = "24H" # Adjust SleepTime
     self.last_trade = None
@@ -128,17 +128,17 @@ class MLTrader(Strategy):
 
 
 # Date range && Broker
-start_date = datetime(2023, 12, 15)
+start_date = datetime(2020, 1, 1)
 end_date = datetime(2023, 12, 31)
 broker = Alpaca(ALPACA_CREDS)
 strategy = MLTrader(name='mlstrat', broker=broker,
-                    parameters={"symbol":"SPY",
-                                "cash_at_risk":.5})
+                    parameters={"symbol":"BTCUSD",
+                                "cash_at_risk":.2})
 
 # Backtest
 strategy.backtest(
     YahooDataBacktesting,
     start_date,
     end_date,
-    parameters={"symbol":"SPY", "cash_at_risk":.5}
+    parameters={"symbol":"BTCUSD", "cash_at_risk":.2}
     )
