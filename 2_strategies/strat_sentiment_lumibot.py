@@ -96,19 +96,35 @@ class MLTrader(Strategy):
   def on_trading_iteration(self):
     cash, last_price, quantity = self.position_sizing()
     probability, sentiment = self.get_sentiment()
-
+    # Make sure we have enough funds to exec trade
     if cash > last_price:
-          
-          order = self.create_order(
-              self.symbol,
-              quantity,
-              "buy",
-              type="bracket",
-              take_profit_price=last_price*1.20, # TakeProfit 4 BUY = %20
-              stop_loss_price=last_price*.95 # StopLoss = %5
-          )
-          self.submit_order(order)
-          self.last_trade = "buy"
+        if sentiment == "positive" and probability > .999:
+            if self.last_trade == "sell":
+                  self.sell_all()
+            order = self.create_order(
+                self.symbol,
+                quantity,
+                "buy",
+                type="bracket",
+                take_profit_price=last_price*1.20, # TakeProfit 4 BUY = %20
+                stop_loss_price=last_price*.95 # StopLoss = %5 increase
+            )
+            self.submit_order(order)
+            self.last_trade = "buy"
+        # Negative Sentiment == BUY
+        elif sentiment == "negative" and probability > .999:
+            if self.last_trade == "buy":
+                  self.sell_all()
+            order = self.create_order(
+                self.symbol,
+                quantity,
+                "sell",
+                type="bracket",
+                take_profit_price=last_price*.8, # TakeProfit 4 SELL = %20
+                stop_loss_price=last_price*1.05 # StopLoss = %5 drop
+            )
+            self.submit_order(order)
+            self.last_trade = "sell"
 
 
 # Date range && Broker
