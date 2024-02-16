@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from datetime import datetime
 from math import floor
+import pandas
 from lumibot.strategies.strategy import Strategy
 from lumibot.brokers import Alpaca
 from lumibot.traders import Trader
@@ -68,7 +69,7 @@ class MLTrader(Strategy):
               self.symbol,
               quantity,
               "buy",
-              order="bracket",
+              type="bracket",
               take_profit_price=last_price*1.20, # TakeProfit 4 BUY = %20
               stop_loss_price=last_price*.95 # StopLoss = %5
           )
