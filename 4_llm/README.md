@@ -9,6 +9,12 @@ autogenstudio ui --port 8081 # Access AutoGenStudio in your localhost
 
 [Ollama](https://github.com/ollama/ollama) - Allows you to download and run LLMs locally. <!-- curl -fsSL https://ollama.com/install.sh | sh -->
 
+```shell
+pip install ollama
+ollama serve # Should run on Localhost:11434
+olla
+```
+
 [LiteLLM](https://litellm.ai/) - Provides embeddings, error handling, chat completion, function calling
 
 ```bash
