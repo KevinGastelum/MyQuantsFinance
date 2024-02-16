@@ -22,7 +22,7 @@ pip install litellm
 litellm --model ollama/mistral # Launches Mistral LLM locally
 ```
 
-LLMs - We can choose from Mistral, LLAMA2, GPT, Vicuna, Orca
+LLMs - Popular LLMs to choose from Mistral, LLAMA2, GPT, Vicuna, Orca
 
 <!--
 -- Autogen Tutrial
