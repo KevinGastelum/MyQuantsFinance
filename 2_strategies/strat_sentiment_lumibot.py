@@ -12,10 +12,10 @@ from timedelta import Timedelta
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 from typing import Tuple 
-# import warnings
-# warnings.simplefilter(action="ignore", category=FutureWarning)
 import warnings
-warnings.filterwarnings("ignore", message="The 'unit' keyword in TimedeltaIndex construction is deprecated and will be removed in a future version. Use pd.to_timedelta instead.", category=FutureWarning, module="yfinance.utils")
+warnings.simplefilter(action="ignore", category=FutureWarning)
+# import warnings
+# warnings.filterwarnings("ignore", message="The 'unit' keyword in TimedeltaIndex construction is deprecated and will be removed in a future version. Use pd.to_timedelta instead.", category=FutureWarning, module="yfinance.utils")
 
 
 # Load APIs
@@ -53,11 +53,11 @@ def estimate_sentiment(news):
     else:
         return 0, labels[-1]
 
-
-if __name__ == "__main__":
-    tensor, sentiment = estimate_sentiment(['markets responded positively to the news!','traders were pleasantly surprised!'])
-    print(tensor, sentiment)
-    print(torch.cuda.is_available())
+# Test Sentiment
+# if __name__ == "__main__":
+#     tensor, sentiment = estimate_sentiment(['markets responded positively to the news!','traders were pleasantly surprised!'])
+#     print(tensor, sentiment)
+#     print(torch.cuda.is_available())
 
 
 
@@ -84,11 +84,12 @@ class MLTrader(Strategy):
     x_days_prior = today - Timedelta(days=3) # News outlook days
     return today.strftime('%Y-%m-%d'), x_days_prior.strftime('%Y-%m-%d')
 
-  def get_news(self):
+  def get_sentiment(self):
     today, x_days_prior = self.get_dates()
     news = self.api.get_news(symbol=self.symbol, start=x_days_prior, end=today)
     news = [ev.__dict__["_raw"]["headline"] for ev in news]
-    return news
+    probability, sentiment = estimate_sentiment(news)
+    return probability, sentiment
 
 
 # Initialize Trade order
@@ -97,7 +98,7 @@ class MLTrader(Strategy):
 
     if cash > last_price:
         if self.last_trade == None:
-          news = self.get_news()
+          news = self.get_sentiment()
           print(news)
           order = self.create_order(
               self.symbol,
