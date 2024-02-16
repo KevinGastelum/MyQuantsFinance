@@ -12,8 +12,11 @@ from timedelta import Timedelta
 # from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 from typing import Tuple 
+# import warnings
+# warnings.simplefilter(action="ignore", category=FutureWarning)
 import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", message="The 'unit' keyword in TimedeltaIndex construction is deprecated and will be removed in a future version. Use pd.to_timedelta instead.", category=FutureWarning, module="yfinance.utils")
+
 
 # Load APIs
 load_dotenv()
