@@ -1,6 +1,6 @@
 # Autogen AI Assistant
 
-[Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e AI coding assistant
+[Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e AI Quant Research assistant
 
 ```shell
 pip install autogenstudio
@@ -23,10 +23,6 @@ litellm --model ollama/mistral # Launches Mistral LLM locally
 ```
 
 LLMs - We can choose from Mistral, LLAMA2, GPT, Vicuna, Orca
-
-[Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e., AI Quant Research assistant
-
-[Ollama](https://github.com/ollama/ollama) - Allows you to download and run LLMs locally. <!-- curl -fsSL https://ollama.com/install.sh | sh -->
 
 <!--
 -- Autogen Tutrial
