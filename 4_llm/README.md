@@ -6,7 +6,29 @@
 
 [LiteLLM](https://litellm.ai/) - Provides embeddings, error handling, chat completion, function calling
 
+```bash
+pip install litellm
+litellm --model ollama/mistral # Launches Mistral LLM locally
+```
+
 LLMs - We can choose from Mistral, LLAMA2, GPT, Vicuna, Orca
+
+[Autogen](https://microsoft.github.io/autogen/docs/Getting-Started) - Create personalized agents that specialize in specific task i.e., AI Quant Research assistant
+
+```shell
+pip install autogenstudio
+autogenstudio ui --port 8081 # Access AutoGenStudio in your localhost
+```
+
+[Ollama](https://github.com/ollama/ollama) - Allows you to download and run LLMs locally. <!-- curl -fsSL https://ollama.com/install.sh | sh -->
+
+```shell
+pip install ollama
+ollama serve # Should run on Localhost:11434
+ollama run mistral # Download & installs Mistral LLM locally ~4gb size file
+```
+
+[LiteLLM](https://litellm.ai/) - Provides embeddings, error handling, chat completion, function calling
 
 <!--
 -- Autogen Tutrial
