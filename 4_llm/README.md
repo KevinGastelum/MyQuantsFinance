@@ -30,10 +30,6 @@ LLMs - We can choose from Mistral, LLAMA2, GPT, Vicuna, Orca
 
 ma run mistral # Download & installs Mistral LLM locally ~4gb size file
 
-```
-
-[LiteLLM](https://litellm.ai/) - Provides embeddings, error handling, chat completion, function calling
-
 <!--
 -- Autogen Tutrial
 https://www.youtube.com/watch?v=mUEFwUU0IfE
@@ -66,4 +62,7 @@ docker start a282e3193d5e
 docker stop a282e3193d5e
 docker rm a282e3193d5e
  -->
+
+```
+
 ```
