@@ -95,11 +95,10 @@ class MLTrader(Strategy):
 # Initialize Trade order
   def on_trading_iteration(self):
     cash, last_price, quantity = self.position_sizing()
+    probability, sentiment = self.get_sentiment()
 
     if cash > last_price:
-        if self.last_trade == None:
-          probability, snetiment = self.get_sentiment()
-          print(probability, snetiment)
+          
           order = self.create_order(
               self.symbol,
               quantity,
@@ -112,10 +111,9 @@ class MLTrader(Strategy):
           self.last_trade = "buy"
 
 
-# Date range
+# Date range && Broker
 start_date = datetime(2023, 12, 15)
 end_date = datetime(2023, 12, 31)
-# Broker
 broker = Alpaca(ALPACA_CREDS)
 strategy = MLTrader(name='mlstrat', broker=broker,
                     parameters={"symbol":"SPY",
