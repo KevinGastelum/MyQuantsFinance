@@ -8,7 +8,7 @@ from lumibot.traders import Trader
 from lumibot.backtesting import YahooDataBacktesting
 from alpaca_trade_api import REST
 from timedelta import Timedelta
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+# from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 from typing import Tuple 
 
@@ -68,7 +68,7 @@ class MLTrader(Strategy):
               self.symbol,
               quantity,
               "buy",
-              order_type="bracket",
+              order="bracket",
               take_profit_price=last_price*1.20, # TakeProfit 4 BUY = %20
               stop_loss_price=last_price*.95 # StopLoss = %5
           )
