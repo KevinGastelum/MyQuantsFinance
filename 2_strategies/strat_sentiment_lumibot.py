@@ -12,6 +12,8 @@ from timedelta import Timedelta
 # from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 from typing import Tuple 
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 # Load APIs
 load_dotenv()
