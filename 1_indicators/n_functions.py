@@ -13,7 +13,8 @@ bybit = ccxt.phemex({ # Add exchange function
   'enableRateLimit': True,
   'apiKey': os.getenv('PHMX_KEY'), # Add Exchange keys
   'secret': os.getenv('PHMX_SECRET')
-}) # print(bybit.fetch_balance())
+}) 
+# print(bybit.fetch_balance())
 
 # Define Parameters below
 symbol = 'APEUSDT' 
@@ -80,7 +81,7 @@ def df_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
 # Figure out a way to sort through json and assign an index && Make a function that lopps through Dictionary and brings only specific coin
 def open_positions(symbol=symbol):
 
-    # What is the position index for my symbol/ticker
+    # What is the position index for my symbol/ticker ## LIST YOUR ACTUAL COINS AND INDEX POSITIONS
     if symbol == 'uBTCUSD':
         index_pos = 3
     elif symbol == 'APEUSD':
@@ -221,7 +222,7 @@ print(f'Done with the sleep on close function for {symbol}')
 
 def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
     
-    print('Fetching order book data...')
+    print(f'Fetching order book data for {symbol}...')
 
     df = pd.DataFrame()
     temp_df = pd.DataFrame()
@@ -242,7 +243,7 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
     # Get last 1 min of volume.. and if sell > buy vol do x
 
 # TODO - Make range a var
-    # repeat == the amont of times it rgoes through the vol process and multiplies by time
+    # repeat == the amont of times it rgoes through the vol process and multiplies by repeat time to calc time
     # repeat_time to calc the time
     for x in range(vol_repeat):
         
@@ -282,7 +283,9 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
     print('Calculating the sums...')
     total_bidvol = df['bid_vol'].sum()
     total_askvol = df['ask_vol'].sum()
-    print(f'Last 1m this is total Bid Vol: {total_bidvol} | ask vol: {total_askvol}')
+    seconds = vol_time * vol_repeat
+    mins = seconds / 60
+    print(f'Last {mins}mins for {symbol} this is total Bid Vol: {total_bidvol} | ask vol: {total_askvol}')
 
     if total_bidvol > total_askvol:
         control_dec = (total_askvol/total_bidvol)
@@ -325,7 +328,7 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
                 # sime.sleep(6) # change to 60
             else:
                 print('Volume is not under dec so setting vol_under_dec to False')
-                vol_under_dec = False
+                vol_under_dec = None
     else:
         print('We are not in a position...')
 
@@ -334,5 +337,5 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
 
     return vol_under_dec
 # For volume calcs Vol_repeat * vol_time == TIME of volume collection
-ob('uBTC')
+ob('uBTCUSD', 5, 1)
 
