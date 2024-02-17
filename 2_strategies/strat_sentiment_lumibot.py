@@ -57,7 +57,7 @@ def estimate_sentiment(news):
 
 # Strategy
 class MLTrader(Strategy):
-  def initialize(self, symbol:str="BTC/USD", cash_at_risk:float=.5):
+  def initialize(self, symbol:str="BTC/USDT", cash_at_risk:float=.5):
     self.symbol = symbol
     self.sleeptime = "24H" # Adjust SleepTime
     self.last_trade = None
@@ -129,7 +129,7 @@ start_date = datetime(2020, 1, 1)
 end_date = datetime(2023, 12, 31)
 broker = Alpaca(ALPACA_CREDS)
 strategy = MLTrader(name='mlstrat', broker=broker,
-                    parameters={"symbol":"BTC/USD",
+                    parameters={"symbol":"BTC/USDT",
                                 "cash_at_risk":.5})
 
 # Backtest
