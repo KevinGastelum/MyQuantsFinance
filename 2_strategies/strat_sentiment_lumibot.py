@@ -57,7 +57,7 @@ def estimate_sentiment(news):
 
 # Strategy
 class MLTrader(Strategy):
-  def initialize(self, symbol:str="BTC/USDT", cash_at_risk:float=.5):
+  def initialize(self, symbol:str="BTC-USD", cash_at_risk:float=.5):
     self.symbol = symbol
     self.sleeptime = "24H" # Adjust SleepTime
     self.last_trade = None
@@ -102,7 +102,7 @@ class MLTrader(Strategy):
                 crypto_asset,
                 quantity,
                 "buy",
-                type="bracket",
+                order_type="bracket",
                 take_profit_price=last_price * 1.20, # TakeProfit 4 BUY = %20
                 stop_loss_price=last_price * .95 # StopLoss = %5 increase
             )
@@ -116,7 +116,7 @@ class MLTrader(Strategy):
                 crypto_asset,
                 quantity,
                 "sell",
-                type="bracket",
+                order_type="bracket",
                 take_profit_price=last_price * .8, # TakeProfit 4 SELL = %20
                 stop_loss_price=last_price * 1.05 # StopLoss = %5 drop
             )
@@ -129,7 +129,7 @@ start_date = datetime(2020, 1, 1)
 end_date = datetime(2023, 12, 31)
 broker = Alpaca(ALPACA_CREDS)
 strategy = MLTrader(name='mlstrat', broker=broker,
-                    parameters={"symbol":"BTC/USDT",
+                    parameters={"symbol":"BTC-USD",
                                 "cash_at_risk":.5})
 
 # Backtest
