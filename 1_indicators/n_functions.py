@@ -270,9 +270,8 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
 
             sum_askvol = sum(ask_vol_list)
             temp_df['ask_vol'] = [sum_askvol]
-
         # print(temp_df)
-# TOD - Change sleep to var
+
         time.sleep(vol_time) # Change back to 5 later
         df = pd.concat([df, temp_df], ignore_index=True) # PREVIOUSLY = df.append(temp_df)
         print(df)
@@ -284,7 +283,7 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
     total_bidvol = df['bid_vol'].sum()
     total_askvol = df['ask_vol'].sum()
     seconds = vol_time * vol_repeat
-    mins = seconds / 60
+    mins = round(seconds / 60, 2)
     print(f'Last {mins}mins for {symbol} this is total Bid Vol: {total_bidvol} | ask vol: {total_askvol}')
 
     if total_bidvol > total_askvol:
@@ -298,18 +297,13 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
         print(f'Bears are in control: {control_dec}...')
         bullish = False
 
-
-    # open_positions() open_positions, openpos_bool, openpos_size, long
-        
+    # open_positions() open_positions, openpos_bool, openpos_size, long        
     open_posi = open_positions(symbol)
     openpos_tf = open_posi[1]
     long = open_posi[3]
     print(f'openpos_tf: {openpos_tf} || long: {long}')
 
-    # if target is hit, check book vol
-    # if book vol is < .4.. stay in pos... sleep?
-    # need to check to see if long or short
-
+    # if target is hit, check book vol, if book vol is < .4.. stay in pos... sleep? Need to check to see if long or short
     if openpos_tf == True:
         if long == True:
             print('We are in a long position...')
@@ -337,5 +331,22 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
 
     return vol_under_dec
 # For volume calcs Vol_repeat * vol_time == TIME of volume collection
-ob('uBTCUSD', 5, 1)
+# ob('uBTCUSD', 5, 1)
 
+
+
+# pnl_close() [0] pnlclose and [1] in_pos [2]size [3]long TF
+def pnl_close():
+
+    print('Checking to see if its time to exit...')
+
+    params = {'type':'swap', 'code':'USD'}
+    pos_dict = bybit.fetch_positions(params=params)
+    # print(pos_dict)
+    pos_dict = pos_dict[1] # [3] btc [0] doge, [1] ape
+    side = pos_dict['side']
+    size = pos_dict['contracts']
+    entry_price = float(pos_dict['entry_price'])
+    leverage = float(pos_dict['leveragee'])
+
+    current_price = ask_bid()[1]
