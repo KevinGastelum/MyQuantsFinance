@@ -336,22 +336,112 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
 
 
 # pnl_close() [0] pnlclose and [1] in_pos [2]size [3]long TF
-def pnl_close(symbol=symbol, ):
+def pnl_close(symbol=symbol):
 
     print(f'Checking to see if its time to exit for {symbol}...')
 
     params = {'type':'swap', 'code':'USD'}
     pos_dict = bybit.fetch_positions(params=params)
     # print(pos_dict)
-    pos_dict = pos_dict[1] # [3] btc [0] doge, [1] ape
+
+    index_pos = open_positions(symbol)[4]
+    pos_dict = pos_dict[index_pos] # [3] btc [0] doge, [1] ape
     side = pos_dict['side']
     size = pos_dict['contracts']
     entry_price = float(pos_dict['entryPrice'])
     leverage = float(pos_dict['leveragee'])
 
-    current_price = ask_bid()[1]
+    current_price = ask_bid(symbol)[1]
 
     print(f'side:' {side} | entry_price: {entry_price} | lev: {leverage}'')
     # short or long
+
+    if side == 'long':
+        diff = current_price - entry_price
+        long = True
+    else:
+        diff = entry_price - current_price
+        long = False
+
+    try:
+        perc = round(((diff/entry_price) * leverage), 10)
+    except:
+        perc = 0
+
+    perc = 100 * perc
+    print(f'For {symbol} this is our PNL percentage: {(perc)}%')
+
+    pnlclose = False
+    in_pos = False
+
+    if perc > 0:
+        in_pos = True
+        print('For {symbol} we are in a WINNING position')
+        if perc > target:
+            print('We are NOT in profit & hit target.. checking volume to see if we')
+            pnlclose = True
+            vol_under_dec = ob(symbol) #return TF
+            if vol_under_dec == True:
+                print(f'Volume is UNDER the decimal threshold we set of {vol_decimal} ')
+                time.sleep(30)
+            else:
+                print(f'Starting the kill switch because we HIT our TARGET')
+                # kill_switch()
+        else:
+            print('We have NOT hit our target yet')
+
+    elif perc < 0: # -10, -20
+
+        in_pos = True
+
+        if perc <= max_loss: #under -55, -56
+            print(f'We need to exit now down {perc}... so STARING the kill switch...')
+            kill_switch()
+        else:
+            print(f'We are in a losing position of {perc}... but Max Loss NOT hit')
+
+    else:
+        print('We are not in a position')
+
+    if in_pos == True:
+
+        # if breaks over .8% over 15m sma, then close pos (STOP LOSS)
+
+        # Pull in 15m ema
+        df_f = df_ema(symbol, '15m', 100, 20) # df_ema(symbol, timeframe, limit, ema)
+        # print(df_f)
+        # df_f['ema20_15'] # last value of this
+        last_ema15 = df_f.iloc[-1]['ema{ema}_{timeframe}']
+        last_ema15 = int(last_ema15)
+        print(last_ema15)
+        # pull current bid
+        curr_bid = ask_bid(symbol)[1]
+        curr_bid = int(curr_bid)
+        print(curr_bid)
+
+        sl_val = last_ema15 * 1.008
+        print(sl_val)
+
+# TURN KILL SWITCH ON
+
+        if curr_bid > sl_val:
+            print('Current bid is above stop loss value.. START kill switch...')
+            kill_switch(symbol)
+        else:
+            print('STAYING in position')
+    else:
+        print('We are NOT in position...')
+
+
+
+
+
+
+
+        print('Just finished checking PNL close...')
+
+        return pnlclose, in_pos, size, long
+
+
 
 
