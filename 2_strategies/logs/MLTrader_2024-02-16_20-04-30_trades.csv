@@ -1,0 +1,2 @@
+time,strategy,symbol,side,type,status,multiplier,time_in_force,asset.strike,asset.multiplier,asset.asset_type
+2020-02-03 09:30:00-05:00,MLTrader,SPY,sell,market,new,1,gtc,0.0,1,crypto
