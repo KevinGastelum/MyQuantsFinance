@@ -35,8 +35,9 @@ timeframe = '4h'
 limit = 100
 ema = 20
 
-#
-# ======== Ask or Bid function ========
+
+# ======== Current Bid and Ask function ========
+# Returns: Bid and Ask for Symbol
 def ask_bid(symbol=symbol):
 
     ob = bybit.fetch_order_book(symbol)
@@ -50,8 +51,8 @@ def ask_bid(symbol=symbol):
 # ask_bid('BTCUSDT')
 
 
-#
-# =========== EMA - Exponential Moving Average  ===========
+# =============== EMA - Exponential Moving Average  ==============
+# Returns: Sell or Buy Signal into new df.columns['ema', 'signal']
 def df_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
 
     print('Starting Indicator...')
@@ -61,11 +62,11 @@ def df_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
     df_ema = pd.DataFrame(bars, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
     df_ema['timestamp'] = pd.to_datetime(df_ema['timestamp'], unit='ms')
 
-    # DAILY ema
+    # Define ema
     df_ema[f'ema{ema}_{timeframe}'] = df_ema.close.rolling(ema).mean()
 
     # If bid < the 20 day EMA then = BEARISH, if bid > 20 day EMA = BULLISH
-    bid = ask_bid(symbol)[1]
+    bid = ask_bid(symbol)[1] # [1] = bid
 
     # If ema > bid = SELL, if ema < bid = BUY
     df_ema.loc[df_ema[f'ema{ema}_{timeframe}']>bid, 'signal'] = 'SELL'
@@ -73,13 +74,13 @@ def df_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
     print(df_ema)
 
     return df_ema
-# df_ema('BTCUSDT', '1h', 500, 200)
+df_ema('BTCUSDT', '1h', 500, 200)
 
 
-#
-# =========== Open Positions (open_positions, openpos_bool, openpos_size, long)  ===========
-# Figure out a way to sort through json and assign an index && Make a function that lopps through Dictionary and brings only specific coin
+# ================== Fetches open positions, size, and whether long/short ==================
+# Returns: Open Positions (open_positions, openpos_bool, openpos_size, long, index_position)
 def open_positions(symbol=symbol):
+# TODO: Figure out a way to sort through json and assign an index && Make a function that lopps through Dictionary and brings only specific coin
 
     # What is the position index for my symbol/ticker ## LIST YOUR ACTUAL COINS AND INDEX POSITIONS
     if symbol == 'uBTCUSD':
@@ -114,13 +115,12 @@ def open_positions(symbol=symbol):
 
     print(f'Open_positions... | openpos_bool {openpos_bool} | openpos_size {openpos_size} | long {long}')
 
-    return open_positions, openpos_bool, openpos_size, long
+    return open_positions, openpos_bool, openpos_size, long, index_pos
 # open_positions()
 
 
-#
-# =========== Open Positions (open_positions, openpos_bool, openpos_size, long)  ===========
-# Kill switch: pass in (symbol) if no symbol just uses default
+# ====== Kill switch: pass in (symbol) if no symbol just uses default ======
+# Returns: Open Positions (open_positions, openpos_bool, openpos_size, long)
 def kill_switch(symbol=symbol):
     
     print(f'Starting the Kill Switch for {symbol}...')
@@ -161,8 +161,8 @@ def kill_switch(symbol=symbol):
         openposi = open_positions(symbol)[1]
 
 
-# Pause in minutes
-# Returns: symbol=symbol, pause_time=pause_time
+# ========= After closing an order we want to take a pause ========
+# Returns: symbol=symbol, pause_time=pause_time -- Pause in minutes
 def sleep_on_close(symbol=symbol, pause_time=pause_time):
     
     '''
@@ -194,7 +194,7 @@ def sleep_on_close(symbol=symbol, pause_time=pause_time):
             orderbook = bybit.fetch_order_book(symbol)
             ex_timestamp = orderbook['timestamp'] # in ms
             ex_timestamp = int(ex_timestamp/1000)
-            print('------- Below is the transaction time then exchange epoch time')
+            print('------- Below is the transaction time and EXchange epoch time')
             print(txtime)
             print(ex_timestamp)
 
@@ -216,10 +216,11 @@ def sleep_on_close(symbol=symbol, pause_time=pause_time):
             break
         else:
             continue
-        
 print(f'Done with the sleep on close function for {symbol}')
 
 
+# ============================ Order Book Volume ==================================
+# Returns: Bid/Ask Volume and appends for x iterations -- output Bearish or Bullish
 def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
     
     print(f'Fetching order book data for {symbol}...')
@@ -240,10 +241,9 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
 
     # if SELL vol > Buy vol AND profit target hit, exit
 
-    # Get last 1 min of volume.. and if sell > buy vol do x
+    # Get last x mins of volume.. and if SELL > BUY vol do x
 
-# TODO - Make range a var
-    # repeat == the amont of times it rgoes through the vol process and multiplies by repeat time to calc time
+    # repeat == the amont of times it rgoes through the vol process and multiplies by repeat time
     # repeat_time to calc the time
     for x in range(vol_repeat):
         
@@ -336,9 +336,9 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
 
 
 # pnl_close() [0] pnlclose and [1] in_pos [2]size [3]long TF
-def pnl_close():
+def pnl_close(symbol=symbol, ):
 
-    print('Checking to see if its time to exit...')
+    print(f'Checking to see if its time to exit for {symbol}...')
 
     params = {'type':'swap', 'code':'USD'}
     pos_dict = bybit.fetch_positions(params=params)
@@ -346,7 +346,12 @@ def pnl_close():
     pos_dict = pos_dict[1] # [3] btc [0] doge, [1] ape
     side = pos_dict['side']
     size = pos_dict['contracts']
-    entry_price = float(pos_dict['entry_price'])
+    entry_price = float(pos_dict['entryPrice'])
     leverage = float(pos_dict['leveragee'])
 
     current_price = ask_bid()[1]
+
+    print(f'side:' {side} | entry_price: {entry_price} | lev: {leverage}'')
+    # short or long
+
+
