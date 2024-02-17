@@ -2,7 +2,6 @@ import os
 from dotenv import load_dotenv
 from datetime import datetime
 from math import floor
-import pandas
 from lumibot.strategies.strategy import Strategy
 from lumibot.brokers import Alpaca
 from lumibot.traders import Trader
@@ -15,9 +14,6 @@ import torch
 from typing import Tuple 
 import warnings
 warnings.simplefilter(action="ignore", category=FutureWarning)
-# import warnings
-# warnings.filterwarnings("ignore", message="The 'unit' keyword in TimedeltaIndex construction is deprecated and will be removed in a future version. Use pd.to_timedelta instead.", category=FutureWarning, module="yfinance.utils")
-
 
 # Load APIs
 load_dotenv()
@@ -57,7 +53,7 @@ def estimate_sentiment(news):
 
 # Strategy
 class MLTrader(Strategy):
-  def initialize(self, symbol:str="BTC-USD", cash_at_risk:float=.5):
+  def initialize(self, symbol:str="SPY", cash_at_risk:float=.5):
     self.symbol = symbol
     self.sleeptime = "24H" # Adjust SleepTime
     self.last_trade = None
@@ -90,7 +86,8 @@ class MLTrader(Strategy):
   def on_trading_iteration(self):
     cash, last_price, quantity = self.position_sizing()
     probability, sentiment = self.get_sentiment()
-    crypto_asset = Asset(symbol=self.symbol, asset_type='crypto')
+    # base = Asset(symbol=self.symbol, asset_type='crypto')
+    # quote = Asset("USD", asset_type='crypto')
 
     # Make sure we have enough funds to exec trade
     if cash > last_price:
@@ -98,11 +95,12 @@ class MLTrader(Strategy):
             if self.last_trade == "sell":
                   self.sell_all()
             order = self.create_order( # SELL if Sentiment Negative
-                # self.symbol,
-                crypto_asset,
+                self.symbol,
+                # base,
                 quantity,
                 "buy",
-                order_type="bracket",
+                type="bracket",
+                # quote=quote,
                 take_profit_price=last_price * 1.20, # TakeProfit 4 BUY = %20
                 stop_loss_price=last_price * .95 # StopLoss = %5 increase
             )
@@ -112,11 +110,12 @@ class MLTrader(Strategy):
             if self.last_trade == "buy":
                   self.sell_all()
             order = self.create_order(
-                # self.symbol,
-                crypto_asset,
+                self.symbol,
+                # base,
                 quantity,
                 "sell",
-                order_type="bracket",
+                type="bracket",
+                # quote=quote,
                 take_profit_price=last_price * .8, # TakeProfit 4 SELL = %20
                 stop_loss_price=last_price * 1.05 # StopLoss = %5 drop
             )
@@ -129,7 +128,7 @@ start_date = datetime(2020, 1, 1)
 end_date = datetime(2023, 12, 31)
 broker = Alpaca(ALPACA_CREDS)
 strategy = MLTrader(name='mlstrat', broker=broker,
-                    parameters={"symbol":"BTC-USD",
+                    parameters={"symbol":"SPY",
                                 "cash_at_risk":.5})
 
 # Backtest
@@ -137,5 +136,5 @@ strategy.backtest(
     YahooDataBacktesting,
     start_date,
     end_date,
-    parameters={"symbol":"BTC-USD", "cash_at_risk":.5}
+    parameters={"symbol":"SPY", "cash_at_risk":.5}
     )
