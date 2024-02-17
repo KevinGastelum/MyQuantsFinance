@@ -1,3 +1,0 @@
-time,strategy,symbol,side,type,status,multiplier,time_in_force,asset.strike,asset.multiplier,asset.asset_type,price,filled_quantity,trade_cost
-2023-12-22 09:30:00-05:00,MLTrader,SPY,sell,market,new,1,gtc,0.0,1,stock,,,
-2023-12-22 09:30:00-05:00,MLTrader,SPY,sell,market,fill,1,gtc,0.0,1,stock,473.8599853515625,105,0.0
