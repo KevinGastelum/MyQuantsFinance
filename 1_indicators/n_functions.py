@@ -74,7 +74,7 @@ def df_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
     print(df_ema)
 
     return df_ema
-df_ema('BTCUSDT', '1h', 500, 200)
+# df_ema('BTCUSDT', '1h', 500, 200)
 
 
 # ================== Fetches open positions, size, and whether long/short ==================
@@ -216,7 +216,7 @@ def sleep_on_close(symbol=symbol, pause_time=pause_time):
             break
         else:
             continue
-print(f'Done with the sleep on close function for {symbol}')
+# print(f'Done with the sleep on close function for {symbol}')
 
 
 # ============================ Order Book Volume ==================================
@@ -349,11 +349,11 @@ def pnl_close(symbol=symbol):
     side = pos_dict['side']
     size = pos_dict['contracts']
     entry_price = float(pos_dict['entryPrice'])
-    leverage = float(pos_dict['leveragee'])
+    leverage = float(pos_dict['leverage'])
 
     current_price = ask_bid(symbol)[1]
 
-    print(f'side:' {side} | entry_price: {entry_price} | lev: {leverage}'')
+    print(f'side: {side} | entry_price: {entry_price} | lev: {leverage}')
     # short or long
 
     if side == 'long':
@@ -424,11 +424,11 @@ def pnl_close(symbol=symbol):
 
 # TURN KILL SWITCH ON
 
-        if curr_bid > sl_val:
-            print('Current bid is above stop loss value.. START kill switch...')
-            kill_switch(symbol)
-        else:
-            print('STAYING in position')
+        # if curr_bid > sl_val:
+        #     print('Current bid is above stop loss value.. START kill switch...')
+        #     kill_switch(symbol)
+        # else:
+        #     print('STAYING in position')
     else:
         print('We are NOT in position...')
 
@@ -438,10 +438,12 @@ def pnl_close(symbol=symbol):
 
 
 
-        print('Just finished checking PNL close...')
+        print(f'For {symbol} just finished checking PNL close...')
 
         return pnlclose, in_pos, size, long
+    
+    # open_positions() 
 
 
-
+pnl_close('uBTCUSD')
 
