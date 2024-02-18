@@ -99,19 +99,26 @@ def open_positions(symbol=symbol):
     open_positions = bybt_bal['info']['data']['positions']
     # print(open_positions)
 
-    openpos_side = open_positions[index_pos]['side'] # btc [3] [0] = doge, [1] ape
-    openpos_size = open_positions[index_pos]['size']
-    # print(open_positions)
+    # openpos_side = open_positions[index_pos]['side'] # btc [3] [0] = doge, [1] ape
+    # openpos_size = open_positions[index_pos]['size']
+    if index_pos is not None and index_pos < len(open_positions):
+        openpos_side = open_positions[index_pos]['side']
+        openpos_size = open_positions[index_pos]['size']
+        # print(open_positions)
 
-    if openpos_side == ('Buy'):
-        openpos_bool = True
-        long = True
-    elif openpos_side == ('Sell'):
-      openpos_bool = True
-      long = False
+        if openpos_side == ('Buy'):
+            openpos_bool = True
+            long = True
+        elif openpos_side == ('Sell'):
+            openpos_bool = True
+            long = False
+        else:
+            openpos_bool = False
+            long = None
     else:
         openpos_bool = False
         long = None
+        openpos_size = 0
 
     print(f'Open_positions... | openpos_bool {openpos_bool} | openpos_size {openpos_size} | long {long}')
 
