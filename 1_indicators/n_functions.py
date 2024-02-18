@@ -376,7 +376,7 @@ def pnl_close(symbol=symbol):
 
     if perc > 0:
         in_pos = True
-        print('For {symbol} we are in a WINNING position')
+        print(f'For {symbol} we are in a WINNING position')
         if perc > target:
             print('We are NOT in profit & hit target.. checking volume to see if we')
             pnlclose = True
@@ -385,7 +385,7 @@ def pnl_close(symbol=symbol):
                 print(f'Volume is UNDER the decimal threshold we set of {vol_decimal} ')
                 time.sleep(30)
             else:
-                print(f'Starting the kill switch because we HIT our TARGET')
+                print('Starting the kill switch because we HIT our TARGET')
                 # kill_switch()
         else:
             print('We have NOT hit our target yet')
@@ -411,7 +411,7 @@ def pnl_close(symbol=symbol):
         df_f = df_ema(symbol, '15m', 100, 20) # df_ema(symbol, timeframe, limit, ema)
         # print(df_f)
         # df_f['ema20_15'] # last value of this
-        last_ema15 = df_f.iloc[-1]['ema{ema}_{timeframe}']
+        last_ema15 = df_f.iloc[-1][f'ema{ema}_{timeframe}']
         last_ema15 = int(last_ema15)
         print(last_ema15)
         # pull current bid
@@ -445,5 +445,5 @@ def pnl_close(symbol=symbol):
     # open_positions() 
 
 
-pnl_close('uBTCUSD')
+pnl_close('BTCUSD')
 
