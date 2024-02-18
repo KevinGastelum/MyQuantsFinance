@@ -2,14 +2,16 @@ import pandas as pd
 import numpy as np
 import math
 from enum import IntEnum
-from ta.trend import ema_indicator as EMA, sma_indicator as SMA
 import mplfinance as mpf #pip install mplfinance
+from ta.trend import ema_indicator as EMA, sma_indicator as SMA
 from ta.momentum import rsi as RSI #pip install ta
 from ta.volatility import average_true_range as ATR
 from ta.trend import cci as CCI, adx as ADX, ema_indicator as EMA, sma_indicator as SMA
 from sklearn.preprocessing import MinMaxScaler
 # from advanced_ta import LorentzianClassification
 # https://bitbucket.org/lokiarya/advanced-ta/src/master/advanced_ta/LorentzianClassification/Classifier.py
+
+# TODO add Kernel Regression 
 
 """
 ====================
