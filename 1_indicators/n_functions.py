@@ -17,7 +17,7 @@ bybit = ccxt.phemex({ # Add exchange function
 # print(bybit.fetch_balance())
 
 # Define Parameters below
-symbol = 'APEUSDT' 
+symbol = 'BTCSDT' 
 index_pos = 1 # Change based on the asset
 pause_time = 60 # The pause time between trades for Sleep function
 # For Orderbook volume calcs Vol_repeat * vol_time == TIME of volume collection
@@ -330,7 +330,7 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
 
     return vol_under_dec
 # For volume calcs Vol_repeat * vol_time == TIME of volume collection
-# ob('uBTCUSD', 5, 1)
+# ob('BTCUSDT', 5, 1)
 
 
 # =============== Check if its time for exit ===============
@@ -427,13 +427,6 @@ def pnl_close(symbol=symbol):
         sl_val = last_ema15 * 1.008
         print(sl_val)
 
-# TURN KILL SWITCH ON
-
-        # if curr_bid > sl_val:
-        #     print('Current bid is above stop loss value.. START kill switch...')
-        #     kill_switch(symbol)
-        # else:
-        #     print('STAYING in position')
     else:
         print('We are NOT in position...')
 
@@ -447,5 +440,5 @@ def pnl_close(symbol=symbol):
     
     # open_positions() 
 
-pnl_close('BTCUSDT')
+pnl_close('ETHUSD')
 
