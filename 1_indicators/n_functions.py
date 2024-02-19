@@ -14,6 +14,7 @@ bybit = ccxt.phemex({ # Add exchange function
   'apiKey': os.getenv('PHMX_KEY'), # Add Exchange keys
   'secret': os.getenv('PHMX_SECRET')
 }) 
+
 # print(bybit.fetch_balance())
 
 # Define Parameters below

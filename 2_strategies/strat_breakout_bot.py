@@ -24,18 +24,20 @@ bybit = ccxt.phemex({ # Add exchange function
   'secret': os.getenv('PHMX_SECRET')
 }) 
 # print(bybit.fetch_balance())
+# bybit.set_sandbox_mode(True); # Enable paper trading 
+
 
 symbol = 'uBTCUSD' # Define Parameters below
 index_pos = 1 # Change based on the asset
-pause_time = 60 # The pause time between trades for Sleep function
+pause_time = 10 # The pause time between trades for Sleep function
 # For Orderbook volume calcs Vol_repeat * vol_time == TIME of volume collection
 vol_repeat = 11
 vol_time = 5
 
-pos_size = 100
+pos_size = 10
 params = {'timeInForce': 'PostOnly',}
-target = 35
-max_loss = -55
+target = 9
+max_loss = -8
 vol_decimal = .4
 
 print(n.pnl_close('BTCUSDT'))
