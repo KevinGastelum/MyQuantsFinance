@@ -440,5 +440,5 @@ def pnl_close(symbol=symbol):
     
     # open_positions() 
 
-pnl_close('ETHUSD')
+pnl_close('BTCUSDT')
 
