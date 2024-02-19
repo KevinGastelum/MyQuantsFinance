@@ -410,8 +410,10 @@ def pnl_close(symbol=symbol):
 
         # if breaks over .8% over 15m sma, then close pos (STOP LOSS)
 
-        # Pull in 15m ema
-        df_f = df_ema(symbol, '15m', 100, 20) # df_ema(symbol, timeframe, limit, ema)
+        # INPUT EMA
+        # df_ema(symbol, timeframe, limit, ema)
+        timeframe = '15m'
+        df_f = df_ema(symbol, timeframe, 100, 20) 
         # print(df_f)
         # df_f['ema20_15'] # last value of this
         last_ema15 = df_f.iloc[-1][f'ema{ema}_{timeframe}']
@@ -448,5 +450,5 @@ def pnl_close(symbol=symbol):
     # open_positions() 
 
 
-pnl_close('BTCUSDT')
+pnl_close('uBTCUSDT')
 
