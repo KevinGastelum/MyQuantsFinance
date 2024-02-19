@@ -441,14 +441,11 @@ def pnl_close(symbol=symbol):
 
 
 
-
-
         print(f'For {symbol} just finished checking PNL close...')
 
         return pnlclose, in_pos, size, long
     
     # open_positions() 
 
-
-pnl_close('uBTCUSDT')
+pnl_close('BTCUSDT')
 
