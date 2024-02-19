@@ -344,6 +344,10 @@ def pnl_close(symbol=symbol):
     # print(pos_dict)
 
     index_pos = open_positions(symbol)[1]
+    if index_pos is None:
+        print(f'No open positions found for {symbol}')
+        return False, False, 0, False
+    
     pos_dict = pos_dict[index_pos] # [3] btc [0] doge, [1] ape
     side = pos_dict['side']
     size = pos_dict['contracts']
