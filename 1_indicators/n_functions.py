@@ -82,34 +82,27 @@ def df_ema(symbol=symbol, timeframe=timeframe, limit=limit, ema=ema):
 def open_positions(symbol=symbol):
 # TODO: Figure out a way to sort through json and assign an index && Make a function that lopps through Dictionary and brings only specific coin
 
-    # What is the position index for my symbol/ticker ## LIST YOUR ACTUAL COINS AND INDEX POSITIONS
-    if symbol == 'uBTCUSD':
-        index_pos = 3
-    elif symbol == 'APEUSD':
-        index_pos = 1
-    elif symbol == 'ETHUSD':
-        index_pos = 2
-    elif symbol == 'SOLUSD':
-        index_pos = 0
-    else:
-        index_pos = None
-
+    # What are my open positions
     params = {'type': 'swap', 'code': 'USD'}
     bybt_bal = bybit.fetch_balance(params=params)
     open_positions = bybt_bal['info']['data']['positions']
-    # print(open_positions)
+    print("All symbols in open positions:", [pos['symbol'] for pos in open_positions])
 
-    # openpos_side = open_positions[index_pos]['side'] # btc [3] [0] = doge, [1] ape
-    # openpos_size = open_positions[index_pos]['size']
-    if index_pos is not None and index_pos < len(open_positions):
+    # Find the index of the position that matches the symbol
+    index_pos = None
+    for i, position in enumerate(open_positions):
+        if position['symbol'] == symbol:
+            index_pos = i
+            break
+
+    if index_pos is not None:
         openpos_side = open_positions[index_pos]['side'] # btc [3] [0] = doge, [1] ape
         openpos_size = open_positions[index_pos]['size']
-        # print(open_positions)
 
-        if openpos_side == ('Buy'):
+        if openpos_side == 'Buy':
             openpos_bool = True
             long = True
-        elif openpos_side == ('Sell'):
+        elif openpos_side == 'Sell':
             openpos_bool = True
             long = False
         else:
@@ -119,7 +112,6 @@ def open_positions(symbol=symbol):
         openpos_bool = False
         long = None
         openpos_size = 0
-
     print(f'Open_positions... | openpos_bool {openpos_bool} | openpos_size {openpos_size} | long {long}')
 
     return open_positions, openpos_bool, openpos_size, long, index_pos
@@ -351,7 +343,7 @@ def pnl_close(symbol=symbol):
     pos_dict = bybit.fetch_positions(params=params)
     # print(pos_dict)
 
-    index_pos = open_positions(symbol)[4]
+    index_pos = open_positions(symbol)[1]
     pos_dict = pos_dict[index_pos] # [3] btc [0] doge, [1] ape
     side = pos_dict['side']
     size = pos_dict['contracts']
