@@ -102,7 +102,7 @@ def open_positions(symbol=symbol):
     # openpos_side = open_positions[index_pos]['side'] # btc [3] [0] = doge, [1] ape
     # openpos_size = open_positions[index_pos]['size']
     if index_pos is not None and index_pos < len(open_positions):
-        openpos_side = open_positions[index_pos]['side']
+        openpos_side = open_positions[index_pos]['side'] # btc [3] [0] = doge, [1] ape
         openpos_size = open_positions[index_pos]['size']
         # print(open_positions)
 
