@@ -333,7 +333,7 @@ def ob(symbol=symbol, vol_repeat=vol_repeat, vol_time=vol_time):
 # ob('uBTCUSD', 5, 1)
 
 
-
+# =============== Check if its time for exit ===============
 # pnl_close() [0] pnlclose and [1] in_pos [2]size [3]long TF
 def pnl_close(symbol=symbol):
 
