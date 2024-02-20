@@ -52,7 +52,7 @@ def estimate_sentiment(news):
 
 
 # Strategy
-class MLTrader(Strategy):
+class MLSentiment(Strategy):
   def initialize(self, symbol:str="SPY", cash_at_risk:float=.5):
     self.symbol = symbol
     self.sleeptime = "24H" # Adjust SleepTime
@@ -127,7 +127,7 @@ class MLTrader(Strategy):
 start_date = datetime(2020, 1, 1)
 end_date = datetime(2023, 12, 31)
 broker = Alpaca(ALPACA_CREDS)
-strategy = MLTrader(name='mlstrat', broker=broker,
+strategy = MLSentiment(name='mlsentiment', broker=broker,
                     parameters={"symbol":"SPY",
                                 "cash_at_risk":.5})
 
