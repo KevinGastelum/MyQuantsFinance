@@ -53,7 +53,7 @@ Key Terms:
 
 ### Advanced Trading Strategies:
 
-1. **Sentiment Analysis** - Analyzes market mood through news and social media for trading signals 🗞️💬.
+1. **[Sentiment Analysis](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_sentiment_lumibot.py)** - Analyzes market mood through news and social media for trading signals 🗞️💬.
    <img src="data\MLSentiment_chart.png">
 2. **Machine Learning Models** - Predicts market movements using historical data and algorithms; LSTM, K-Means Clustering 🤖📈. <!-- Linear Regression-->
 3. **Option Strategies** - Employs methods like delta-neutral trading to hedge market movements 🛡️.
