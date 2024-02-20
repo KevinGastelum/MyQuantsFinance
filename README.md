@@ -60,7 +60,7 @@ Key Terms:
 4. **High-Frequency Trading** (HFT) - Executes numerous trades daily to capture small price movements ⚡.
 5. **Market Making** - Provides market liquidity, profiting by looking at the Order book and seeing bid-ask spread to see where price is likely to gravitate to ↔️.
 
-# Profitable Quant Strategy results
+# [Profitable Quant Strategy results](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_sentiment_lumibot.py)
 
 Comparing [My Strategy](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_sentiment_lumibot.py) vs Simply holding S&P500
 <img src="data\MLSentiment_spread.png">
