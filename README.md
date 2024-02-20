@@ -40,7 +40,7 @@ Key Terms:
 5. **[Bollinger Bands](https://github.com/KevinGastelum/MyQuantsFinance/blob/7ff0b32cc68e3cbbc401769fcd3fda117dc62380/1_indicators/indicators.py#L24)** - Used to spot reversals, corrections, and entry/exit points based on Standard deviation of EMAs.
 6. **Fibonacci Retracement** - Uses Fibonacci ratios to indicate potential support or resistance levels 🔢.
 
-### Trading Strategies
+### Trading Strategies:
 
 1. **Mean Reversion** - Assumes prices revert back to the mean and trades against trends 🔁.
 2. **[GARCH](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_garch.py)** - Widely used for forecasting future volatility, risk management, portfolio optimization, and derivative pricing 🏃‍♂️💨.
@@ -51,7 +51,7 @@ Key Terms:
    <!-- <img src="data\MLSentiment_spread.png"> -->
    <!-- 2. **Arbitrage** - Exploits statistical mispricings of assets for profit by analyzing multiple exchanges 💹. -->
 
-### Advanced Trading Strategies
+### Advanced Trading Strategies:
 
 1. **Sentiment Analysis** - Analyzes market mood through news and social media for trading signals 🗞️💬.
    <img src="data\MLSentiment_chart.png">
