@@ -43,7 +43,7 @@ Key Terms:
 ### Trading Strategies:
 
 1. **Mean Reversion** - Assumes prices revert back to the mean and trades against trends 🔁.
-2. **[GARCH](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_garch.py)** - Used for forecasting future volatility, risk management, portfolio optimization, and derivative pricing .
+2. **[GARCH](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_garch.py)** - Used for forecasting future volatility, risk management, portfolio optimization, and derivative pricing 🗞️.
    <img src="data\quant_strat_results.png">
 3. **Pair Trading** - Bets on the convergence/divergence of two similar companies' stock prices 📊.
 4. **Breakout Trading** - Looks for levels or areas that a stock has been unable to move beyond, and waits for it to move beyond those levels 🚪🔓.
@@ -53,7 +53,7 @@ Key Terms:
 
 ### Advanced Trading Strategies:
 
-1. **[Sentiment Analysis](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_sentiment_lumibot.py)** - Analyzes market mood through news and social media for trading signals using FinBert ML🗞️💬.
+1. **[Sentiment Analysis](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_sentiment_lumibot.py)** - Analyzes market mood through news and social media for trading signals using FinBert 💬.
    <img src="data\MLSentiment_chart.png">
 2. **Machine Learning Models** - Predicts market movements using historical data and algorithms; LSTM, K-Means Clustering 🤖📈. <!-- Linear Regression-->
 3. **Option Strategies** - Employs methods like delta-neutral trading to hedge market movements 🛡️.
