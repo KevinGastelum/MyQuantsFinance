@@ -63,7 +63,7 @@ Key Terms:
 Comparing [My Strategy](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_sentiment_lumibot.py) vs Simply holding S&P500
 <img src="data\MLSentiment_spread.png">
 
-# Quant AI Assistant
+# [Quant AI Assistant](https://github.com/KevinGastelum/MyQuantsFinance/tree/main/4_llm)
 
 Building LLM locally to specialize in FinTech, automize analyzing research articles, data, and backtest strategies.
 
