@@ -125,7 +125,7 @@ class MLSentiment(Strategy):
 
 # Date range && Broker
 start_date = datetime(2020, 1, 1)
-end_date = datetime(2023, 12, 31)
+end_date = datetime(2024, 2, 20)
 broker = Alpaca(ALPACA_CREDS)
 strategy = MLSentiment(name='mlsentiment', broker=broker,
                     parameters={"symbol":"SPY",
