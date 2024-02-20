@@ -43,7 +43,8 @@ Key Terms:
 ### Trading Strategies
 
 1. **Mean Reversion** - Assumes prices revert back to the mean and trades against trends 🔁.
-2. **GARCH** - Widely used for forecasting future volatility, risk management, portfolio optimization, and derivative pricing 🏃‍♂️💨.
+2. **[GARCH](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_garch.py)** - Widely used for forecasting future volatility, risk management, portfolio optimization, and derivative pricing 🏃‍♂️💨.
+   <img src="data\quant_strat_results.png">
 3. **Pair Trading** - Bets on the convergence/divergence of two similar companies' stock prices 📊.
 4. **Breakout Trading** - Looks for levels or areas that a stock has been unable to move beyond, and waits for it to move beyond those levels 🚪🔓.
 <!-- 2. **Arbitrage** - Exploits statistical mispricings of assets for profit by analyzing multiple exchanges 💹. -->
@@ -53,13 +54,14 @@ Key Terms:
 1. **Machine Learning Models** - Predicts market movements using historical data and algorithms; LSTM, K-Means Clustering 🤖📈. <!-- Linear Regression-->
 2. **Option Strategies** - Employs methods like delta-neutral trading to hedge market movements 🛡️.
 3. **Sentiment Analysis** - Analyzes market mood through news and social media for trading signals 🗞️💬.
+   <img src="data\MLSentiment_chart.png">
 4. **High-Frequency Trading** (HFT) - Executes numerous trades daily to capture small price movements ⚡.
 5. **Market Making** - Provides market liquidity, profiting by looking at the Order book and seeing bid-ask spread to see where price is likely to gravitate to ↔️.
 
 # Profitable Quant Strategy results
 
-Comparing [My Strategy](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_garch.py) vs Simply holding S&P500
-<img src="data\quant_strat_results.png">
+Comparing [My Strategy](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_sentiment_lumibot.py) vs Simply holding S&P500
+<img src="data\MLSentiment_spread.png">
 
 # Quant AI Assistant
 
