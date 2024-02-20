@@ -43,11 +43,11 @@ Key Terms:
 ### Trading Strategies:
 
 1. **Mean Reversion** - Assumes prices revert back to the mean and trades against trends 🔁.
-2. **[GARCH](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_garch.py)** - Used for forecasting future volatility, risk management, portfolio optimization, and derivative pricing 🏃‍♂️💨.
+2. **[GARCH](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_garch.py)** - Used for forecasting future volatility, risk management, portfolio optimization, and derivative pricing .
    <img src="data\quant_strat_results.png">
 3. **Pair Trading** - Bets on the convergence/divergence of two similar companies' stock prices 📊.
 4. **Breakout Trading** - Looks for levels or areas that a stock has been unable to move beyond, and waits for it to move beyond those levels 🚪🔓.
-5. **[Lorentzian Classifier](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_lorentzian_classifier.py)** - Uses Lorentzian distance metric and KNN algo for price forecasting.
+5. **[Lorentzian Classifier](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_lorentzian_classifier.py)** - Uses Lorentzian distance metric and KNN algo for price forecasting 🏃‍♂️💨.
    <!-- <img src="data\MLSentiment_spread.png"> -->
    <!-- 2. **Arbitrage** - Exploits statistical mispricings of assets for profit by analyzing multiple exchanges 💹. -->
 
