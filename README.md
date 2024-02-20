@@ -47,14 +47,16 @@ Key Terms:
    <img src="data\quant_strat_results.png">
 3. **Pair Trading** - Bets on the convergence/divergence of two similar companies' stock prices 📊.
 4. **Breakout Trading** - Looks for levels or areas that a stock has been unable to move beyond, and waits for it to move beyond those levels 🚪🔓.
-<!-- 2. **Arbitrage** - Exploits statistical mispricings of assets for profit by analyzing multiple exchanges 💹. -->
+5. **[Lorentzian Classifier](https://github.com/KevinGastelum/MyQuantsFinance/blob/main/2_strategies/strat_lorentzian_classifier.py)** - Uses Lorentzian distance metric and KNN algo for price forecasting.
+   <!-- <img src="data\MLSentiment_spread.png"> -->
+   <!-- 2. **Arbitrage** - Exploits statistical mispricings of assets for profit by analyzing multiple exchanges 💹. -->
 
 ### Advanced Trading Strategies
 
-1. **Machine Learning Models** - Predicts market movements using historical data and algorithms; LSTM, K-Means Clustering 🤖📈. <!-- Linear Regression-->
-2. **Option Strategies** - Employs methods like delta-neutral trading to hedge market movements 🛡️.
-3. **Sentiment Analysis** - Analyzes market mood through news and social media for trading signals 🗞️💬.
+1. **Sentiment Analysis** - Analyzes market mood through news and social media for trading signals 🗞️💬.
    <img src="data\MLSentiment_chart.png">
+2. **Machine Learning Models** - Predicts market movements using historical data and algorithms; LSTM, K-Means Clustering 🤖📈. <!-- Linear Regression-->
+3. **Option Strategies** - Employs methods like delta-neutral trading to hedge market movements 🛡️.
 4. **High-Frequency Trading** (HFT) - Executes numerous trades daily to capture small price movements ⚡.
 5. **Market Making** - Provides market liquidity, profiting by looking at the Order book and seeing bid-ask spread to see where price is likely to gravitate to ↔️.
 
