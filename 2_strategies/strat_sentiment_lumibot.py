@@ -123,7 +123,7 @@ class MLSentiment(Strategy):
             self.last_trade = "sell"
 
 
-# Date range && Broker // alpaca == BTCUSD
+# Date range && Broker // Note: alpaca == BTCUSD
 start_date = datetime(2020, 1, 1)
 end_date = datetime(2024, 2, 20)
 broker = Alpaca(ALPACA_CREDS)
@@ -131,7 +131,7 @@ strategy = MLSentiment(name='mlsentiment', broker=broker,
                     parameters={"symbol":"SPY",
                                 "cash_at_risk":.5})
 
-# Backtest      // Note: BTC-USD Yfinance  
+# Backtest      // Note: Yfinance == BTC-USD
 strategy.backtest(
     YahooDataBacktesting,
     start_date,
