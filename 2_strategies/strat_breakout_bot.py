@@ -23,9 +23,8 @@ bybit = ccxt.phemex({ # Add exchange function
   'apiKey': os.getenv('PHMX_KEY'), # Add Exchange keys
   'secret': os.getenv('PHMX_SECRET')
 }) 
-# print(bybit.fetch_balance())
+print(bybit.fetch_balance())
 # bybit.set_sandbox_mode(True); # Enable paper trading 
-print(os.getenv(('PHMX_KEY')))
 
 symbol = 'uBTCUSD' # Define Parameters below
 index_pos = 1 # Change based on the asset
