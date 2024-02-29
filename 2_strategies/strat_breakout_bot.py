@@ -18,12 +18,12 @@ import n_functions as n
 from dotenv import load_dotenv
 load_dotenv()
 
-bybit = ccxt.phemex({ # Update exchange function
+bybit = ccxt.okx({ # Update exchange function
   'enableRateLimit': True,
-  'apiKey': os.getenv('PHMX_KEY'), # Add Exchange keys
-  'secret': os.getenv('PHMX_SECRET')
+  'apiKey': os.getenv('OKX_KEY'), # Add Exchange keys
+  'secret': os.getenv('OKX_SECRET')
 }) 
-print(bybit.fetch_balance())
+# print(bybit.fetchOrderBook('BTC/USDT'))
 # bybit.set_sandbox_mode(True); # Enable paper trading 
 
 symbol = 'BTCUSD' # Define Parameters below
@@ -39,7 +39,7 @@ target = 9
 max_loss = -8
 vol_decimal = .4
 
-print(n.pnl_close('BTCUSDT'))
+print(n.pnl_close('BTC/USDT'))
 
 # Pull in the data
 
