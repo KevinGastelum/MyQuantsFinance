@@ -33,10 +33,18 @@ pause_time = 10 # The pause time between trades for Sleep function
 vol_repeat = 11
 vol_time = 5
 
-pos_size = 10
+pos_size = 10 # 125, 75, 
 params = {'timeInForce': 'PostOnly',}
 target = 9
 max_loss = -8
 vol_decimal = .4
 
 print(n.pnl_close('BTCUSDT'))
+
+# Pull in the data
+
+# Calculate Support & Resistance based on close
+
+# Calc the retest, where we put orders
+
+# Run bot
