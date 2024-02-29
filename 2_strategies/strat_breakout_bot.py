@@ -1,5 +1,5 @@
 ''' ---------------- Breakout Bot By Kevin Gastelum ----------------
-- Calculates using last 3 or 5 days of data
+- Calculates using last 3 oeef days of data
 - Identifies Support and Resistance on 15m
 - Exec trades on the 15m
 - Place order on retest of S/R
@@ -23,11 +23,10 @@ bybit = ccxt.phemex({ # Update exchange function
   'apiKey': os.getenv('PHMX_KEY'), # Add Exchange keys
   'secret': os.getenv('PHMX_SECRET')
 }) 
-# print(bybit.fetch_balance())
+print(bybit.fetch_balance())
 # bybit.set_sandbox_mode(True); # Enable paper trading 
 
-
-symbol = 'uBTCUSD' # Define Parameters below
+symbol = 'BTCUSD' # Define Parameters below
 index_pos = 1 # Change based on the asset
 pause_time = 10 # The pause time between trades for Sleep function
 # For Orderbook volume calcs Vol_repeat * vol_time == TIME of volume collection
@@ -40,4 +39,4 @@ target = 9
 max_loss = -8
 vol_decimal = .4
 
-print(n.pnl_close('BTCUSDT'))
+print(pnl_close('BTCUSDT'))
