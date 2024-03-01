@@ -19,9 +19,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 bybit = ccxt.okx({ # Update exchange function
-  'enableRateLimit': True,
-  'apiKey': os.getenv('OKX_KEY'), # Add Exchange keys
-  'secret': os.getenv('OKX_SECRET')
+  # 'enableRateLimit': True,
+  # 'apiKey': os.getenv('OKX_KEY'), # Add Exchange keys
+  # 'secret': os.getenv('OKX_SECRET')
 }) 
 # print(bybit.fetchOrderBook('BTC/USDT'))
 # bybit.set_sandbox_mode(True); # Enable paper trading 
