@@ -92,5 +92,9 @@ https://www.youtube.com/watch?v=KFzeKDOfh9M
 100 AI IS DOI JOB- ai15_onefile - Dec12, 23 - 5hrs - 1mo
 https://www.youtube.com/watch?v=_gGdh6S6fvc
 
-
+~~~~~~~  
+NEURAL NET TRADING
+TensorFlow Trading Steb by step --  lstm nn price pred
+8mos ago May 11, 2023 -- 511-ml-lstm.p
+https://www.youtube.com/watch?v=hYt6Uy8a1qQ
 '''
