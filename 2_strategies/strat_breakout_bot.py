@@ -27,7 +27,7 @@ bybit = ccxt.okx({ # Update exchange function
 # bybit.set_sandbox_mode(True); # Enable paper trading 
 
 symbol = 'BTCUSD' # Define Parameters below
-index_pos = 1 # Change based on the asset
+index_pos = 1 # Index pos of asset
 pause_time = 10 # The pause time between trades for Sleep function
 # For Orderbook volume calcs Vol_repeat * vol_time == TIME of volume collection
 vol_repeat = 11
