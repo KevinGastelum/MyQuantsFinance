@@ -39,7 +39,7 @@ target = 9
 max_loss = -8
 vol_decimal = .4
 
-# print(n.pnl_close('BTC/USDT'))
+print(n.pnl_close('BTC/USDT'))
 
 # Pull in the data
 
