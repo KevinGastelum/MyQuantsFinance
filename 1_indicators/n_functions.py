@@ -9,7 +9,7 @@ import time, schedule
 from dotenv import load_dotenv
 load_dotenv()
 
-bybit = ccxt.okx({ # Add exchange function
+bybit = ccxt.phemex({ # Add exchange function
 #   'enableRateLimit': True,
 #   'apiKey': os.getenv('PHMX_KEY'), # Add Exchange keys
 #   'secret': os.getenv('PHMX_SECRET')
@@ -49,7 +49,7 @@ def ask_bid(symbol=symbol):
     print(f'This is the ask price for {symbol} {ask}')
 
     return ask, bid # ask_bid()[0] = ask, [1] = bid
-# ask_bid('BTCUSDT')
+ask_bid('BTC/USDT')
 
 
 # =============== EMA - Exponential Moving Average  ==============
