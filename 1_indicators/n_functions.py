@@ -18,7 +18,7 @@ bybit = ccxt.phemex({ # Add exchange function
 # print(bybit.fetch_balance())
 
 # Define Parameters below
-symbol = 'BTCSDT' 
+symbol = 'BTCUSDT' 
 index_pos = 1 # Change based on the asset
 pause_time = 60 # The pause time between trades for Sleep function
 # For Orderbook volume calcs Vol_repeat * vol_time == TIME of volume collection
