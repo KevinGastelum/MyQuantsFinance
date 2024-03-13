@@ -9,10 +9,10 @@ import time, schedule
 from dotenv import load_dotenv
 load_dotenv()
 
-bybit = ccxt.phemex({ # Add exchange function
-  'enableRateLimit': True,
-  'apiKey': os.getenv('PHMX_KEY'), # Add Exchange keys
-  'secret': os.getenv('PHMX_SECRET')
+bybit = ccxt.okx({ # Add exchange function
+#   'enableRateLimit': True,
+#   'apiKey': os.getenv('PHMX_KEY'), # Add Exchange keys
+#   'secret': os.getenv('PHMX_SECRET')
 }) 
 
 # print(bybit.fetch_balance())
