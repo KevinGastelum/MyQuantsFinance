@@ -1,6 +1,7 @@
 # import libs
 import os
 import numpy as np
+from numpy.core.multiarray import array as array
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 # QuantFreedom
@@ -182,3 +183,110 @@ class MACDandEMA(Strategy):
     ):
         pass
     
+####################
+####################
+####### PLOT ######
+####################
+####################
+    
+    def plot_signals(
+        self, 
+        candles: np.array,
+    ):
+        # Plot our entries, to see how profitable strat is
+        fig = go.Figure()
+        datetimes = candles[: CandleBodyType.Timestamp].astype('datetime64[ms]')
+        fig = make_subplots(
+          cols=1,
+          rows=2,
+          shared_xaxes=True,
+          subplot_titles=['Candles', 'MACD'],
+          row_heights=[0.6, 0.4],
+          vertical_spacing=0.1,
+        )
+        # Chart CandleSticks
+        fig.append_trace(
+          go.Candlestick(
+            x=datetimes,
+            open=candles[:, CandleBodyType.Open],
+            high=candles[:, CandleBodyType.High],
+            low=candles[:, CandleBodyType.Low],
+            close=candles[:, CandleBodyType.Close],
+            name='Candles',
+          ),
+          col=1,
+          row=1,
+        )
+        fig.append_trace(
+          go.Scatter(
+            x=datetimes,
+            y=ema,
+            name='EMA',
+            line_color='yellow',
+          ),
+          col=1,
+          row=1,
+        )
+        ind_shift = np.roll(histogram, 1)
+        ind_shift[0] = np.nan
+        colors = np.where(
+          histogram >= 0,
+          np.where(ind_shift < histogram, '#26A69A', '#B2DFD8'),
+          np.where(ind_shift < histogram, '#FFCDD2', '#FF5252'),
+        )
+        fig.append_trace(
+          go.Bar(
+            x=datetimes,
+            y=histogram,
+            name='histogram',
+            marker_color=colors,
+          ),
+          row=2,
+          col=1,
+        )
+        fig.append_trace(
+          go.Scatter(
+            x=datetimes,
+            y=macd,
+            name='macd',
+            line_color='#2962FF'
+          ),
+          row=2,
+          col=1,
+        )
+        fig.append_trace(
+          go.Scatter(
+            x=datetimes,
+            y=signal,
+            name='signal',
+            line_color='#FF6D00'
+          ),
+          row=2,
+          col=1,
+        )
+        fig.append_trace(
+          go.Scatter(
+            x=datetimes,
+            y=entry_signals,
+            mode='markers',
+            name='entries',
+            marker=dict(
+              size=12,
+              symbol='circle',
+              color='#00F6FF',
+              line=dict(
+                width=1,
+                color='DarkSlateGrey',
+              ),
+            ),
+          ),
+          row=2,
+          col=1,
+        )
+        # Update and Show plots
+        fig.update_layout(height=800, xaxis_rangeslider_visible=False)
+        fig.show()
+
+
+
+          
