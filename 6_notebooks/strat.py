@@ -78,5 +78,55 @@ class MACDandEMA(Strategy):
             self.live_evaluate = self.short_live_evaluate
             self.chart_title = 'Short Signal'
 
+####################
+####################
+####### LONG #######
+####################
+####################
 
+    def long_set_entries_exits_array(
+        self,
+        candles: np.array,
+        ind_set_index: int,
+    ):
+        try:
+            closing_prices = candles[:, CandleBodyType.Close]
+            low_prices = candles[:, CandleBodyType.Low]
+            self.ema_length=self.indicator_settings_arrays.ema_length[ind_set_index]
+            self.fast_length=self.indicator_settings_arrays.fast_length[ind_set_index]
+            self.macd_below=self.indicator_settings_arrays.macd_below[ind_set_index]
+            self.signal_smoothing=self.indicator_settings_arrays.signal_smoothing[ind_set_index]
+            self.slow_length=self.indicator_settings_arrays.slow_length[ind_set_index]
 
+            self.histogram, self.macd, self.signal = macd_tv(
+            source=closing_prices,
+            fast_length=self.fast_length,
+            slow_length=self.slow_length,
+            signal_smoothing=self.signal_smoothing
+            )
+
+            self.ema = ema_tv(
+                source=closing_prices,
+                length=self.ema_length,
+            )
+
+            prev_macd = np.roll(self.macd, 1)
+            prev_macd[0] = np.nan
+
+            prev_signal = np.roll(self.signal, 1)
+            prev_signal[0] = np.nan
+
+            macd_below_signal = prev_macd < prev_signal
+            macd_above_signal = self.macd > self.signal
+            low_price_below_ema = low_prices > self.ema
+            macd_below_number = self.macd < self.macd_below
+
+            self.entries = (
+                (low_price_below_ema == True)
+                & (macd_below_signal == True)
+                & (macd_above_signal == True)
+                & (macd_below_number == True)
+              )
+            
+        except:
+            pass
