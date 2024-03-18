@@ -132,5 +132,27 @@ class MACDandEMA(Strategy):
 
             self.exit_prices = np.full_like(self.entries, np.nan)
             
-        except:
-            pass
+        except Exception as e:
+            logger.error(f'Exception long_set_entries_exits_array - > {e}')
+            raise Exception(f'Exception long_set_entries_exits_array -> {e}')
+        
+    def long_log_indicator_settings(
+        self,
+        ind_set_index: int,
+    ):
+        logger.info(
+            f'Indicator Settings\
+        \nIndicator Settings Index= {ind_set_index}\
+        \nema_length= {self.ema_length}\
+        \nfast_length= {self.fast_length}\
+        \nmacd_below= {self.macd_below}\
+        \nsignal_smoothing= {self.signal_smoothing}\
+        \nslow_length= {self.slow_length}'
+        )
+
+    def long_entry_message(
+            self,
+            nar_index: int,
+    ):
+        logger.info('\n\n')
+        logger.info(f'TRADE ENTERED!')
