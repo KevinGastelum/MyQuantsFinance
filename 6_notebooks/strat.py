@@ -65,6 +65,18 @@ class MACDandEMA(Strategy):
             slow_length=cart_arrays[4].astype(np.int_),
         )
 
-        
+        if long_short == 'long':
+            self.set_entries_exits_array = self.long_set_entries_exits_array
+            self.log_indicator_settings = self.long_log_indicator_settings
+            self.entry_message = self.long_entry_message
+            self.live_evaluate = self.long_live_evaluate
+            self.chart_title = 'Long Signal'
+        else:
+            self.set_entries_exits_array = self.short_set_entries_exits_array
+            self.log_indicator_settings = self.short_log_indicator_settings
+            self.entry_message = self.short_entry_message
+            self.live_evaluate = self.short_live_evaluate
+            self.chart_title = 'Short Signal'
+
 
 
