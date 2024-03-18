@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 # QuantFreedom
 from quantfreedom.enums import CandleBodyType
-from quantfreedom.helper_funcs import dl_ex_candles, cart_products
+from quantfreedom.helper_funcs import dl_ex_candles, cart_product
 from quantfreedom.indicators.tv_indicators import macd_tv, ema_tv
 from quantfreedom.strategies.strategy import Strategy
 
