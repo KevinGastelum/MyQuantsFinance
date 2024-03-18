@@ -153,7 +153,7 @@ class MACDandEMA(Strategy):
 
     def long_entry_message(
             self,
-            nar_index: int,
+            bar_index: int,
     ):
         logger.info('\n\n')
         logger.info(f'TRADE ENTERED!')
