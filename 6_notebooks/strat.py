@@ -195,7 +195,7 @@ class MACDandEMA(Strategy):
     ):
         # Plot our entries, to see how profitable strat is
         fig = go.Figure()
-        datetimes = candles[: CandleBodyType.Timestamp].astype('datetime64[ms]')
+        datetimes = candles[:, CandleBodyType.Timestamp].astype('datetime64[ms]')
         fig = make_subplots(
           cols=1,
           rows=2,
@@ -220,24 +220,24 @@ class MACDandEMA(Strategy):
         fig.append_trace(
           go.Scatter(
             x=datetimes,
-            y=ema,
+            y=self.ema,
             name='EMA',
             line_color='yellow',
           ),
           col=1,
           row=1,
         )
-        ind_shift = np.roll(histogram, 1)
+        ind_shift = np.roll(self.histogram, 1)
         ind_shift[0] = np.nan
         colors = np.where(
-          histogram >= 0,
-          np.where(ind_shift < histogram, '#26A69A', '#B2DFD8'),
-          np.where(ind_shift < histogram, '#FFCDD2', '#FF5252'),
+          self.histogram >= 0,
+          np.where(ind_shift < self.histogram, '#26A69A', '#B2DFD8'),
+          np.where(ind_shift < self.histogram, '#FFCDD2', '#FF5252'),
         )
         fig.append_trace(
           go.Bar(
             x=datetimes,
-            y=histogram,
+            y=self.histogram,
             name='histogram',
             marker_color=colors,
           ),
@@ -247,7 +247,7 @@ class MACDandEMA(Strategy):
         fig.append_trace(
           go.Scatter(
             x=datetimes,
-            y=macd,
+            y=self.macd,
             name='macd',
             line_color='#2962FF'
           ),
@@ -257,7 +257,7 @@ class MACDandEMA(Strategy):
         fig.append_trace(
           go.Scatter(
             x=datetimes,
-            y=signal,
+            y=self.signal,
             name='signal',
             line_color='#FF6D00'
           ),
@@ -267,7 +267,7 @@ class MACDandEMA(Strategy):
         fig.append_trace(
           go.Scatter(
             x=datetimes,
-            y=entry_signals,
+            y=self.entry_signals,
             mode='markers',
             name='entries',
             marker=dict(
