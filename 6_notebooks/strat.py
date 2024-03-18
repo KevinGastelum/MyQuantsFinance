@@ -128,5 +128,9 @@ class MACDandEMA(Strategy):
                 & (macd_below_number == True)
               )
             
+            self.entry_signals =  np.where(self.entries, self.macd, np.nan)
+
+            self.exit_prices = np.full_like(self.entries, np.nan)
+            
         except:
             pass
