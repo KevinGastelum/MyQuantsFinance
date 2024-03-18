@@ -156,3 +156,29 @@ class MACDandEMA(Strategy):
     ):
         logger.info('\n\n')
         logger.info(f'TRADE ENTERED!')
+####################
+####################
+####### SHORT #######
+####################
+####################
+
+    def short_set_entries_exits_array(
+        self,
+        candles: np.array,
+        ind_set_index: int,
+    ):
+        pass
+    
+    def short_log_indicator_settings(
+            self, 
+            ind_set_index: int,
+    ):
+        pass
+    
+    def short_entry_message(
+            self, 
+            bar_index: int,
+    ):
+        pass
+    
+    
