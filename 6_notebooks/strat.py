@@ -156,9 +156,10 @@ class MACDandEMA(Strategy):
     ):
         logger.info('\n\n')
         logger.info(f'TRADE ENTERED!')
+
 ####################
 ####################
-####### SHORT #######
+####### SHORT ######
 ####################
 ####################
 
@@ -180,5 +181,4 @@ class MACDandEMA(Strategy):
             bar_index: int,
     ):
         pass
-    
     
