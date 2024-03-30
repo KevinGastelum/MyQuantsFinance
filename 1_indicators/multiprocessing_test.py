@@ -9,7 +9,7 @@ def backtesting(
     range_end: int,
 ) -> np.array:
     print("inside backteesting")
-    candles = 300
+    candles = 3000
     time.sleep(10)
     for i in range(range_end - range_start):  # looping settings
         backtest_result = False
