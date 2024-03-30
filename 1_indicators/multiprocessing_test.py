@@ -75,7 +75,7 @@ if __name__ == "__main__":
 
     start = time.perf_counter()
 
-    total_settings = 1000
+    total_settings = 100
     record_results = np.zeros((total_settings, 5)).astype(np.int_)
     whole_array = record_results.copy()
 
