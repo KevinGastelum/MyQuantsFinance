@@ -14,7 +14,7 @@ class ZigZagPAStrategyV4(IStrategy):
         "0": 0.1
     }
 
-    # Стратегия не использует Stop Loss
+    # Stop Loss
     stoploss = -0.99
 
     def zigzag(self, dataframe: DataFrame):
@@ -62,23 +62,23 @@ class ZigZagPAStrategyV4(IStrategy):
 
     def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
 
-        # Расчет ZigZag
+        # ZigZag
         dataframe['zigzag'] = self.zigzag(dataframe)
 
-        # Вычисление значений переменных
+        # 
         x = dataframe['zigzag'].shift(4)
         a = dataframe['zigzag'].shift(3)
         b = dataframe['zigzag'].shift(2)
         c = dataframe['zigzag'].shift(1)
         d = dataframe['zigzag']
 
-        # Расчет соотношений
+        # 
         dataframe['xab'] = (np.abs(b - a) / np.abs(x - a))
         dataframe['xad'] = (np.abs(a - d) / np.abs(x - a))
         dataframe['abc'] = (np.abs(b - c) / np.abs(a - b))
         dataframe['bcd'] = (np.abs(c - d) / np.abs(b - c))
 
-        # Добавление в dataframe
+        # 
         dataframe['x'] = x
         dataframe['a'] = a
         dataframe['b'] = b
