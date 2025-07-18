@@ -19,7 +19,7 @@ ENV PATH="/home/autogen/.local/bin:$PATH"
 ENV OPENAI_API_KEY=
 
 # Pre-load popular packages
-RUN pip install pyautogen==0.2.8 autogenstudio==0.0.34a0 numpy pandas matplotlib seaborn scikit-learn requests urllib3 nltk pillow pytest beautifulsoup4 litellm
+RUN pip install ag2==0.2.8 autogenstudio==0.0.34a0 numpy pandas matplotlib seaborn scikit-learn requests urllib3 nltk pillow pytest beautifulsoup4 litellm
 
 # Expose port
 EXPOSE 8081
